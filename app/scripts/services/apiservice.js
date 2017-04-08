@@ -3,7 +3,8 @@
 
 var app = angular.module('ngloginApp');
 
-app.service('APIService', ['$rootScope', '$resource', '$q', '$http', function APIServiceProvider($rootScope, $resource, $q, $http) {
+app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
+ function APIServiceProvider($rootScope, $resource, $q, $http,APIConfig) {
 
 	var self = this;
 	var service = '';
@@ -11,8 +12,8 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http', function AP
 	var data = {};
 	var tableid = ':id';
 
-	self.setAuth = function () {
-
+	self.setAuth = function (data) {
+	$rootScope.oauth = data;
 		if ($rootScope.oauth.access_token) {
 
 			var login = $rootScope.oauth;
@@ -138,9 +139,5 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http', function AP
 		return deferred.promise;
 	};
 
-  this.setRootScope = function (data) {
-
-  	$rootScope.oauth = data;
-  	
-  };
+ 
 }]);

@@ -11,7 +11,6 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 		$scope.hasError = false;
 		$scope.Message = {};
 		$scope.Message.error = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
-
 		$scope.loadSubmit = 0;
 
 		$scope.submitForm = function (isValid) {
@@ -30,19 +29,23 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
       		postData.grant_type = 'password';
       		postData.client_id 	= APIConfig.clientID;
 
-      		console.log(postData,'postData');
-
+                  //get Authorisi from api
       		$http({
       			url: APIConfig.url + '/oauth',
       			method: 'POST',
       			data: postData
       		}).then(
       		function (result) {
-      			
-      			console.log(result,'result');
+
 
       			if (result) {
 
+                  //set Bearer access token
+                  api.setAuth(result.data);
+                  
+                  APIConfig.access_token = result.data.access_token;
+                  APIConfig.refresh_token = result.data.refresh_token;
+ 
 
       			};
       		})
