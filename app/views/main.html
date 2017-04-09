@@ -1,23 +1,4 @@
- <!--div class="container">
-  <form name="loginform" role="form"  ng-controller="LoginCtrl" class=""   ng-submit=""  novalidate>
-    <div class="" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" 
-    style="display: block;">
-      <div class="modal-dialog">
-        <div class="loginmodal-container">
-          <h1>Login to Your Account</h1><br>
-          <form>
-            <input ng-model="login.email" type="text" name="user" placeholder="Username">
-            <input ng-model="login.password" type="password" name="pass" placeholder="Password">
-            <input ng-click="submitForm(true);" type="submit" name="login" class="login loginmodal-submit" value="Login">
-          </form>
-          <div class="login-help">
-            <a href="#">Register</a> - <a href="#">Forgot Password</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-</div-->
+ 
 <form name="loginform" role="form"  ng-controller="LoginCtrl" class=""   ng-submit=""  novalidate>
   <div class="col-lg-12">
     <div class="col-md-4 col-md-offset-4">
@@ -25,19 +6,19 @@
         <div class="a-section a-spacing-none">
           <div class="a-section a-spacing-medium a-text-center">
             <a class="a-link-nav-icon" tabindex="-1" href="/ref=ap_frn_logo">
-              <i class="a-icon a-icon-logo" aria-label="Hipots"><span class="a-icon-alt">Hipots</span></i>
+              <i class="a-icon a-icon-logo" aria-label="Hipots"><span class="a-icon-alt">{{'appname' | translate}}</span></i>
               <i class="a-icon a-icon-domain-de a-icon-domain"></i>
             </a>
           </div>
         </div>
         <div ng-show="hasError" class="a-section">
           <div id="auth-error-message-box" class="a-box a-alert a-alert-error auth-server-side-message-box a-spacing-base"><div class="a-box-inner a-alert-container">
-            <h4 class="a-alert-heading">Ein Problem ist aufgetreten:</h4>
+            <h4 class="a-alert-heading">{{'one problem' | translate}}</h4>
             <i class="a-icon a-icon-alert"></i>
             <div class="a-alert-content">
               <ul class="a-nostyle a-vertical a-spacing-none">
                 <li><span class="a-list-item">
-                 {{Message.error}}
+                 {{message}}
                 </span></li>
               </ul>
             </div>
@@ -48,17 +29,17 @@
         <div class="a-box">
           <div class="a-box-inner a-padding-extra-large">
             <h1 class="a-spacing-small">
-              Anmelden
+              {{'login' | translate}}
             </h1>
             <!-- optional subheading element -->
             <div class="a-row a-spacing-base">
               <label for="ap_email">
-                E-Mail-Adresse
+              {{'email' | translate}}
               </label>
               <input ng-model="login.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
               <div ng-show="loginform.email.$touched && loginform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
-                  Geben Sie Ihre E-Mail-Adresse ein
+                 {{'write your email' | translate}} 
                 </div>
               </div>
             </div>
@@ -68,19 +49,19 @@
             <div class="a-row">
               <div class="a-column a-span5">
                 <label for="ap_password">
-                  Passwort
+                     {{'password' | translate}} 
                 </label>
               </div>
               <div class="a-column a-span7 a-text-right a-span-last">
-                <a id="auth-fpp-link-bottom" class="a-spacing-null a-link-normal" href="">
-                  Passwort vergessen
+                <a id="auth-fpp-link-bottom" class="a-spacing-null a-link-normal" ng-href="#!/newpass">
+                  {{'lost password' | translate}} 
                 </a>
               </div>
             </div>
             <input type="password"  ng-model="login.password" id="ap_password"   name="password" tabindex="2" class="a-input-text a-span12 auth-required-field" required>
             <div ng-show="loginform.password.$touched && loginform.password.$invalid"  id="auth-password-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini"><div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i>
             <div  class="a-alert-content">
-              Geben Sie Ihr Passwort ein.
+           
             </div></div></div>
           </div>
           <div class="a-section a-spacing-extra-large">
@@ -88,19 +69,18 @@
               <span class="a-button-inner">
                 <input  ng-click="submitForm(loginform.password.$valid && loginform.email.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
                 <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-                  Anmelden
+                  {{'login' | translate}} 
                 </span>
               </span>
             </span>
-            <script type="text/javascript"></script>
           </div>
           <div class="a-divider a-divider-break">
-            <h5>Neu bei Highpots?</h5>
+            <h5>   {{'new bei Highpots?' | translate}}</h5>
           </div>
           <span id="auth-create-account-link" class="a-button a-button-span12">
             <span class="a-button-inner">
               <a id="createAccountSubmit" tabindex="6" href="" class="a-button-text" role="button">
-                Erstellen Sie Ihr Highpots-Konto
+              {{'new account?' | translate}}
               </a></span></span>
             </div>
           </div>

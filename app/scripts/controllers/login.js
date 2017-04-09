@@ -9,8 +9,8 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
 		$scope.login = {};
 		$scope.hasError = false;
-		$scope.Message = {};
-		$scope.Message.error = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
+		$scope.message = {};
+		$scope.message = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
 		$scope.loadSubmit = 0;
 
 		$scope.submitForm = function (isValid) {
@@ -59,7 +59,6 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                         'company_name':'company',
                         'ust_id':'ustid'
 
-
                   }
 
                   api.service('user').data(data).save().then(function(result){
@@ -75,7 +74,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
             if(result.status==401){
 
 
-                  $scope.Message.error  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
+                  $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
 
             }
 
