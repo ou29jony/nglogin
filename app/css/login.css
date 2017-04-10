@@ -167,9 +167,15 @@ button, input, select, textarea {
 }
 .a-alert-inline .a-alert-container {
     padding: 0;
-    color: #c40000;
+    color: rgb(239,65,35);
 }
 
+.orange{
+    color:rgb(239,65,35);
+}
+.a-alert-error {
+    border-color:rgb(239,65,35);
+}
 .a-box .a-box-inner {
     border-radius: 4px;
     position: relative;
@@ -214,7 +220,15 @@ input[type=submit] {
     background: linear-gradient(to bottom,#f49f91,#ed705b);
      background-color :rgb(236,237,236);
 }
-
+ 
+ 
+.a-button .a-button-text {
+    color: #111;
+}
+.a-button a, .a-button:hover a {
+    color: #111;
+    text-decoration: none!important;
+}
  
  
 .a-button-inner {

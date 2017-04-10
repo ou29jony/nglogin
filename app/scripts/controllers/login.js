@@ -48,18 +48,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                   APIConfig.access_token = result.data.access_token;
                   APIConfig.refresh_token = result.data.refresh_token;
 
-                  var data  = {
-
-                    'username':'mail@mail.com',
-                    'password':'cccc',
-                    'firstname':'firstname',
-                    'secondname':'secondname',
-                    'gender':'male',
-                    'active':0,
-                    'company_name':'company',
-                    'ust_id':'ustid'
-
-                  }
+                 
 
                   api.service('user').data(data).save().then(function(result){
 

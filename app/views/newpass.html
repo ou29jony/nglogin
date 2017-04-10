@@ -1,15 +1,7 @@
-<form name="loginform" role="form"  ng-controller="PassCtrl" class=""   ng-submit=""  novalidate>
+<form name="newpassform" role="form"  ng-controller="PassCtrl" class=""   ng-submit=""  novalidate>
 	<div class="col-lg-12">
 		<div class="col-md-4 col-md-offset-4">
 			<div class="a-section auth-pagelet-container ">
-				<div class="a-section a-spacing-none">
-					<div class="a-section a-spacing-medium a-text-center">
-						<a class="a-link-nav-icon" tabindex="-1" href="/ref=ap_frn_logo">
-							<i class="a-icon a-icon-logo" aria-label="Highpots"><span class="a-icon-alt">{{'appname'|translate}}</span></i>
-							<i class="a-icon a-icon-domain-de a-icon-domain"></i>
-						</a>
-					</div>
-				</div>
 				<div ng-show="hasError" class="a-section">
 					<div id="auth-error-message-box" class="a-box a-alert a-alert-error auth-server-side-message-box a-spacing-base"><div class="a-box-inner a-alert-container">
 						<h4 class="a-alert-heading">{{'one problem'|translate}}</h4>
@@ -25,38 +17,56 @@
 				</div>
 			</div>
 			<div class="a-section">
-				<div class="a-box">
+				<div class="a-box center-block box_length">
 					<div class="a-box-inner a-padding-extra-large">
 						<h1 class="a-spacing-small">
 							{{'password help'|translate}}
 						</h1>
 						<!-- optional subheading element -->
 						<div class="a-row a-spacing-base">
-							<label for="ap_email">
-								{{'email'|translate}}
+							<label for="ap_password">
+								{{'password'|translate}}
 							</label>
-							<input ng-model="login.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
-							<div ng-show="loginform.email.$touched && loginform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
-								<div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
-										{{'write your email'|translate}}
+							<input ng-model="login.password1" type="password" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<div ng-show="newpassform.password1.$touched && newpassform.password1.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+								<div class="a-box-inner a-alert-container">
+									<i class="a-icon a-icon-alert">
+									</i>
+									<div class="a-alert-content">
+										{{'write your password1'|translate}}
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				<div class="a-section a-spacing-extra-large">
-					<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
-						<span class="a-button-inner">
-							<input  ng-click="submitForm(loginform.password.$valid && loginform.email.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
-							<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-								{{'next'|translate}}
+							<div class="a-row a-spacing-base">
+							<label for="ap_password">
+								{{'password2'|translate}}
+							</label>
+							<input ng-model="login.password2" type="password" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<div ng-show="newpassform.password2.$touched && newpassform.password2.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+								<div class="a-box-inner a-alert-container">
+									<i class="a-icon a-icon-alert">
+									</i>
+									<div class="a-alert-content">
+										{{'write your password2' |translate}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="a-section a-spacing-extra-large">
+							<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
+								<span class="a-button-inner">
+									<input  ng-click="submitForm(newpassform.password1.$valid && newpassform.password2.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
+									<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
+										{{'next'|translate}}
+									</span>
+								</span>
 							</span>
-						</span>
-					</span>
-				</div>
+						</div>
 
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>
 </form>

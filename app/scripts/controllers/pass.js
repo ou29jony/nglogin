@@ -7,13 +7,42 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 
 		var api = APIService;
 		$scope.hasError = false;
-		$scope.message = "Email False";
+		$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren.";
+		$scope.login ={};
+		 var data  = {
+		 			'passlink':1,
+                    'username':'test',
+                    'password':'pass',
+                    'firstname':'pass',
+                    'secondname':'pass',
+                    'gender':'pass',
+                    'active':0,
+                    'company_name':'pass',
+                    'ust_id':'pass'
+                  }
 
-		$scope.sendPassLink = function(email){
+		$scope.sendPassLink = function(isValid){
 
-			api.service('user').filter({'email':email}).get().then(function(result){
+			
+			if(isValid){
+				
+				data.username =$scope.login.email;
 
-				console.log(result);
-			})
+			 
+				api.service('user').data(data).save().then(function(result){
+
+					console.log('result',result);
+
+				},function(error){
+					
+					$scope.hasError = true;
+
+				
+					if(error.status ==404){
+						
+						$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren."
+					}
+				})
+			}
 		}
 	}]);

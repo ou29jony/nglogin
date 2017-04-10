@@ -36,6 +36,10 @@ $translateProvider.useStaticFilesLoader({
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/lostpass', {
+        templateUrl: 'views/lostpass.html',
+        controller: 'PassCtrl'
+      })
       .when('/newpass', {
         templateUrl: 'views/newpass.html',
         controller: 'PassCtrl'
