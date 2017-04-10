@@ -8,6 +8,7 @@
  * Controller of the ngloginApp
  */
 var app = angular.module('ngloginApp');
+
   app.controller('MainCtrl',['$scope','APIService', function ($scope,APIService) {
 
   	$scope.user;

@@ -5,10 +5,11 @@
  "login":"Anmelden",
  "email":" E-Mail-Adresse",
  "write your email":"Geben Sie Ihre E-Mail-Adresse ein",
+ "write your password":"Geben Sie Ihr Passwort ein",
  "password":"passwort",
  "lost password":"Passwort vergessen",
- "new at Highpots":" Neu bei Highpots?",
- "new account":"  Erstellen Sie Ihr Highpots-Konto",
+ "new at Highpots?":"Neu bei Highpots?",
+ "new account":"Erstellen Sie Ihr Highpots-Konto",
  "password help":"Passworthilfe",
  "next":"weiter"
 }

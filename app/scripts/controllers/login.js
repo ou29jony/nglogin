@@ -2,8 +2,8 @@
 var app = angular
 .module('ngloginApp');
 
-app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService',
-	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService) {
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService','$window',
+	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService,$window) {
 
 		var api = APIService;
 
@@ -31,16 +31,16 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
                   //get Authorisi from api
                   $http({
-                     url: APIConfig.url + '/oauth',
-                     method: 'POST',
-                     data: postData
-               }).then(
-               function (result) {
+                   url: APIConfig.url + '/oauth',
+                   method: 'POST',
+                   data: postData
+                 }).then(
+                  function (result) {
 
-                  console.log(result);
+                    console.log(result);
 
-                  if (result) {
-                        $scope.hasError = false;
+                    if (result) {
+                      $scope.hasError = false;
 
                   //set Bearer access token
                   api.setAuth(result.data);
@@ -50,41 +50,40 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
                   var data  = {
 
-                        'username':'mail@mail.com',
-                        'password':'cccc',
-                        'firstname':'firstname',
-                        'secondname':'secondname',
-                        'gender':'male',
-                        'active':0,
-                        'company_name':'company',
-                        'ust_id':'ustid'
+                    'username':'mail@mail.com',
+                    'password':'cccc',
+                    'firstname':'firstname',
+                    'secondname':'secondname',
+                    'gender':'male',
+                    'active':0,
+                    'company_name':'company',
+                    'ust_id':'ustid'
 
                   }
 
                   api.service('user').data(data).save().then(function(result){
 
-                        console.log('result save user',result);
+                    console.log('result save user',result);
+                    $window.history.back();
                   })
-            }
-      },
-      function (result) {
+                }
+              },
+              function (result) {
 
-            $scope.hasError = true;
+                $scope.hasError = true;
 
-            if(result.status==401){
+                if(result.status==401){
 
 
                   $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
-
-            }
-
-
-            })
-         }else{
+                }
+              })
+              
+            }else{
 
               $scope.loginform.password.$touched = true;
               $scope.loginform.email.$touched = true;
-       }
-   }
+            }
+          }
 
-}]);
+        }]);
