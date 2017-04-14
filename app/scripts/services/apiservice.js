@@ -20,6 +20,8 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 			$http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.oauth.access_token;
 			self.refresh_token = login.refresh_token;
 
+		
+
 		}
 	};
 

@@ -1,15 +1,19 @@
 {
-
  "appname":"Highpots",
  "one problem":"Ein Problem ist aufgetreten:",
  "login":"Anmelden",
  "email":" E-Mail-Adresse",
  "write your email":"Geben Sie Ihre E-Mail-Adresse ein",
  "write your password":"Geben Sie Ihr Passwort ein",
- "password":"passwort",
+ "new password":"Neues passwort",
+ "again password":"Nochmals passwort",
  "lost password":"Passwort vergessen",
  "new at Highpots?":"Neu bei Highpots?",
  "new account":"Erstellen Sie Ihr Highpots-Konto",
  "password help":"Passworthilfe",
+ "you have successfully changed the password":"Sie haben Passwort erfolgreich geändert",
+ "my account":"mein Konto",
+ "mailsend.header":"Überprüfung Ihrer Nachrichten",
+ "mailsend.text" : "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren.",
  "next":"weiter"
 }

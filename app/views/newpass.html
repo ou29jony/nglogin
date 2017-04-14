@@ -1,7 +1,7 @@
-<form name="newpassform" role="form"  ng-controller="PassCtrl" class=""   ng-submit=""  novalidate>
+<form name="newpassform" role="form"    class=""   ng-submit=""  novalidate>
 	<div class="col-lg-12">
 		<div class="col-md-4 col-md-offset-4">
-			<div class="a-section auth-pagelet-container ">
+			<div class="a-section auth-pagelet-container box_length">
 				<div ng-show="hasError" class="a-section">
 					<div id="auth-error-message-box" class="a-box a-alert a-alert-error auth-server-side-message-box a-spacing-base"><div class="a-box-inner a-alert-container">
 						<h4 class="a-alert-heading">{{'one problem'|translate}}</h4>
@@ -25,30 +25,30 @@
 						<!-- optional subheading element -->
 						<div class="a-row a-spacing-base">
 							<label for="ap_password">
-								{{'password'|translate}}
+								{{'new password'|translate}}
 							</label>
-							<input ng-model="login.password1" type="password" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<input ng-model="user.password1" type="password" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
 							<div ng-show="newpassform.password1.$touched && newpassform.password1.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
 								<div class="a-box-inner a-alert-container">
 									<i class="a-icon a-icon-alert">
 									</i>
 									<div class="a-alert-content">
-										{{'write your password1'|translate}}
+										{{'write your password'|translate}}
 									</div>
 								</div>
 							</div>
 						</div>
 							<div class="a-row a-spacing-base">
 							<label for="ap_password">
-								{{'password2'|translate}}
+								{{'again password'|translate}}
 							</label>
-							<input ng-model="login.password2" type="password" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<input ng-model="user.password2" type="password" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
 							<div ng-show="newpassform.password2.$touched && newpassform.password2.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
 								<div class="a-box-inner a-alert-container">
 									<i class="a-icon a-icon-alert">
 									</i>
 									<div class="a-alert-content">
-										{{'write your password2' |translate}}
+										{{'write your password' |translate}}
 									</div>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 						<div class="a-section a-spacing-extra-large">
 							<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
 								<span class="a-button-inner">
-									<input  ng-click="submitForm(newpassform.password1.$valid && newpassform.password2.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
+									<input  ng-click="saveNewPassword(user);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
 									<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
 										{{'next'|translate}}
 									</span>

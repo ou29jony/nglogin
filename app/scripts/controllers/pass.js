@@ -9,40 +9,83 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 		$scope.hasError = false;
 		$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren.";
 		$scope.login ={};
-		 var data  = {
-		 			'passlink':1,
-                    'username':'test',
-                    'password':'pass',
-                    'firstname':'pass',
-                    'secondname':'pass',
-                    'gender':'pass',
-                    'active':0,
-                    'company_name':'pass',
-                    'ust_id':'pass'
-                  }
+		$scope.user = {};
 
-		$scope.sendPassLink = function(isValid){
+		var data  = {
+			'passlink':1,
+		}
+	
 
-			
-			if(isValid){
+	$scope.sendPassLink = function(isValid){
+
+		console.log(isValid);
+
+		if(isValid){
+
+			data.username =$scope.login.email;
+
+
+			api.service('usersetting').data(data).save().then(function(result){
 				
-				data.username =$scope.login.email;
-
-			 
-				api.service('user').data(data).save().then(function(result){
-
-					console.log('result',result);
-
-				},function(error){
+				    $location.path('mailsend');
+					$scope.hasError = false;
+				    $scope.message = {};
+					$scope.message.header = "Überprüfung Ihrer Nachrichten";
+					$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren."
 					
+
+			},
+			function(error){
+
+				
+
+				console.log(error);
+				
+				if(error.status ==404){
 					$scope.hasError = true;
 
-				
-					if(error.status ==404){
-						
-						$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren."
-					}
-				})
-			}
+					$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren."
+				}
+			})
 		}
-	}]);
+
+	}
+
+	$scope.saveNewPassword = function(user){
+
+		if(user.password1 == user.password2){
+
+	console.log('APIConfig',APIConfig);
+			api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
+
+				console.log(usersetting.code,APIConfig.code);
+
+				if(usersetting.code == APIConfig.code){
+
+					var data = {
+						'value':'setnewpassword',
+						'code' : user.password1
+					}
+
+					api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
+
+						$location.path('newpassok');
+
+					},function(error){
+
+						$location.path('newpasserror');
+
+					})
+				}
+			},function(error){
+
+				$scope.hasError = true; 
+			})
+		} else{
+
+			$scope.hasError = true; 
+			$scope.message = 'Die Passwörter Stimmen nicht überein'
+		}
+	};
+
+}]);

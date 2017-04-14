@@ -10,7 +10,9 @@ app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
 	'clientID':'auth_client',
 	'url':'http://localhost:9100',
  	'access_token': '',
-    'refresh_token': ''
+    'refresh_token': '',
+    'userid':null,
+    'code':null
 
 	}
 

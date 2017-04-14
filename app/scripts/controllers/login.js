@@ -62,8 +62,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                 $scope.hasError = true;
 
                 if(result.status==401){
-
-
+                  
                   $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
                 }
               })

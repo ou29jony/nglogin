@@ -169,13 +169,25 @@ button, input, select, textarea {
     padding: 0;
     color: rgb(239,65,35);
 }
+.a-success-inline .a-success-container {
+    padding: 0;
+    color: #5cb85c;
+}
+
 
 .orange{
     color:rgb(239,65,35);
 }
+.success{
+    color:#5cb85c;
+}
 .a-alert-error {
     border-color:rgb(239,65,35);
 }
+.a-alert-success {
+    border-color:#5cb85c;
+}
+ 
 .a-box .a-box-inner {
     border-radius: 4px;
     position: relative;

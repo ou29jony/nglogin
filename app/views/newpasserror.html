@@ -25,27 +25,15 @@
 				<div class="a-box center-block box_length">
 					<div class="a-box-inner a-padding-extra-large">
 						<h1 class="a-spacing-small">
-							{{'password help'|translate}}
+							{{'you have not changed the password'|translate}}
 						</h1>
-						<!-- optional subheading element -->
-						<div class="a-row a-spacing-base">
-							<label for="ap_email">
-								{{'email'|translate}}
-							</label>
-							<input ng-model="login.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
-							<div ng-show="loginform.email.$touched && loginform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
-								<div class="a-box-inner a-alert-container"><i class="a-icon a-icon-alert"></i><div class="a-alert-content">
-									{{'write your email'|translate}}
-								</div>
-							</div>
-						</div>
 					</div>
 					<div class="a-section a-spacing-extra-large">
 						<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
 							<span class="a-button-inner">
 								<input  ng-click="sendPassLink(loginform.email.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
 								<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-									{{'next'|translate}}
+									{{'my account'|translate}}
 								</span>
 							</span>
 						</span>

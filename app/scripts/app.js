@@ -40,8 +40,20 @@ $translateProvider.useStaticFilesLoader({
         templateUrl: 'views/lostpass.html',
         controller: 'PassCtrl'
       })
-      .when('/newpass', {
+      .when('/newpasslink', {
         templateUrl: 'views/newpass.html',
+        controller: 'PassCtrl'
+      })
+        .when('/newpassok', {
+        templateUrl: 'views/newpassok.html',
+        controller: 'PassCtrl'
+      })
+        .when('/newpasserror', {
+        templateUrl: 'views/newpass.html',
+        controller: 'PassCtrl'
+      })
+        .when('/mailsend', {
+        templateUrl: 'views/mailsend.html',
         controller: 'PassCtrl'
       })
       .otherwise({
@@ -50,12 +62,19 @@ $translateProvider.useStaticFilesLoader({
 
     //$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     //$locationProvider.html5Mode(true);
+ 
   }]);
 
 app.run(['$rootScope', '$injector', 'APIConfig', '$location', '$http', 'APIService',
   function ($rootScope, $injector, APIConfig, $location, $http, APIService) {
 
  
+    if($location.path().includes('newpasslink')){
 
+        $location.path($location.path());
+        APIConfig.userid = parseInt($location.search().userid);
+        APIConfig.code   = $location.hash();
+
+    }
 
 }]);
