@@ -61,6 +61,9 @@ $translateProvider.useStaticFilesLoader({
          .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      }) .when('/account', {
+        templateUrl: 'views/account/account.html',
+        controller: 'AccountCtrl'
       })
       .otherwise({
         redirectTo: '/'
