@@ -81,6 +81,7 @@ $http.get('scripts/settings.json').then(function (response) {
 
     APIConfig.url = response.data.url;
     APIConfig.clientID = response.data.clientID;
+    APIConfig.b2c_emails = response.data.b2c_emails;
     $rootScope.settings = response.data;
     $rootScope.title = $rootScope.settings.title;
 
