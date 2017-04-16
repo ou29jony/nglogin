@@ -12,7 +12,8 @@ app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
  	'access_token': '',
     'refresh_token': '',
     'userid':null,
-    'code':null
+    'code':null,
+    'account':{}
 
 	}
 

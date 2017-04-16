@@ -7,13 +7,25 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 		var api = APIService;
 
-		$scope.saveUser = function(isValid,account){
+		$scope.account = APIConfig.account;
 
-			if(isValid)
-			api.service('user').data(account).save().then(function(result){
+		$scope.saveUser = function(isValid){
+
+			$scope.account.active =0;
+
+			if(isValid){
+				APIConfig.account = $scope.account;
+
+				console.log(' $scope.account', $scope.account);
+				
+				return;
+
+			api.service('user').data($scope.account).save().then(function(result){
 				
 				console.log('account',result);
 
 			});
 		}
+	}
+
 }]);

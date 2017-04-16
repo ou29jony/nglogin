@@ -102,8 +102,8 @@
               <label for="ap_department">
                 {{'In which department are you employed?' | translate}}
               </label>
-              <input ng-model="account.department" type="text" ng-maxlength="128" id="ap_department" name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-             
+              <input ng-model="account.department" type="text" ng-maxlength="128" id="ap_department" name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+
             </div>
             <div class="a-row a-spacing-base">
               <label for="ap_email">
@@ -119,84 +119,84 @@
                 </div>
               </div>
             </div>
-            </div>
-            <div class="a-row a-spacing-base">
-              <label for="ap_company_name">
-                {{'Which company do you work for?' | translate}}
-              </label>
-              <input ng-model="account.company_name" type="text" ng-maxlength="128" id="ap_company_name" name="company_name" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-              <div ng-show="accountform.company_name.$touched && accountform.company_name.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
-                <div class="a-box-inner a-alert-container">
-                  <i class="a-icon a-icon-alert">
-                  </i>
-                  <div class="a-alert-content">
-                   {{'Please enter your company name' | translate}} 
-                 </div>
+          </div>
+          <div class="a-row a-spacing-base">
+            <label for="ap_company_name">
+              {{'Which company do you work for?' | translate}}
+            </label>
+            <input ng-model="account.company_name" type="text" ng-maxlength="128" id="ap_company_name" name="company_name" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+            <div ng-show="accountform.company_name.$touched && accountform.company_name.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+              <div class="a-box-inner a-alert-container">
+                <i class="a-icon a-icon-alert">
+                </i>
+                <div class="a-alert-content">
+                 {{'Please enter your company name' | translate}} 
                </div>
              </div>
-            </div>
-            <div class="a-row a-spacing-base">
-              <label for="ap_ustd_id">
-                {{'USt.ID' | translate}}
-              </label>
-              <input ng-model="account.ustd_id" type="text" ng-maxlength="128" id="ap_ustdid" name="ustd_id" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-              <div ng-show="accountform.ustd_id.$touched && accountform.ustd_id.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
-                <div class="a-box-inner a-alert-container">
-                  <i class="a-icon a-icon-alert">
-                  </i>
-                  <div class="a-alert-content">
-                   {{'Please enter your USt.ID' | translate}} 
-                 </div>
-               </div>
+           </div>
+         </div>
+         <div class="a-row a-spacing-base">
+          <label for="ap_ustd_id">
+            {{'USt.ID' | translate}}
+          </label>
+          <input ng-model="account.ustd_id" type="text" ng-maxlength="128" id="ap_ustdid" name="ustd_id" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+          <div ng-show="accountform.ustd_id.$touched && accountform.ustd_id.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+            <div class="a-box-inner a-alert-container">
+              <i class="a-icon a-icon-alert">
+              </i>
+              <div class="a-alert-content">
+               {{'Please enter your USt.ID' | translate}} 
              </div>
-            </div>
-            <div class="a-row a-spacing-base">
-              <label for="ap_street">
-                {{'street' | translate}}
-              </label>
-              <input ng-model="account.street" type="text" ng-maxlength="128" id="ap_street" name="street" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-            </div>
-            <div class="a-row a-spacing-base">
-              <label for="ap_ort">
-                {{'ort' | translate}}
-              </label>
-              <input ng-model="account.ort" type="text" ng-maxlength="128" id="ap_ort" name="ort" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-            </div>
+           </div>
+         </div>
+       </div>
+       <div class="a-row a-spacing-base">
+        <label for="ap_street">
+          {{'street' | translate}}
+        </label>
+        <input ng-model="account.street" type="text" ng-maxlength="128" id="ap_street" name="street" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+      </div>
+      <div class="a-row a-spacing-base">
+        <label for="ap_ort">
+          {{'ort' | translate}}
+        </label>
+        <input ng-model="account.ort" type="text" ng-maxlength="128" id="ap_ort" name="ort" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+      </div>
 
-            <div class="a-row a-spacing-base">
-              <label for="ap_plz">
-                {{'plz' | translate}}
-              </label>
-              <input ng-model="account.email" type="text" ng-maxlength="128" id="ap_plz" name="plz" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-            </div>
-            <div class="a-row a-spacing-base">
-              <label for="ap_phone">
-                {{'phone' | translate}}
-              </label>
-              <input ng-model="account.phone" type="text" ng-maxlength="128" id="ap_phone" name="phone" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
-            </div>
-            <input type="hidden"   name="create" value="0">
-            <div class="a-section a-spacing-extra-large">
-              <span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
-                <span class="a-button-inner">
-                  <input  ng-click="saveUser(accountform.password.$valid && accountform.email.$valid,account);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
-                  <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-                    {{'Create your Highpots account' | translate}} 
-                  </span>
-                </span>
-              </span>
-            </div>
-            <span id="auth-create-account-link" class="a-button a-button-span12">
-              <span class="a-button-inner">
-                <a id="createAccountSubmit" tabindex="6" href="#!/" class="a-button-text" role="button">
-                  {{'abort' | translate}}
-                </a>
-              </span>
+      <div class="a-row a-spacing-base">
+        <label for="ap_plz">
+          {{'plz' | translate}}
+        </label>
+        <input ng-model="account.plz" type="text" ng-maxlength="128" id="ap_plz" name="plz" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+      </div>
+      <div class="a-row a-spacing-base">
+        <label for="ap_phone">
+          {{'phone' | translate}}
+        </label>
+        <input ng-model="account.phone" type="text" ng-maxlength="128" id="ap_phone" name="phone" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+      </div>
+      <input type="hidden"   name="create" value="0">
+      <div class="a-section a-spacing-extra-large">
+        <span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
+          <span class="a-button-inner">
+            <input  ng-click="saveUser(accountform.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
+            <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
+              {{'Create your Highpots account' | translate}} 
             </span>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </form>
+          </span>
+        </span>
+      </div>
+      <span id="auth-create-account-link" class="a-button a-button-span12">
+        <span class="a-button-inner">
+          <a id="createAccountSubmit" tabindex="6" href="#!/" class="a-button-text" role="button">
+            {{'abort' | translate}}
+          </a>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</form>
