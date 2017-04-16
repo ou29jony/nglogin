@@ -6,12 +6,20 @@
  "email":" E-Mail-Adresse",
  "write your email":"Geben Sie Ihre E-Mail-Adresse ein",
  "write your password":"Geben Sie Ihr Passwort ein",
+
+ "Please enter your business e-mail address":"Geben Sie Ihre geschäftliche E-Mail-Adresse ein",
+ "Please enter your company name":"Geben Sie Ihre Firmenname ein",
+ "Please enter your USt.ID":"Geben Sie Ihre USt ID ein",
+
  "new password":"Neues passwort",
  "again password":"Nochmals passwort",
  "lost password":"Passwort vergessen",
  "new at Highpots?":"Neu bei Highpots?",
  "new account":"Erstellen Sie Ihr Highpots-Konto",
  "password help":"Passworthilfe",
+ "password":"Passwort",
+ "plz":"Postleitzahl",
+ "phone":"Telefon",
  "you have successfully changed the password":"Sie haben Passwort erfolgreich geändert",
  "my account":"mein Konto",
  "mailsend.header":"Überprüfung Ihrer Nachrichten",
@@ -26,6 +34,7 @@
  "USt.ID":"USt ID: „z.B. DE285541111“",
  "street":"Straße: „Straße Ihrer Unternehmensniederlassung“",
  "ort":"Ort: „Ort Ihrer Unternehmensniederlassung“",
- "Create your Highpots account":"Erstellen Sie Ihr Highpots-Konto"
+ "Create your Highpots account":"Erstellen Sie Ihr Highpots-Konto",
+ "back":"Zurück"
  
 }
