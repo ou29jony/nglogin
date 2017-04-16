@@ -8,7 +8,7 @@ app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
 	var config = {
 
 	'clientID':'auth_client',
-	'url':'http://localhost:9100',
+	'url':'',
  	'access_token': '',
     'refresh_token': '',
     'userid':null,

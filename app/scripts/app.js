@@ -14,9 +14,11 @@ var app = angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize',
     'pascalprecht.translate',
-    'ngTouch'
+    'ngSanitize',
+    'ngTouch',
+    'ngSanitize',
+    'ngMessages',
   ]);
 
 
@@ -28,7 +30,7 @@ $translateProvider.useStaticFilesLoader({
       suffix: '.json'
     });
     $translateProvider.preferredLanguage('de_DE');
-    $translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.useSanitizeValueStrategy('escape');
 
     $routeProvider
       .when('/', {
@@ -56,6 +58,10 @@ $translateProvider.useStaticFilesLoader({
         templateUrl: 'views/mailsend.html',
         controller: 'PassCtrl'
       })
+         .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -68,6 +74,14 @@ $translateProvider.useStaticFilesLoader({
 app.run(['$rootScope', '$injector', 'APIConfig', '$location', '$http', 'APIService',
   function ($rootScope, $injector, APIConfig, $location, $http, APIService) {
 
+$http.get('scripts/settings.json').then(function (response) {
+
+    APIConfig.url = response.data.url;
+    APIConfig.clientID = response.data.clientID;
+    $rootScope.settings = response.data;
+    $rootScope.title = $rootScope.settings.title;
+
+  });
  
     if($location.path().includes('newpasslink')){
 

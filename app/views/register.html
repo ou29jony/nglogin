@@ -1,0 +1,243 @@
+ <form name="accountform" role="form"   class=""   ng-submit=""  novalidate>
+  <div class="col-lg-12">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="a-section auth-pagelet-container box_length">
+        <div ng-show="hasError" class="a-section">
+          <div id="auth-error-message-box" class="a-box a-alert a-alert-error auth-server-side-message-box a-spacing-base">
+            <div class="a-box-inner a-alert-container">
+              <h4 class="a-alert-heading orange">{{'one problem' | translate}}
+              </h4>
+              <i class="a-icon a-icon-alert">
+              </i>
+              <div class="a-alert-content">
+                <ul class="a-nostyle a-vertical a-spacing-none">
+                  <li>
+                    <span class="a-list-item">
+                     {{message}}
+                   </span>
+                 </li>
+               </ul>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="a-section">
+        <div class="a-box center-block box_length">
+          <div class="a-box-inner a-padding-extra-large">
+            <h1 class="a-spacing-small">
+              {{'create Account' | translate}}
+            </h1>
+            <!-- optional subheading element -->
+            <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'Please enter your first name' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'Please enter your first name' | translate}}
+                 </div>
+               </div>
+             </div>
+           </div>
+           <!-- optional subheading element -->
+           <div class="a-row a-spacing-base">
+            <label for="ap_email">
+              {{'Please enter your last name' | translate}}
+            </label>
+            <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+            <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+              <div class="a-box-inner a-alert-container">
+                <i class="a-icon a-icon-alert">
+
+                </i>
+                <div class="a-alert-content">
+                 {{'Please enter your last name' | translate}} 
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'In which department are you employed?' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'In which department are you employed?' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'Your business e-mail address' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'Your business e-mail address' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'Which company do you work for?' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'Which company do you work for?' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'USt.ID' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'USt.ID' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'street' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'street' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+
+  <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'ort' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'ort' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+
+             <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'plz' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'plz' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+
+             <div class="a-row a-spacing-base">
+              <label for="ap_email">
+                {{'phone' | translate}}
+              </label>
+              <input ng-model="account.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <div ng-show="accountform.email.$touched && accountform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+                <div class="a-box-inner a-alert-container">
+                  <i class="a-icon a-icon-alert">
+
+                  </i>
+                  <div class="a-alert-content">
+                   {{'phone' | translate}} 
+                 </div>
+               </div>
+             </div>
+           </div>
+         <input type="hidden"  ng-model="account.password2" name="create" value="0">
+         <div class="a-section a-spacing-large">
+          <div class="a-row">
+            <div class="a-column a-span5">
+              <label for="ap_password">
+               {{'password' | translate}} 
+             </label>
+           </div>
+           <div class="a-column a-span7 a-text-right a-span-last">
+            <a id="auth-fpp-link-bottom" class="a-spacing-null a-link-normal" ng-href="#!/lostpass">
+              {{'lost password' | translate}} 
+            </a>
+          </div>
+        </div>
+        <input type="password"  ng-model="account.password" id="ap_password"   name="password" tabindex="2" class="a-input-text a-span12 auth-required-field" required>
+        <div ng-show="accountform.password.$touched && accountform.password.$invalid"  id="auth-password-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+          <div class="a-box-inner a-alert-container">
+            <i class="a-icon a-icon-alert">
+            </i>
+            <div  class="a-alert-content">
+             {{'write your password'| translate}}
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="a-section a-spacing-extra-large">
+      <span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
+        <span class="a-button-inner">
+          <input  ng-click="submitForm(accountform.password.$valid && accountform.email.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
+          <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
+            {{'Create your Highpots account' | translate}} 
+          </span>
+        </span>
+      </span>
+    </div>
+    <span id="auth-create-account-link" class="a-button a-button-span12">
+      <span class="a-button-inner">
+        <a id="createAccountSubmit" tabindex="6" href="#!/" class="a-button-text" role="button">
+          {{'abort' | translate}}
+        </a>
+      </span>
+    </span>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>

@@ -1,0 +1,6 @@
+{
+  "url" : "http://localhost:9100",
+  "title" : "ngloginApp",
+  "pageurl" : "http://localhost:8000",
+  "clientID" : "auth_client"
+}
