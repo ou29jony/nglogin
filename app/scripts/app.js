@@ -61,6 +61,12 @@ $translateProvider.useStaticFilesLoader({
          .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      }) .when('/activate', {
+        templateUrl: 'views/activate.html',
+        controller: 'RegisterCtrl'
+      }).when('/registrierungsend', {
+        templateUrl: 'views/registrierungsend.html',
+        controller: 'RegisterCtrl'
       }) .when('/account', {
         templateUrl: 'views/account/account.html',
         controller: 'AccountCtrl'
@@ -88,6 +94,13 @@ $http.get('scripts/settings.json').then(function (response) {
   });
  
     if($location.path().includes('newpasslink')){
+
+        $location.path($location.path());
+        APIConfig.userid = parseInt($location.search().userid);
+        APIConfig.code   = $location.hash();
+
+    }
+     if($location.path().includes('activate')){
 
         $location.path($location.path());
         APIConfig.userid = parseInt($location.search().userid);

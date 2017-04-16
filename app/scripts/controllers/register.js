@@ -10,9 +10,11 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 		$scope.account = APIConfig.account;
 		$scope.message = "";
 		$scope.hasError = false;
+		$scope.clicked = false;
 
 		$scope.saveUser = function(isValid){
 
+			$scope.clicked = true;
 			$scope.account.active =0;
 
 			if(isValid){
@@ -27,9 +29,19 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 						api.service('user').data($scope.account).save().then(function(result){
 
+							$location.path('registrierungsend');
+
 							console.log('account',result);
 
+						},function(error){
+
+							if(error.status == 422){
+
+								$scope.hasError = true;
+								$scope.message = "Diese E-Mail-Adresse existiert schon";
+							}
 						});
+
 					}else{
 
 						$scope.hasError = true;
@@ -37,10 +49,9 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 					}
 				}else{
-						$scope.hasError = true;
-						$scope.message = "Die Passwörter Stimmen nicht überein";
 
-
+					$scope.hasError = true;
+					$scope.message = "Die Passwörter Stimmen nicht überein";
 				}
 			}
 		}
