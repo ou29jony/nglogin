@@ -70,5 +70,32 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 			return result;
 		}
+		$scope.activate= function(){
 
+			api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
+
+				console.log(usersetting.code,"shechemisa",APIConfig.code);
+
+				if(usersetting.code == APIConfig.code){
+
+					var data = {
+						'value':'activate',
+						'code' : APIConfig.code
+					}
+
+					api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
+
+						$location.path('activateok');
+
+					},function(error){
+
+						$location.path('activateerror');
+
+					})
+				}
+			},function(error){
+
+				$scope.hasError = true; 
+			})
+		};
 	}]);

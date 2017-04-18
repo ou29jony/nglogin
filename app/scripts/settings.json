@@ -3,5 +3,5 @@
   "title" : "ngloginApp",
   "pageurl" : "http://localhost:8000",
   "clientID" : "auth_client",
-  "b2c_emails" : ["gmail","yahoo","gmx","icloud"]
+  "b2c_emails" : ["@yahoo.","@gmx.","@icloud."]
 }

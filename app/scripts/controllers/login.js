@@ -37,8 +37,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                  }).then(
                   function (result) {
 
-                    console.log(result);
-
+                
                     if (result) {
                       $scope.hasError = false;
 
@@ -48,13 +47,9 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                   APIConfig.access_token = result.data.access_token;
                   APIConfig.refresh_token = result.data.refresh_token;
 
-                 
-
-                  api.service('user').data(data).save().then(function(result){
-
-                    console.log('result save user',result);
                     $window.history.back();
-                  })
+
+                  
                 }
               },
               function (result) {

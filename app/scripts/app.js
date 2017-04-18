@@ -71,6 +71,10 @@ $translateProvider.useStaticFilesLoader({
         templateUrl: 'views/account/account.html',
         controller: 'AccountCtrl'
       })
+      .when('/test', {
+        templateUrl: 'views/test.html',
+        controller: 'AccountCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -97,14 +101,15 @@ $http.get('scripts/settings.json').then(function (response) {
 
         $location.path($location.path());
         APIConfig.userid = parseInt($location.search().userid);
-        APIConfig.code   = $location.hash();
+        APIConfig.code   = $location.search().hash;
 
     }
      if($location.path().includes('activate')){
 
         $location.path($location.path());
         APIConfig.userid = parseInt($location.search().userid);
-        APIConfig.code   = $location.hash();
+        APIConfig.code   = $location.search().hash;
+       
 
     }
 

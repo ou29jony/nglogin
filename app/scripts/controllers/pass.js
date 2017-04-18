@@ -55,7 +55,6 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 
 		if(user.password1 == user.password2){
 
-	console.log('APIConfig',APIConfig);
 			api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
 				console.log(usersetting.code,APIConfig.code);
