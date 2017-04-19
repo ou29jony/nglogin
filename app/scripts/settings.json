@@ -3,5 +3,24 @@
   "title" : "ngloginApp",
   "pageurl" : "http://localhost:8000",
   "clientID" : "auth_client",
-  "b2c_emails" : ["@yahoo.","@gmx.","@icloud."]
+  "b2c_emails" :
+
+   ["mailc","yahoo","gmx","icloud","1email","1vbb",
+   	"24-mail","5x2","alice","alice-dsl","anpa",
+   	"aol","arcor","bluewin","cloudmail","compu-freemail",
+   	"directbox","discard","eclipso","email","emailn",
+   	"fastmail","firemail","freemailer","freenet","genion",
+   	"gmail","gmx","Guru","hanse","hansenet","hotmail",
+   	"hushmail","iCloud","k","kabelbw","kabelmail","k-bg",
+   	"kdwelt","kuekomail","live","loop","lycos","mail1a",
+   	"mail4nature","mailbiz","mail-buero","mailde","maili","mailjunky",
+   	"Mail-king","maills","mailms","mailorg","mailtv","mc-free","me",
+   	"meriano","my-fun","myfun","myfun24","myfun-24","my-fun24",
+   	"mysc","my-sc","new-post","o2online","ok","one","online",
+   	"onlinehome","outlook","overmail","oyoony","posteo",
+    "protonmail","rackspace","rediffmail","secure","Sify","simbamail",
+    "slucia","smart-mail","sofortstart","sofort-start","sofort-surf",
+    "Softhome","SpamFreeMail","speed-mailer","spl","spoofmail","techmail",
+    "telekom","t-online","trashmail","tutanota","uims","Uni","unitybox","vcmail",
+    "vodafon","web","woid","x-mail","yandex","zelx","zoho"]
 }

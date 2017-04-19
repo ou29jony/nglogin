@@ -14,11 +14,10 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 		var data  = {
 			'passlink':1,
 		}
-	
 
 	$scope.sendPassLink = function(isValid){
 
-		console.log(isValid);
+	
 
 		if(isValid){
 
@@ -33,15 +32,12 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 					$scope.message.header = "Überprüfung Ihrer Nachrichten";
 					$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren."
 					
-
 			},
+
 			function(error){
-
-				
-
-				console.log(error);
 				
 				if(error.status ==404){
+					
 					$scope.hasError = true;
 
 					$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren."
@@ -57,11 +53,12 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 
 			api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
-				console.log(usersetting.code,APIConfig.code);
+				console.log( usersetting, "shechemisa" , APIConfig.code);
 
 				if(usersetting.code == APIConfig.code){
 
 					var data = {
+
 						'value':'setnewpassword',
 						'code' : user.password1
 					}
@@ -75,16 +72,22 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 						$location.path('newpasserror');
 
 					})
+				}else{
+
+					$scope.hasError = true;
+					$scope.message = 'Der Hashcode ist falsch';
+
 				}
 			},function(error){
 
 				$scope.hasError = true; 
 			})
+
 		} else{
 
 			$scope.hasError = true; 
 			$scope.message = 'Die Passwörter Stimmen nicht überein'
 		}
-	};
+	}
 
 }]);

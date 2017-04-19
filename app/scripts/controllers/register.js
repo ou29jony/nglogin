@@ -2,8 +2,8 @@
 var app = angular
 .module('ngloginApp');
 
-app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService',
-	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService) {
+app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService','$timeout',
+	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService,$timeout) {
 
 		var api = APIService;
 
@@ -64,17 +64,23 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 				var em = APIConfig.b2c_emails[i];
 
-				if(email.includes(em))
+				if(email.includes("@"+em+"."))
 					result = true;
 			}
 
 			return result;
 		}
+		$scope.goBackTime = function(){
+
+			$timeout(function(){ 
+				$location.path('/');
+			}, 5000);
+		}
+		
 		$scope.activate= function(){
 
 			api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
-				console.log(usersetting.code,"shechemisa",APIConfig.code);
 
 				if(usersetting.code == APIConfig.code){
 
@@ -85,9 +91,13 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 					api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
 
+						console.log(result,'result');
+
 						$location.path('activateok');
 
 					},function(error){
+
+						console.log(error)
 
 						$location.path('activateerror');
 

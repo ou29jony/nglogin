@@ -64,6 +64,13 @@ $translateProvider.useStaticFilesLoader({
       }) .when('/activate', {
         templateUrl: 'views/activate.html',
         controller: 'RegisterCtrl'
+      })
+      .when('/activateok', {
+        templateUrl: 'views/activateok.html',
+        controller: 'RegisterCtrl'
+      }).when('/activateerror', {
+        templateUrl: 'views/activateerror.html',
+        controller: 'RegisterCtrl'
       }).when('/registrierungsend', {
         templateUrl: 'views/registrierungsend.html',
         controller: 'RegisterCtrl'
