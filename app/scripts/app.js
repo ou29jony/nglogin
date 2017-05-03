@@ -25,6 +25,8 @@ var app = angular
 app.config(['$routeProvider', '$httpProvider', '$locationProvider', '$translateProvider',
   function ($routeProvider, $httpProvider, $locationProvider, $translateProvider) {
 
+
+
 $translateProvider.useStaticFilesLoader({
       prefix: 'i18n/',
       suffix: '.json'
@@ -71,8 +73,8 @@ $translateProvider.useStaticFilesLoader({
       }).when('/activateerror', {
         templateUrl: 'views/activateerror.html',
         controller: 'RegisterCtrl'
-      }).when('/registrierungsend', {
-        templateUrl: 'views/registrierungsend.html',
+      }).when('/registrsend', {
+        templateUrl: 'views/registrsend.html',
         controller: 'RegisterCtrl'
       }) .when('/account', {
         templateUrl: 'views/account/account.html',
@@ -111,13 +113,13 @@ $http.get('scripts/settings.json').then(function (response) {
         APIConfig.code   = $location.search().hash;
 
     }
+
      if($location.path().includes('activate')){
 
         $location.path($location.path());
         APIConfig.userid = parseInt($location.search().userid);
         APIConfig.code   = $location.search().hash;
-       
-
+        
     }
 
 }]);

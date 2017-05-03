@@ -4,142 +4,147 @@
 var app = angular.module('ngloginApp');
 
 app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
- function APIServiceProvider($rootScope, $resource, $q, $http,APIConfig) {
+	function APIServiceProvider($rootScope, $resource, $q, $http,APIConfig) {
 
-	var self = this;
-	var service = '';
-	var filter = {};
-	var data = {};
-	var tableid = ':id';
-
-	self.setAuth = function (data) {
-	$rootScope.oauth = data;
-		if ($rootScope.oauth.access_token) {
-
-			var login = $rootScope.oauth;
-			$http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.oauth.access_token;
-			self.refresh_token = login.refresh_token;
-
-		
-
-		}
-	};
-
-	self.getResource = function () {
-
-		!tableid ? tableid = ':id' : null;
-
-		return $resource(
-			APIConfig.url + '/' + service + '/' + tableid,
-			filter,
-			{
-				'get':    {method: 'GET', isArray: false},
-				'save':   {method: 'POST', headers: {'Content-Type': 'application/json'}},
-				'put': 	  {method: 'PUT', headers: {'Content-Type': 'application/json'}},
-				'update': {method: 'PATCH', headers: {'Content-Type': 'application/json'}},
-				'delete': {method: 'DELETE', isArray: false}
-			},
-			{isArray: false}
-			);
-	};
-
-	self.service = function (name) {
-		
-		service = name;
-		return self;
-	};
-
-	self.filter = function (name) {
-		filter = name;
-		return self;
-	};
-	self.id = function (id) {
-
-		tableid = id;
-		return self;
-	};
-	self.data = function (datalocal) {
-		data = datalocal;
-		return self;
-	};
-	self.clearAll = function () {
-
-		self.service('');
-		self.id(':id');
-		self.filter({});
-		self.data({});
-	};
-	self.get = function () {
+		var self = this;
+		var service = '';
+		var filter = {};
+		var data = {};
+		var tableid = ':id';
 
 
-		var deferred = $q.defer();
-		var res = this.getResource();
-		res.get(function (response) {
-			deferred.resolve(response);
-		}, function (reject) {
-			deferred.reject(reject);
-		});
-		self.clearAll();
-		return deferred.promise;
-	};
-	self.update = function () {
+		self.setAuth = function (data) {
 
-		var deferred = $q.defer();
-		var res = this.getResource();
+			$rootScope.oauth = data;
 
-		res.update(data, function (response) {
-			deferred.resolve(response);
-		}, function (reject) {
-			deferred.reject(reject);
-		});
-		self.clearAll();
-		return deferred.promise;
-	};
+			if ($rootScope.oauth.access_token) {
 
-	self.save = function () {
+				var login = $rootScope.oauth;
+				$http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.oauth.access_token;
+				self.refresh_token = login.refresh_token;
 
-		var deferred = $q.defer();
-		var res = this.getResource();
+			}
+		};
 
-		res.save(data, function (response) {
-			deferred.resolve(response);
-		}, function (reject) {
-			deferred.reject(reject);
-		});
-		self.clearAll();
-		return deferred.promise;
-	};
-	self.delete = function () {
+		self.resource = 
 
-		var deferred = $q.defer();
-		var res = this.getResource();
+		self.getResource = function () {
 
-		res.delete(function (response) {
-			deferred.resolve(response);
-		}, function (reject) {
+			!tableid ? tableid = ':id' : null;
 
-			deferred.reject(reject);
+			return  $resource(
 
-		});
-		self.clearAll();
-		return deferred.promise;
+				APIConfig.url + '/' + service + '/' + tableid,
 
-	};
-	self.put = function () {
+				filter,
+				{
+					'get':    {method: 'GET', isArray: false},
+					'save':   {method: 'POST', headers: {'Content-Type': 'application/json'}},
+					'put': 	  {method: 'PUT', headers: {'Content-Type': 'application/json'}},
+					'update': {method: 'PATCH', headers: {'Content-Type': 'application/json'}},
+					'delete': {method: 'DELETE', isArray: false}
+				},
+				{isArray: false}
+				);
+		};
 
-		var deferred = $q.defer();
-		var res = this.getResource();
+		self.service = function (name) {
 
-		res.put(data, function (response) {
+			service = name;
+			return self;
+		};
 
-			deferred.resolve(response);
+		self.filter = function (name) {
+			filter = name;
+			return self;
+		};
+		self.id = function (id) {
 
-		}, function (reject) {
-			deferred.reject(reject);
-		});
-		self.clearAll();
-		return deferred.promise;
-	};
+			tableid = id;
+			return self;
+		};
+		self.data = function (datalocal) {
+			data = datalocal;
+			return self;
+		};
+		self.clearAll = function () {
 
- 
-}]);
+			self.service('');
+			self.id(':id');
+			self.filter({});
+			self.data({});
+		};
+		self.get = function () {
+
+
+			var deferred = $q.defer();
+			var res = this.getResource();
+			res.get(function (response) {
+				deferred.resolve(response);
+			}, function (reject) {
+				deferred.reject(reject);
+			});
+			self.clearAll();
+			return deferred.promise;
+		};
+		self.update = function () {
+
+			var deferred = $q.defer();
+			var res = this.getResource();
+
+			res.update(data, function (response) {
+				deferred.resolve(response);
+			}, function (reject) {
+				deferred.reject(reject);
+			});
+			self.clearAll();
+			return deferred.promise;
+		};
+
+		self.save = function () {
+
+			var deferred = $q.defer();
+			var res = this.getResource();
+
+			res.save(data, function (response) {
+				deferred.resolve(response);
+			}, function (reject) {
+				deferred.reject(reject);
+			});
+			self.clearAll();
+			return deferred.promise;
+		};
+		self.delete = function () {
+
+			var deferred = $q.defer();
+			var res = this.getResource();
+
+			res.delete(function (response) {
+				deferred.resolve(response);
+			}, function (reject) {
+
+				deferred.reject(reject);
+
+			});
+			self.clearAll();
+			return deferred.promise;
+
+		};
+		self.put = function () {
+
+			var deferred = $q.defer();
+			var res = this.getResource();
+
+			res.put(data, function (response) {
+
+				deferred.resolve(response);
+
+			}, function (reject) {
+				deferred.reject(reject);
+			});
+			self.clearAll();
+			return deferred.promise;
+		};
+
+
+	}]);

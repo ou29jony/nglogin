@@ -1,5 +1,5 @@
 {
-  "url" : "http://localhost:9100",
+  "url" : "https://login-api.hptf.de",
   "title" : "ngloginApp",
   "pageurl" : "http://localhost:8000",
   "clientID" : "auth_client",

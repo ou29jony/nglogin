@@ -1,11 +1,11 @@
-<div class="container" ng-init="goBackTime();">
-
+<div class="container message_text"  ng-init="goBackTime();">
+	<!--ng-init="goBackTime();"-->
 	<div>
-		<p>„Lieber Herr / Frau XY,</p>
+		<p>„Lieber Kunde,</p>
 	</div>
 	<div><p>
-
-		die Registrierung ist nun abgeschlossen und wir haben einen persönlichen Bereich für Sie eingerichtet. Vielen Dank für Ihre Registrierung.</p>
+		die Registrierung ist nun abgeschlossen und wir haben einen persönlichen Bereich für Sie eingerichtet. 
+		<div> Vielen Dank für Ihre Registrierung.</div></p>
 	</div>
 	<div>
 		<p>Ihr</p>
@@ -13,7 +13,17 @@
 	<div>
 		<p>HighPots-Vertrieb“</p>
 	</div>
-	<div>
-		<p>	Die Webseite sollte nach 5 Sekunden automatisch zur Login-Seite weiterleiten. Darüber hinaus sollte die Webseite auch über einen Button „zum Login“ verfügen.</p>
+	<a href ="/">
+	<div class="a-section a-spacing-extra-large col-sm-6 pull-right" >
+		<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
+			<span class="a-button-inner">
+
+				<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
+					{{'go back to login'|translate}}
+				</span>
+			</span>
+		</span>
 	</div>
+	</a> 
+</div>
 </div>

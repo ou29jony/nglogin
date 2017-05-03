@@ -1,0 +1,446 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+.a-section {
+  margin-bottom: 22px;
+}
+
+/* line 7, ../../app/styles/login.scss */
+body {
+  font-size: 13px;
+  line-height: 19px;
+  color: #111;
+  font-family: Arial,sans-serif;
+}
+
+/* line 14, ../../app/styles/login.scss */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+.header_logo{
+  display: block;
+  width: 200px;
+  height: auto;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header_button_none{
+ border-bottom :none;
+}
+/* line 19, ../../app/styles/login.scss */
+.box_length {
+  width: 450px;
+  margin:auto;
+}
+.big_box_length {
+  width: 700px;
+  margin:auto;
+}
+
+/* line 24, ../../app/styles/login.scss */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/* line 28, ../../app/styles/login.scss */
+.a-box {
+  display: block;
+  border-radius: 4px;
+  border: 1px #ddd solid;
+  background-color: #fff;
+}
+
+/* line 35, ../../app/styles/login.scss */
+.a-box .a-box-inner {
+  border-radius: 4px;
+  position: relative;
+  padding: 14px 18px;
+}
+
+/* line 41, ../../app/styles/login.scss */
+.a-padding-extra-large {
+  padding: 20px 26px !important;
+}
+
+/* line 45, ../../app/styles/login.scss */
+.a-spacing-small, .a-ws .a-ws-spacing-small {
+  margin-bottom: 10px !important;
+}
+
+/* line 49, ../../app/styles/login.scss */
+h1 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* line 55, ../../app/styles/login.scss */
+h1, h2, h3, h4 {
+  font-family: Arial,sans-serif;
+  text-rendering: optimizeLegibility;
+  padding-bottom: 4px;
+}
+
+/* line 61, ../../app/styles/login.scss */
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 65, ../../app/styles/login.scss */
+.a-spacing-base, .a-ws .a-ws-spacing-base {
+  margin-bottom: 14px !important;
+}
+
+/* line 69, ../../app/styles/login.scss */
+.a-row {
+  width: 100%;
+}
+
+/* line 72, ../../app/styles/login.scss */
+.a-row:after, .a-row:before {
+  display: table;
+  content: "";
+  line-height: 0;
+  font-size: 0;
+}
+
+/* line 79, ../../app/styles/login.scss */
+.a-row:after {
+  clear: both;
+}
+
+/* line 83, ../../app/styles/login.scss */
+.a-spacing-large, .a-ws .a-ws-spacing-large {
+  margin-bottom: 22px !important;
+}
+
+/* line 86, ../../app/styles/login.scss */
+.a-spacing-extra-large, .a-ws .a-ws-spacing-extra-large {
+  margin-bottom: 26px !important;
+}
+
+/* line 89, ../../app/styles/login.scss */
+.a-box .a-divider.a-divider-break, .a-color-base-background .a-divider.a-divider-break, .a-divider.a-divider-break {
+  text-align: center;
+  position: relative;
+  top: 2px;
+  padding-top: 1px;
+  margin-bottom: 14px;
+  line-height: 0;
+}
+
+/* line 97, ../../app/styles/login.scss */
+.a-box .a-divider.a-divider-break:after, .a-color-base-background .a-divider.a-divider-break:after,
+.a-divider.a-divider-break:after {
+  content: "";
+  width: 100%;
+  background-color: transparent;
+  display: block;
+  height: 1px;
+  border-top: 1px solid #e7e7e7;
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  z-index: 1;
+}
+
+/* line 110, ../../app/styles/login.scss */
+.a-button-span12 {
+  width: 100% !important;
+}
+
+/* line 114, ../../app/styles/login.scss */
+.a-button {
+  background: #e7e9ec;
+  border-radius: 3px;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+  text-decoration: none !important;
+  vertical-align: middle;
+}
+
+/* line 127, ../../app/styles/login.scss */
+.label, legend {
+  display: block;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+}
+
+/* line 133, ../../app/styles/login.scss */
+.a-button-primary.a-button-focus, .a-button-primary:focus, .a-button-primary:hover, .a-button-primary:hover:active {
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+/* line 136, ../../app/styles/login.scss */
+.a-row .a-span12, .a-span12, .a-ws .a-row .a-ws-span12, .a-ws .a-ws-span12 {
+  width: 100%;
+  margin-right: 0;
+}
+
+/* line 140, ../../app/styles/login.scss */
+.a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=search] {
+  background-color: #fff;
+  height: 31px;
+  padding: 3px 7px;
+  line-height: normal;
+}
+
+/* line 146, ../../app/styles/login.scss */
+.a-input-text, input[type=text], input[type=number], input[type=tel], input[type=password], input[type=search], select.a-select-multiple, textarea {
+  border: 1px solid #a6a6a6;
+  border-top-color: #949494;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 0 rgba(0, 0, 0, 0.07) inset;
+  outline: 0;
+}
+
+/* line 153, ../../app/styles/login.scss */
+input, select, textarea {
+  transition: all 100ms linear;
+  font-family: Arial,sans-serif;
+  line-height: 19px;
+  color: #111;
+}
+
+/* line 160, ../../app/styles/login.scss */
+button, input, select, textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+
+/* line 165, ../../app/styles/login.scss */
+.a-alert-inline-error .a-alert-container {
+  padding-left: 16px;
+}
+
+/* line 168, ../../app/styles/login.scss */
+.a-alert-inline .a-alert-container {
+  padding: 0;
+  color: #ef4123;
+}
+
+/* line 172, ../../app/styles/login.scss */
+.a-success-inline .a-success-container {
+  padding: 0;
+  color: #5cb85c;
+}
+
+/* line 178, ../../app/styles/login.scss */
+.orange {
+  color: #ef4123;
+}
+
+/* line 181, ../../app/styles/login.scss */
+.success {
+  color: #5cb85c;
+}
+
+/* line 184, ../../app/styles/login.scss */
+.a-alert-error {
+  border-color: #ef4123;
+}
+
+/* line 187, ../../app/styles/login.scss */
+.a-alert-success {
+  border-color: #5cb85c;
+}
+
+/* line 191, ../../app/styles/login.scss */
+.a-box .a-box-inner {
+  border-radius: 4px;
+  position: relative;
+  padding: 14px 18px;
+}
+
+/* line 196, ../../app/styles/login.scss */
+input[type=submit] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+/* line 201, ../../app/styles/login.scss */
+.a-button-input {
+  position: absolute;
+  background-color: #fff;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: .01;
+  outline: 0;
+  overflow: visible;
+  z-index: 20;
+}
+
+/* line 218, ../../app/styles/login.scss */
+.a-button:hover .a-button-inner {
+  background: #e0e3e8;
+  background: linear-gradient(to bottom, #e7eaf0, #d9dce1);
+}
+
+/* line 224, ../../app/styles/login.scss */
+.a-button-primary .a-button-inner {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+}
+
+/* line 228, ../../app/styles/login.scss */
+.a-button-primary .a-button-inner {
+  background: #f3d078;
+  background: linear-gradient(to bottom, #f49f91, #ed705b);
+  background-color: #ecedec;
+}
+
+/* line 237, ../../app/styles/login.scss */
+.a-button .a-button-text {
+  color: #111;
+}
+
+/* line 240, ../../app/styles/login.scss */
+.a-button a, .a-button:hover a {
+  color: #111;
+  text-decoration: none !important;
+}
+
+/* line 246, ../../app/styles/login.scss */
+.a-button-inner {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 29px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  border-radius: 2px;
+}
+
+/* line 257, ../../app/styles/login.scss */
+.a-button-primary {
+  background: #ef4123;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+/* line 262, ../../app/styles/login.scss */
+.a-box .a-divider.a-divider-break, .a-color-base-background .a-divider.a-divider-break, .a-divider.a-divider-break {
+  text-align: center;
+  position: relative;
+  top: 2px;
+  padding-top: 1px;
+  margin-bottom: 14px;
+  line-height: 0;
+}
+
+/* line 270, ../../app/styles/login.scss */
+.a-box .a-divider.a-divider-break:after, .a-color-base-background .a-divider.a-divider-break:after, .a-divider.a-divider-break:after {
+  content: "";
+  width: 100%;
+  background-color: transparent;
+  display: block;
+  height: 1px;
+  border-top: 1px solid #e7e7e7;
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  z-index: 1;
+}
+
+/* line 282, ../../app/styles/login.scss */
+.auth-workflow .auth-pagelet-container {
+  width: 350px;
+  margin: 0 auto;
+}
+
+/* line 288, ../../app/styles/login.scss */
+.a-ws .a-ws-span12, div.a-column.a-span-last {
+  margin-right: 0;
+  float: right;
+}
+
+/* line 293, ../../app/styles/login.scss */
+.a-ws div.a-column, div.a-column {
+  margin-right: 2%;
+  float: left;
+  min-height: 1px;
+  overflow: visible;
+}
+
+/* line 299, ../../app/styles/login.scss */
+.a-ws div.a-column, div.a-column {
+  margin-right: 2%;
+  float: left;
+  min-height: 1px;
+  overflow: visible;
+}
+
+/* line 305, ../../app/styles/login.scss */
+.a-row .a-span5, .a-ws .a-row .a-ws-span5 {
+  width: 40.448%;
+}
+
+/* line 308, ../../app/styles/login.scss */
+.a-box .a-divider.a-divider-break h5, .a-color-base-background .a-divider.a-divider-break h5, .a-divider.a-divider-break h5 {
+  line-height: 1;
+  font-size: 12px;
+  color: #767676;
+  font-weight: 400;
+  z-index: 2;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 8px 0 7px;
+}
+
+/* line 319, ../../app/styles/login.scss */
+.a-button-text {
+  background-color: transparent;
+  border: 0;
+  display: block;
+  font-family: Arial,sans-serif;
+  font-size: 13px;
+  line-height: 29px;
+  margin: 0;
+  outline: 0;
+  padding: 0 10px 0 11px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* line 332, ../../app/styles/login.scss */
+a.a-button-text, button.a-button-text {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 339, ../../app/styles/login.scss */
+.a-button-primary.a-button-focus, .a-button-primary:focus, .a-button-primary:hover, .a-button-primary:hover:active {
+  border-color: #a88734 #9c7e31 #846a29;
+}
+
+/* line 343, ../../app/styles/login.scss */
+.a-button:hover {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+/* line 348, ../../app/styles/login.scss */
+.a-button-primary {
+  background: #ef4123;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+/* line 353, ../../app/styles/login.scss */
+.a-button-primary:hover .a-button-inner {
+  background: #f1c860;
+  background: linear-gradient(to bottom, #ed705b, #ef4123);
+}

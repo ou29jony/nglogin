@@ -27,13 +27,13 @@
 							<label for="ap_password">
 								{{'new password'|translate}}
 							</label>
-							<input ng-model="user.password1" type="password" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
-							<div ng-show="newpassform.password1.$touched && newpassform.password1.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+							<input ng-model="user.password1" type="password" ng-minlength="8" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<div ng-show="newpassform.password1.$dirty && newpassform.password1.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
 								<div class="a-box-inner a-alert-container">
 									<i class="a-icon a-icon-alert">
 									</i>
 									<div class="a-alert-content">
-										{{'write your password'|translate}}
+										{{'password must be at least 8 characters'|translate}}
 									</div>
 								</div>
 							</div>
@@ -42,13 +42,13 @@
 							<label for="ap_password">
 								{{'again password'|translate}}
 							</label>
-							<input ng-model="user.password2" type="password" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
-							<div ng-show="newpassform.password2.$touched && newpassform.password2.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+							<input ng-model="user.password2" type="password" ng-minlength="8" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
+							<div ng-show="newpassform.password2.$dirty && newpassform.password2.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
 								<div class="a-box-inner a-alert-container">
 									<i class="a-icon a-icon-alert">
 									</i>
 									<div class="a-alert-content">
-										{{'write your password' |translate}}
+										{{'password must be at least 8 characters' |translate}}
 									</div>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 						<div class="a-section a-spacing-extra-large">
 							<span class="a-button a-button-span12 a-button-primary" id="a-autoid-0">
 								<span class="a-button-inner">
-									<input  ng-click="saveNewPassword(user);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
+									<input  ng-click="saveNewPassword(newpassform.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
 									<span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
 										{{'next'|translate}}
 									</span>
@@ -68,7 +68,7 @@
 								<span class="a-button-inner">
 									<span class="a-button-inner">
 										<a id="createAccountSubmit" tabindex="6" href="#!/" class="a-button-text" role="button">
-										{{'abort' | translate}}
+										{{'go back to login' | translate}}
 										</a>
 									</span>
 								</span>
