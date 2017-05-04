@@ -94,7 +94,15 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 				$rootScope.settings = response.data;
 				$rootScope.title = $rootScope.settings.title;
 
+				APIConfig.userid = $location.search().userid;
+				APIConfig.code   = $location.search().hash
+
+				console.log('usersetting',APIConfig.userid);
+
 				api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
+
+					console.log(usersetting,APIConfig.userid);
+
 
 					if(usersetting.code == APIConfig.code){
 
@@ -102,6 +110,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 							'value':'activate',
 							'code' : APIConfig.code
 						}
+						console.log('APIConfig.userid',APIConfig.userid);
 
 						api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
 
@@ -109,6 +118,8 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 						},function(error){
 
+
+								console.log(error);
 							$location.path('activateerror');
 						})
 					}

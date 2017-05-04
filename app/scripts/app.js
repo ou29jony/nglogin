@@ -109,7 +109,7 @@ $http.get('scripts/settings.json').then(function (response) {
     if($location.path().includes('newpasslink')){
 
         $location.path($location.path());
-        APIConfig.userid = parseInt($location.search().userid);
+        APIConfig.userid = $location.search().userid;
         APIConfig.code   = $location.search().hash;
 
     }
@@ -117,7 +117,7 @@ $http.get('scripts/settings.json').then(function (response) {
      if($location.path().includes('activate')){
 
         $location.path($location.path());
-        APIConfig.userid = parseInt($location.search().userid);
+        APIConfig.userid = $location.search().userid;
         APIConfig.code   = $location.search().hash;
         
     }

@@ -21,4 +21,14 @@ var app = angular.module('ngloginApp');
 
   	}
 
+  	$scope.deleteUser = function(){
+
+  		 api.service('user').id(26).delete().then(function(result){
+
+  		 	console.log(result)
+  		 });
+  	}
+	$scope.deleteUser();
+  	    
+
    }]);
