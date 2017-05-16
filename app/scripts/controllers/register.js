@@ -2,8 +2,10 @@
 var app = angular
 .module('ngloginApp');
 
-app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService','$timeout',
-	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService,$timeout) {
+app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', 
+	'$location', 'APIConfig', '$http', 'APIService','$timeout','$window',
+	function ($rootScope, $scope, $log, $route, 
+		$location, APIConfig, $http, APIService,$timeout,$window) {
 
 		var api = APIService;
 
@@ -12,12 +14,16 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 		$scope.hasError = false;
 		$scope.clicked = false;
 
+		var clickedcount = 0;
+
 		$scope.saveUser = function(isValid){
 
-			$scope.clicked = true;
+			$scope.clicked  = true;
 			$scope.account.active =0;
 
-			if(isValid){
+			if(isValid && clickedcount ===0){
+
+				clickedcount++;
 
 				if($scope.account.password1 == $scope.account.password2){
 
@@ -29,12 +35,15 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 
 						api.service('user').data($scope.account).save().then(function(result){
 
-							$location.path('registrsend');
+							$location.path('register');
+							clickedcount = 0;
 
 						},function(error){
+
+							clickedcount = 0;
 							if(error.status ==-1){
 								
-								$location.path('registrsend');
+								$location.path('register');
 								$scope.hasError = false;
 
 							}
@@ -47,13 +56,15 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 						});
 
 					}else{
-
+						clickedcount = 0;
 						$scope.hasError = true;
 						$scope.message = "Bitte geben Sie Ihre Unternehmens-E-Mail-Adresse an. E-Mail-Adressen von Massenmail-Providern wie beispielsweise gmx, icloud oder gmail können leider nicht akzeptiert werden.";
 
 					}
-				}else{
 
+				}else{
+					
+						clickedcount = 0;
 					$scope.hasError = true;
 					$scope.message = "Die Passwörter Stimmen nicht überein";
 				}
@@ -97,12 +108,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 				APIConfig.userid = $location.search().userid;
 				APIConfig.code   = $location.search().hash
 
-				console.log('usersetting',APIConfig.userid);
-
 				api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
-
-					console.log(usersetting,APIConfig.userid);
-
 
 					if(usersetting.code == APIConfig.code){
 
@@ -110,7 +116,6 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 							'value':'activate',
 							'code' : APIConfig.code
 						}
-						console.log('APIConfig.userid',APIConfig.userid);
 
 						api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
 
@@ -119,7 +124,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', '$loca
 						},function(error){
 
 
-								console.log(error);
+							console.log(error);
 							$location.path('activateerror');
 						})
 					}

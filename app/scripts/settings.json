@@ -5,7 +5,7 @@
   "clientID" : "auth_client",
   "b2c_emails" :
 
-   ["mail","yahoo","gmx","icloud","1email","1vbb",
+   ["mailc","yahoo","gmx","icloud","1email","1vbb",
    	"24-mail","5x2","alice","alice-dsl","anpa",
    	"aol","arcor","bluewin","cloudmail","compu-freemail",
    	"directbox","discard","eclipso","email","emailn",

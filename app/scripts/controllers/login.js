@@ -2,23 +2,27 @@
 var app = angular
 .module('ngloginApp');
 
-app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$location', 'APIConfig', '$http', 'APIService','$window',
-	function ($rootScope, $scope, $log, $route, $location, APIConfig, $http, APIService,$window) {
+app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$location',
+  'APIConfig', '$http', 'APIService','$window','$cookies','APIFactory',
+  function ($rootScope, $scope, $log, $route, $location,
+   APIConfig, $http, APIService,$window,$cookies,APIFactory) {
 
-		var api = APIService;
+    var api = APIService;
+    var fac = APIFactory;
 
-		$scope.login = {};
-		$scope.hasError = false;
-		$scope.message = {};
-		$scope.message = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
-		$scope.loadSubmit = 0;
+    $scope.login = {};
 
-		$scope.submitForm = function (isValid) {
+    $scope.hasError = false;
+    $scope.message = {};
+    $scope.message = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
+    $scope.loadSubmit = 0;
 
-			$scope.hasError = false;
-			$scope.errorloggeduser = false;
+    $scope.submitForm = function (isValid) {
 
-			var postData = {};
+     $scope.hasError = false;
+     $scope.errorloggeduser = false;
+
+     var postData = {};
 
       // check to make sure the form is completely valid
 
@@ -35,11 +39,11 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                    method: 'POST',
                    data: postData
                  }).then(
-                  function (result) {
+                 function (result) {
 
-                
-                    if (result) {
-                      $scope.hasError = false;
+
+                  if (result) {
+                    $scope.hasError = false;
 
                   //set Bearer access token
                   api.setAuth(result.data);
@@ -47,25 +51,31 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                   APIConfig.access_token = result.data.access_token;
                   APIConfig.refresh_token = result.data.refresh_token;
 
-                    $window.history.back();
+                  fac.setCookie('access_token',result.data.access_token,12);
+                  fac.setCookie('refresh_token',result.data.refresh_token,12);
 
-                  
-                }
-              },
-              function (result) {
+                  var url = fac.getCookie('url');
 
-                $scope.hasError = true;
-                if(result.status==401){
-                  
-                  $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
-                }
-              })
-              
-            }else{
+                  if(url == undefined)
+                   $window.history.back();
+                 else
+                  $window.location.href  = url;
+              }
+            },
+            function (result) {
 
-              $scope.loginform.password.$touched = true;
-              $scope.loginform.email.$touched = true;
-            }
-          }
+              $scope.hasError = true;
 
-        }]);
+              if(result.status==401){
+
+                $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
+              }
+            })
+
+               }else{
+
+                $scope.loginform.password.$touched = true;
+                $scope.loginform.email.$touched = true;
+              }
+            } 
+          }]);

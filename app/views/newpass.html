@@ -43,12 +43,17 @@
 								{{'again password'|translate}}
 							</label>
 							<input ng-model="user.password2" type="password" ng-minlength="8" ng-maxlength="128" id="ap_password" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
-							<div ng-show="newpassform.password2.$dirty && newpassform.password2.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
+							<div ng-show="newpassform.password2.$dirty && (newpassform.password2.$invalid || user.password2 != user.password1)"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
 								<div class="a-box-inner a-alert-container">
 									<i class="a-icon a-icon-alert">
 									</i>
-									<div class="a-alert-content">
+									<div class="a-alert-content" ng-hide="newpassform.password2.$valid">
+									{{newpassform.password2.$valid}}
 										{{'password must be at least 8 characters' |translate}}
+								 
+									</div>
+									<div class="a-alert-content" ng-show="user.password2 != user.password1 && newpassform.password2.$valid ">
+										{{'The passwords do not match' |translate}}
 									</div>
 								</div>
 							</div>

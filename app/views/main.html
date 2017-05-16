@@ -75,7 +75,7 @@
           <span class="a-button-inner">
             <input  ng-click="submitForm(loginform.password.$valid && loginform.email.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
             <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-              {{'login' | translate}} 
+              {{'login' | translate}}
             </span>
           </span>
         </span>
@@ -83,9 +83,9 @@
       <div class="a-divider a-divider-break">
         <h5>   {{'new at Highpots?' | translate}}</h5>
       </div>
-      <span id="auth-create-account-link" class="a-button a-button-span12">
+      <span id="auth-create-account-link" class="a-button a-button-span12" >
         <span class="a-button-inner">
-          <a id="createAccountSubmit" tabindex="6" href="#!/register" class="a-button-text" role="button">
+          <a id="createAccountSubmit" ng-click="setBeforeRegisterUrl();" tabindex="6" href="#!/registration" class="a-button-text" role="button">
             {{'new account' | translate}}
           </a>
         </span>

@@ -30,9 +30,12 @@ html {
  border-bottom :none;
 }
 /* line 19, ../../app/styles/login.scss */
-.box_length {
-  width: 450px;
-  margin:auto;
+
+@media screen and (min-width: 768px) {
+  .box_length {
+    width: 450px;
+    margin:auto;
+  }
 }
 .big_box_length {
   width: 700px;

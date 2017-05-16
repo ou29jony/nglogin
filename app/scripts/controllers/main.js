@@ -9,26 +9,20 @@
  */
 var app = angular.module('ngloginApp');
 
-  app.controller('MainCtrl',['$scope','APIService', function ($scope,APIService) {
+  app.controller('MainCtrl',['$scope','APIService','APIConfig','$window','$cookies', function ($scope,APIService,APIConfig,$window,$cookies) {
 
   	$scope.user;
 
   	var api = APIService;
- 
-  	$scope.getUser = function(user){
 
-  			console.log("getUser");
+    $scope.prev_url = $cookies.get('url');
 
-  	}
+  //  api.service('user').id(49).delete().then();
+  $scope.goBack = function(){
+  	 $window.location.href = $cookies.get('url');
 
-  	$scope.deleteUser = function(){
-
-  		 api.service('user').id(26).delete().then(function(result){
-
-  		 	console.log(result)
-  		 });
-  	}
-	$scope.deleteUser();
-  	    
+  	 console.log($cookies.get('url'));
+  	 	
+  }
 
    }]);

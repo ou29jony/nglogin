@@ -1,22 +1,22 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/costum.css">
-    <link rel="stylesheet" href="styles/login.css">
-    <!-- endbuild -->
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/costum.css">
+  <link rel="stylesheet" href="styles/login.css">
+  <!-- endbuild -->
 </head>
-<body ng-app="ngloginApp">
+<body ng-app="ngloginApp" ng-controller="MainCtrl">
 
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -25,19 +25,20 @@
       <!-- Add your site or application content here -->
       <div  class="header header_button_none">
 
-         <div class="container-fluid">
-
+       <div class="container-fluid">
+         <a href=""  ng-click="goBack()">
           <img class="header_logo" ng-src="img/logo_black.png" />
+        </a>
 
       </div>
-  </div>
+    </div>
 
-  <div class="container-fluid">
-    <div ng-view=""></div>
-</div>
+    <div class="container-fluid">
+      <div ng-view=""></div>
+    </div>
 
-<div class="footer">
-<div class="a-section a-spacing-top-extra-large text-center">
+    <div class="footer">
+      <div class="a-section a-spacing-top-extra-large text-center">
         <div class="a-divider a-divider-section"><div class="a-divider-inner"></div></div>
         <div class="a-section a-spacing-small a-text-center a-size-mini">
           <span class="auth-footer-seperator"></span>
@@ -50,52 +51,55 @@
 
 
           <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/datenschutz/">
-               {{'AGB' | translate}}  
-          </a>
-          <span class="auth-footer-seperator"></span>
+           {{'AGB' | translate}}  
+         </a>
+         <span class="auth-footer-seperator"></span>
 
 
-          <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/agb/">
-             {{'Datenschutz' | translate}}  
-          </a>
-      </div>
-      <div class="a-section a-spacing-none a-text-center">
-          <span class="a-size-mini a-color-secondary">
-          {{'© 2017, highpots.de' | translate}} 
+         <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/agb/">
+           {{'Datenschutz' | translate}}  
+         </a>
+       </div>
+       <div class="a-section a-spacing-none a-text-center">
+        <span class="a-size-mini a-color-secondary">
+          {{'© 2017, www.highpots.de' | translate}} 
         </span>
+      </div>
+
     </div>
 
-</div>
-
-</div>
+  </div>
 
 
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.js"></script>
+  <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/services/APIConfig.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/login.js"></script>
-<script src="scripts/controllers/pass.js"></script>
-<script src="scripts/services/apiservice.js"></script>
-<script src="scripts/controllers/register.js"></script>
-<script src="scripts/controllers/account.js"></script>
-<!-- endbuild -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/APIConfig.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/pass.js"></script>
+  <script src="scripts/services/apiservice.js"></script>
+  <script src="scripts/services/apifactory.js"></script>
+  <script src="scripts/controllers/register.js"></script>
+  <script src="scripts/controllers/account.js"></script>
+  <script src="scripts/controllers/payment.js"></script>
+  <!-- endbuild -->
 </body>
 </html>

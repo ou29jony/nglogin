@@ -9,6 +9,7 @@
  "password must be at least 8 characters":"Das Passwort muss mindestens 8 Zeichen lang sein",
  "mailcheck":"Bitte geben Sie Ihre Unternehmens-E-Mail-Adresse an. E-Mail-Adressen von Massenmail-Providern wie beispielsweise gmx, icloud oder gmail können leider nicht akzeptiert werden.",
   "go back to login":"Zurück zum Login",
+  "The passwords do not match":"Die Passwörter Stimmen nicht überein",
 
  "Please enter your business e-mail address":"Geben Sie Ihre geschäftliche E-Mail-Adresse ein",
  "Please enter your company name":"Geben Sie Ihre Firmenname ein",
@@ -24,11 +25,11 @@
  "again password":"Passwort wiederholen",
  "lost password":"Passwort vergessen",
  "new at Highpots?":"Neu bei Highpots?",
- "new account":"Erstellen Sie Ihr Highpots-Konto",
+ "new account":"Erstellen Sie Ihr HighPots-Konto",
  "password help":"Passworthilfe",
  "password":"Passwort",
  "plz":"Postleitzahl",
- "phone":"Telefon",
+ "phone":"Ihre Telefon-Nr. und Durchwahl",
  "you have successfully changed the password":"Sie haben Passwort erfolgreich geändert",
  "my account":"mein Konto",
  "mailsend.header":"Überprüfung Ihrer Nachrichten",
@@ -42,8 +43,8 @@
  "Which company do you work for?":"Bei welchem Unternehmen arbeiten Sie? Bitte geben Sie Ihre vollständige Firmierung an (z.B. „Musterfirma GmbH“)",
  "USt.ID":"USt ID: „z.B. DE285541111“",
  "street":"Straße: „Straße Ihres Unternehmens“",
- "ort":"Ort: „Ort Ihres Unternehmens“",
- "Create your Highpots account":"Erstellen Sie Ihr Highpots-Konto",
+ "ort":"Standort: „Standort Ihres Unternehmens“",
+ "Create your Highpots account":"Erstellen Sie Ihr HighPots-Konto",
  "back":"Zurück"
  
 }

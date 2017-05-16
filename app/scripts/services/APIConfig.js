@@ -13,6 +13,8 @@ app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
     'refresh_token': '',
     'userid':null,
     'code':null,
+    'mailsendshowpage':undefined,
+    'history':[],
     'account':{'gender':'Herr'},
     'b2c_emails':[]
 
