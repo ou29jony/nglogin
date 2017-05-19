@@ -3,6 +3,7 @@
   "title" : "ngloginApp",
   "pageurl" : "http://localhost:8000",
   "clientID" : "auth_client",
+  "mailstone":"http://localhost:8000",
   "b2c_emails" :
 
    ["mailc","yahoo","gmx","icloud","1email","1vbb",

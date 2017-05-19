@@ -1,18 +1,12 @@
 
-<FORM METHOD="post" ACTION="https://secure.payengine.de/ncol/test/orderstandard.asp" id=form1 name=form1>
-
-		<div> Ammount: 10000</div>
-		<div> CURRENCY: EUR</div>
-		<div> LANGUAGE :  en_US</div>
-		 
-
+<form METHOD="post" ACTION="https://secure.payengine.de/ncol/test/orderstandard.asp" id=form1 name=form1>
 
 		<INPUT type="hidden" ng-model="card.AMOUNT" NAME="AMOUNT" value="10000">
 		<INPUT type="hidden" ng-model="card.CURRENCY" NAME="CURRENCY" value="EUR">
 		<INPUT type="hidden" ng-model="card.LANGUAGE" NAME="LANGUAGE" value="en_US">
 		<INPUT type="hidden" ng-model="card.ORDERID" NAME="ORDERID" value="STDREF123">
 	    <INPUT type="hidden" ng-model="card.PSPID" NAME="PSPID" value="HPTF3119">
-	    <INPUT type="hidden"  ng-model="card.SHASIGN" NAME="SHASIGN" value="622884692EFB8EF98F7B0CC0581AC4764D2B7EC5">
+	    <INPUT type="hidden"  ng-model="card.SHASIGN" NAME="SHASIGN" value="">
 	  
 	<!-- lay out information -->
 	<input type="submit" ng-click="payment()" id="submit2">

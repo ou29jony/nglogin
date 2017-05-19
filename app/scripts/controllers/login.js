@@ -3,19 +3,31 @@ var app = angular
 .module('ngloginApp');
 
 app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$location',
-  'APIConfig', '$http', 'APIService','$window','$cookies','APIFactory',
+  'APIConfig', '$http', 'APIService','$window','$cookies','APIFactory','$q',
   function ($rootScope, $scope, $log, $route, $location,
-   APIConfig, $http, APIService,$window,$cookies,APIFactory) {
+   APIConfig, $http, APIService,$window,$cookies,APIFactory,$q) {
 
     var api = APIService;
     var fac = APIFactory;
 
     $scope.login = {};
-
     $scope.hasError = false;
     $scope.message = {};
     $scope.message = 'Fehler bei der Anmeldung! Bitte überprüfen Sie Ihre Login Daten.';
     $scope.loadSubmit = 0;
+
+    $scope.getLogedUserID = function () {
+
+      var deferred = $q.defer();
+      var filter = {'username': $scope.login.email};
+
+      api.service('user').filter(filter).get().then(function (response) {
+        deferred.resolve(response);
+      }, function (reason) {
+        deferred.reject(reason);
+      });
+      return deferred.promise;
+    };
 
     $scope.submitForm = function (isValid) {
 
@@ -54,23 +66,35 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                   fac.setCookie('access_token',result.data.access_token,12);
                   fac.setCookie('refresh_token',result.data.refresh_token,12);
 
-                  var url = fac.getCookie('url');
+                  $scope.getLogedUserID().then(function (rslt) {
 
-                  if(url == undefined)
-                   $window.history.back();
-                 else
-                  $window.location.href  = url;
-              }
-            },
-            function (result) {
+                    if (rslt._embedded.user[0]) {
+                     
+                      var url = fac.getCookie('url');
 
-              $scope.hasError = true;
+                      if(url == undefined)
+                       $window.history.back();
+                     else
+                      $window.location.href  = url;
 
-              if(result.status==401){
 
-                $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
-              }
-            })
+                    APIConfig.user = rslt._embedded.user[0];
+                    APIConfig.userid = rslt._embedded.user[0].id;
+                    fac.setCookie('userid', APIConfig.userid,12);
+
+                  }
+                });
+                }
+              },
+              function (result) {
+
+                $scope.hasError = true;
+
+                if(result.status==401){
+
+                  $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
+                }
+              })
 
                }else{
 

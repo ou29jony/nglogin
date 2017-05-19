@@ -46,6 +46,10 @@
       templateUrl: 'views/lostpass.html',
       controller: 'PassCtrl'
     })
+    .when('/accountupdate', {
+      templateUrl: 'views/account/accountupdate.html',
+      controller: 'RegisterCtrl'
+    })
     .when('/newpasslink', {
       templateUrl: 'views/newpass.html',
       controller: 'PassCtrl',
@@ -57,17 +61,17 @@
 
           APIConfig.url = response.data.url;
 
-             return api.service('usersetting').id(APIConfig.userid).get().then(function(result){
+          return api.service('usersetting').id(APIConfig.userid).get().then(function(result){
 
-              var end_result = result.code == $location.search().hash;
+            var end_result = result.code == $location.search().hash;
 
              // console.log($location.search().hash,result,APIConfig.userid);
-           return  end_result ? undefined : true;
+             return  end_result ? undefined : true;
 
-         }, function(error){
- 
-           return true;
-         })
+           }, function(error){
+
+             return true;
+           })
         });
       }
     })
@@ -114,7 +118,7 @@
     .when('/account', {
       templateUrl: 'views/account/account.html',
       controller: 'AccountCtrl'
-   })
+    })
 
     .when('/test', {
       templateUrl: 'views/test.html',
@@ -137,16 +141,25 @@
 
   }]);
 
- app.run(['$rootScope', '$injector', 'APIConfig', '$location', '$http', 'APIService','$window',
-  function ($rootScope, $injector, APIConfig, $location, $http, APIService,$window) {
+ app.run(['$rootScope', '$injector', 'APIConfig', '$location', '$http', 'APIService','$window','APIFactory',
+  function ($rootScope, $injector, APIConfig, $location, $http, APIService,$window,APIFactory) {
 
     var history = APIConfig.history;
+    var fac = APIFactory;
+    var api = APIService;
+    
+    if((!$rootScope.oauth || !$rootScope.oauth.access_token) && fac.getCookie('access_token') ){
+
+      var data = {'access_token' : fac.getCookie('access_token')}
+      api.setAuth(data);
+    }
 
     $http.get('scripts/settings.json').then(function (response) {
 
       APIConfig.url = response.data.url;
       APIConfig.clientID = response.data.clientID;
       APIConfig.b2c_emails = response.data.b2c_emails;
+      APIConfig.mailstone = response.data.mailstone;
       $rootScope.settings = response.data;
       $rootScope.title = $rootScope.settings.title;
 

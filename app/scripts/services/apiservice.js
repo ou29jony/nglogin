@@ -17,6 +17,7 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 
 			$rootScope.oauth = data;
 
+
 			if ($rootScope.oauth.access_token) {
 
 				var login = $rootScope.oauth;
@@ -25,8 +26,8 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 
 			}
 		};
+	
 
-		self.resource = 
 
 		self.getResource = function () {
 

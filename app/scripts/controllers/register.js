@@ -3,16 +3,19 @@ var app = angular
 .module('ngloginApp');
 
 app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', 
-	'$location', 'APIConfig', '$http', 'APIService','$timeout','$window',
+	'$location', 'APIConfig', '$http', 'APIService','$timeout','$window','APIFactory',
 	function ($rootScope, $scope, $log, $route, 
-		$location, APIConfig, $http, APIService,$timeout,$window) {
+		$location, APIConfig, $http, APIService,$timeout,$window,APIFactory) {
 
 		var api = APIService;
+		var fac = APIFactory;
 
 		$scope.account = APIConfig.account;
 		$scope.message = "";
 		$scope.hasError = false;
 		$scope.clicked = false;
+		$scope.mailstoneurl = APIConfig.mailstone;
+		$scope.userid = fac.getCookie('userid');
 
 		var clickedcount = 0;
 
@@ -64,35 +67,89 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 				}else{
 					
-						clickedcount = 0;
+					clickedcount = 0;
 					$scope.hasError = true;
 					$scope.message = "Die Passwörter Stimmen nicht überein";
 				}
 			}
 		}
 
-		$scope.checkEmail = function(){
+		$scope.initUser = function(){
 
-			var result = false;
+			if($scope.userid){
 
-			var email =  $scope.account.username;
 
-			for (var i=0; email != undefined &&  i< APIConfig.b2c_emails.length; i++) {
+					api.service('user').id($scope.userid).get().then(function(user){
+						$scope.account  = user;
+					},function(error){
+						$location.path('/');
+					});
+				}else{
+					$location.path('/');
+				}
 
-				var em = APIConfig.b2c_emails[i];
-
-				if(email.includes("@"+em+"."))
-					result = true;
 			}
 
-			return result;
-		}
+			$scope.updateUser = function(isValid){
 
-		$scope.goBackTime = function(){
+				$scope.clicked = true;
 
-			$timeout(function(){ 
-				$location.path('/');
-			}, 5000);
+				if(isValid){
+
+							
+				var data = { 
+					'department': $scope.account.department,
+					'ust_id' :$scope.account.ust_id,
+					'street' :$scope.account.street,
+					'plz' :$scope.account.plz,
+					'ort' :$scope.account.ort,
+					'phone' :$scope.account.phone
+				}
+
+					api.service('user').id($scope.userid).data(data).update().then(function(result){
+
+					$window.location.href = fac.getCookie('url');
+
+					},function(error){
+
+					});
+
+				}else{
+				
+
+				}
+
+
+			 //$window.location.href = APIConfig.mailston;
+			}
+			$scope.checkEmail = function(){
+
+				var result = false;
+
+				var email =  $scope.account.username;
+
+				for (var i=0; email != undefined &&  i< APIConfig.b2c_emails.length; i++) {
+
+					var em = APIConfig.b2c_emails[i];
+
+					if(email.includes("@"+em+"."))
+						result = true;
+				}
+
+				return result;
+			}
+
+			$scope.goBackTime = function(){
+
+				$timeout(function(){ 
+					$location.path('/');
+				}, 5000);
+			}
+
+			$scope.goBack = function(){
+
+		 $window.history.back();
+
 		}
 
 		$scope.activate= function(){
