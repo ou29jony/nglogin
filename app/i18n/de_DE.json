@@ -41,6 +41,10 @@
  "create Account":"Konto erstellen",
  "Please enter your last name":"Bitte geben Sie hier Ihren Nachnamen ein",
  "Please enter your first name":"Bitte geben Sie hier Ihren Vorname ein",
+ "Please enter your street name":"Bitte geben Sie hier Ihre Adresse Ihres Unternehmens ein",
+ "Please enter your ort name":"Bitte geben Sie hier Ihre Standort Ihres Unternehmens ein",
+ "Please enter your department name":"Bitte geben Sie hier Ihre Abteilung ein",
+
  "In which department are you employed?":"In welcher Abteilung sind Sie beschäftigt?",
  "Your business e-mail address":"Ihre geschäftliche E-Mail-Adresse",
  "Which company do you work for?":"Bei welchem Unternehmen arbeiten Sie? Bitte geben Sie Ihre vollständige Firmierung an (z.B. „Musterfirma GmbH“)",

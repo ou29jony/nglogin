@@ -78,25 +78,33 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 			if($scope.userid){
 
+				$http.get('scripts/settings.json').then(function (response) {
+
+					APIConfig.url = response.data.url;
 
 					api.service('user').id($scope.userid).get().then(function(user){
+
+
 						$scope.account  = user;
 					},function(error){
 						$location.path('/');
 					});
-				}else{
-					$location.path('/');
-				}
 
+				});
+				
+			}else{
+				$location.path('/');
 			}
 
-			$scope.updateUser = function(isValid){
+		}
 
-				$scope.clicked = true;
+		$scope.updateUser = function(isValid){
 
-				if(isValid){
+			$scope.clicked = true;
 
-							
+			if(isValid){
+
+
 				var data = { 
 					'department': $scope.account.department,
 					'ust_id' :$scope.account.ust_id,
@@ -106,19 +114,19 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 					'phone' :$scope.account.phone
 				}
 
-					api.service('user').id($scope.userid).data(data).update().then(function(result){
+				api.service('user').id($scope.userid).data(data).update().then(
 
-					$window.location.href = fac.getCookie('url');
+					function(result){
+
+						$window.location.href = fac.getCookie('url');
 
 					},function(error){
 
 					});
 
-				}else{
-				
+			}else{
 
-				}
-
+			}
 
 			 //$window.location.href = APIConfig.mailston;
 			}
@@ -148,47 +156,45 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 			$scope.goBack = function(){
 
-		 $window.history.back();
+				$window.history.back();
 
-		}
+			}
 
-		$scope.activate= function(){
+			$scope.activate= function(){
 
-			$http.get('scripts/settings.json').then(function (response) {
+				$http.get('scripts/settings.json').then(function (response) {
 
-				APIConfig.url = response.data.url;
-				APIConfig.clientID = response.data.clientID;
-				APIConfig.b2c_emails = response.data.b2c_emails;
-				$rootScope.settings = response.data;
-				$rootScope.title = $rootScope.settings.title;
+					APIConfig.url = response.data.url;
+					APIConfig.clientID = response.data.clientID;
+					APIConfig.b2c_emails = response.data.b2c_emails;
+					$rootScope.settings = response.data;
+					$rootScope.title = $rootScope.settings.title;
 
-				APIConfig.userid = $location.search().userid;
-				APIConfig.code   = $location.search().hash
+					APIConfig.userid = $location.search().userid;
+					APIConfig.code   = $location.search().hash
 
-				api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
+					api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
-					if(usersetting.code == APIConfig.code){
+						if(usersetting.code == APIConfig.code){
 
-						var data = {
-							'value':'activate',
-							'code' : APIConfig.code
+							var data = {
+								'value':'activate',
+								'code' : APIConfig.code
+							}
+
+							api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
+
+								$location.path('activateok');
+
+							},function(error){
+
+								$location.path('activateerror');
+							})
 						}
+					},function(error){
 
-						api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
-
-							$location.path('activateok');
-
-						},function(error){
-
-
-							console.log(error);
-							$location.path('activateerror');
-						})
-					}
-				},function(error){
-
-					$scope.hasError = true; 
-				})
-			});
-		};
-	}]);
+						$scope.hasError = true; 
+					})
+				});
+			};
+		}]);
