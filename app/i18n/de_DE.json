@@ -1,5 +1,6 @@
 {
  "appname":"Highpots",
+ "highpots footer":"© 2017, www.highpots.de",
  "abort":"Abbrechen",
  "one problem":"Ein Problem ist aufgetreten:",
  "login":"Anmelden",
@@ -40,7 +41,7 @@
  "next":"weiter",
  "create Account":"Konto erstellen",
  "Please enter your last name":"Bitte geben Sie hier Ihren Nachnamen ein",
- "Please enter your first name":"Bitte geben Sie hier Ihren Vorname ein",
+ "Please enter your first name":"Bitte geben Sie hier Ihren Vornamen ein",
  "Please enter your street name":"Bitte geben Sie hier Ihre Adresse Ihres Unternehmens ein",
  "Please enter your ort name":"Bitte geben Sie hier Ihre Standort Ihres Unternehmens ein",
  "Please enter your department name":"Bitte geben Sie hier Ihre Abteilung ein",

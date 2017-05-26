@@ -26,8 +26,6 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 
 			}
 		};
-	
-
 
 		self.getResource = function () {
 
