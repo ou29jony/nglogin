@@ -85,11 +85,11 @@
     })
     .when('/mailsend', {
       templateUrl: 'views/mailsend.html',
-      controller: 'PassCtrl',
-      resolveRedirectTo : function(APIConfig){
+      controller: 'PassCtrl'
+      /*resolveRedirectTo : function(APIConfig){
         var result = APIConfig.mailsendshowpage == true ? undefined: true ;
         return result;
-      }
+      }*/
     })
     .when('/registration', {
       templateUrl: 'views/register.html',
@@ -102,11 +102,11 @@
     .when('/activateok', {
       templateUrl: 'views/activateok.html',
       controller: 'RegisterCtrl',
-      resolveRedirectTo : function($cookies,APIService){
+     /* resolveRedirectTo : function($cookies,APIService){
         var api = APIService;
         var result = !$cookies.get('access_token')==false ? undefined : true;
         return undefined;
-      }
+      }*/
     }).when('/activateerror', {
       templateUrl: 'views/activateerror.html',
       controller: 'RegisterCtrl'
