@@ -15,17 +15,17 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 
 		var data  = {
 			'passlink':1,
-		}
+		};
 
 		$scope.sendPassLink = function(isValid){
 
-			if(isValid && clickedcount ==0){
+			if(isValid && clickedcount === 0){
 				
 				clickedcount++;
 				data.username =$scope.login.email;
 
 
-				api.service('usersetting').data(data).save().then(function(result){
+				api.service('usersetting').data(data).save().then(function(){
 
 					
 					$location.path('mailsend');
@@ -33,64 +33,63 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 					$scope.hasError = false;
 					$scope.message = {};
 					$scope.message.header = "Überprüfung Ihrer Nachrichten";
-					$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren."
+					$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren.";
 					clickedcount = 0;
 				},
 
 				function(error){
 
-					if(error.status ==-1){
+					if(error.status === -1){
 						
 						$location.path('mailsend');
 						APIConfig.mailsendshowpage = true;
 						$scope.hasError = false;
 						$scope.message = {};
 						$scope.message.header = "Überprüfung Ihrer Nachrichten";
-						$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren."
-
+						$scope.message.text   = "Sie erhalten von uns ein E-Mail-Nachricht mit Anweisungen zum Zurücksetzen des Passworts. Wenn Sie diese Nachricht nicht erhalten haben, überprüfen Sie bitte Ihren Spam-ordner oder besuchen Sie unsere Hilfe-Seiten, um den Kundenservice für weitere Unterstützung zu kontaktieren.";
 					}
 
-					if(error.status ==404){
+					if(error.status === 404){
 
 						$scope.hasError = true;
-						$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren."
+						$scope.message = "Leider konnten wir Sie anhand der eingegebenen Daten nicht eindeutig identifizieren.";
 					}
 					clickedcount =0;
-				})
+				});
 			}
-		}
+		};
 
 		$scope.saveNewPassword = function(isValid){
 			$scope.hasError = false;
 
-			if(isValid  && clickedcount == 0){
+			if(isValid  && clickedcount === 0){
 				clickedcount++;
 
-				if($scope.user.password1 == $scope.user.password2){
+				if($scope.user.password1 === $scope.user.password2){
 
 					api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
-						if(usersetting.code == APIConfig.code){
+						if(usersetting.code === APIConfig.code){
 
 							var data = {
 
 								'value':'setnewpassword',
 								'code' : $scope.user.password1
-							}
+							};
 
-							api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
+							api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(){
 								
 								$location.path('newpassok');
-								api.service('usersetting').id(APIConfig.userid).delete().then(function(result){
+								api.service('usersetting').id(APIConfig.userid).delete().then(function(){
 									clickedcount =0;
 								});
 								
 
 							},function(error){
-								if(error.status ==-1){
+								if(error.status === -1){
 
 									$location.path('newpassok');
-									api.service('usersetting').id(APIConfig.userid).delete().then(function(result){
+									api.service('usersetting').id(APIConfig.userid).delete().then(function(){
 										clickedcount =0;
 									});
 									$scope.hasError = false;
@@ -103,7 +102,7 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 
 								}
 								clickedcount =0;
-							})
+							});
 
 						}else{
 						
@@ -112,11 +111,11 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 							clickedcount =0;
 
 						}
-					},function(error){
+					},function(){
 
 						$scope.hasError = true; 
 						clickedcount =0;
-					})
+					});
 
 				} else{
 
@@ -125,6 +124,6 @@ app.controller('PassCtrl', ['$rootScope', '$scope', '$log', '$route', '$location
 					clickedcount =0;
 				}
 			}
-		}
+		};
 
 	}]);

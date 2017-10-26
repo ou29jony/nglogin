@@ -69,19 +69,19 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                   $scope.getLogedUserID().then(function (rslt) {
 
                     if (rslt._embedded.user[0]) {
-                     
+
                       var url = fac.getCookie('url');
 
-                      if(url == undefined)
+                      APIConfig.user = rslt._embedded.user[0];
+                      APIConfig.userid = rslt._embedded.user[0].id;
+                      fac.setCookie('userid', APIConfig.userid,12);
+
+                      if(url === undefined){
                        $window.history.back();
-                     else
-                      $window.location.href  = url;
-
-
-                    APIConfig.user = rslt._embedded.user[0];
-                    APIConfig.userid = rslt._embedded.user[0].id;
-                    fac.setCookie('userid', APIConfig.userid,12);
-
+                     }
+                     else{
+                      $window.location.href  = url+"?access_token="+result.data.access_token+"&userid="+APIConfig.userid;
+                    }
                   }
                 });
                 }
@@ -90,16 +90,16 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
                 $scope.hasError = true;
 
-                if(result.status==401){
+                if(result.status === 401){
 
                   $scope.message  =  "Ihre E-Mail-Adresse oder das Passwort war nicht korrekt. Bitte versuchen Sie es noch einmal";
                 }
-              })
+              });
 
                }else{
 
                 $scope.loginform.password.$touched = true;
                 $scope.loginform.email.$touched = true;
               }
-            } 
+            };
           }]);

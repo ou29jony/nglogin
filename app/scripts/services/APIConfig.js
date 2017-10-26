@@ -3,7 +3,7 @@
 
 var app = angular.module('ngloginApp');
 
-app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
+app.factory('APIConfig', [ function () {
 
 	var config = {
 
@@ -19,7 +19,7 @@ app.factory('APIConfig', ['$http', '$q', function ($http, $q) {
     'account':{'gender':'Herr'},
     'b2c_emails':[]
 
-	}
+	};
 
 	return config;
 

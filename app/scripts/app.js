@@ -63,15 +63,15 @@
 
           return api.service('usersetting').id(APIConfig.userid).get().then(function(result){
 
-            var end_result = result.code == $location.search().hash;
+            var end_result = result.code === $location.search().hash;
 
              // console.log($location.search().hash,result,APIConfig.userid);
              return  end_result ? undefined : true;
 
-           }, function(error){
+           }, function(){
 
              return true;
-           })
+           });
         });
       }
     })
@@ -128,8 +128,8 @@
     }).when('/payment', {
       templateUrl: 'views/payment/payment.html',
       controller: 'AccountCtrl',
-      resolveRedirectTo : function($cookies,APIService){
-       return !$cookies.get('access_token')==false ? undefined : true;
+      resolveRedirectTo : function($cookies){
+       return !($cookies.get('access_token')===false) ? undefined : true;
      }
    })
     .otherwise({
@@ -144,13 +144,12 @@
  app.run(['$rootScope', '$injector', 'APIConfig', '$location', '$http', 'APIService','$window','APIFactory',
   function ($rootScope, $injector, APIConfig, $location, $http, APIService,$window,APIFactory) {
 
-    var history = APIConfig.history;
     var fac = APIFactory;
     var api = APIService;
     
     if((!$rootScope.oauth || !$rootScope.oauth.access_token) && fac.getCookie('access_token') ){
 
-      var data = {'access_token' : fac.getCookie('access_token')}
+      var data = {'access_token' : fac.getCookie('access_token')};
       api.setAuth(data);
     }
 

@@ -28,7 +28,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 				clickedcount++;
 
-				if($scope.account.password1 == $scope.account.password2){
+				if($scope.account.password1 === $scope.account.password2){
 
 					$scope.account.password = $scope.account.password1;
 
@@ -36,7 +36,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 						APIConfig.account = $scope.account;
 
-						api.service('user').data($scope.account).save().then(function(result){
+						api.service('user').data($scope.account).save().then(function(){
 
 							$location.path('register');
 							clickedcount = 0;
@@ -44,14 +44,14 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 						},function(error){
 
 							clickedcount = 0;
-							if(error.status ==-1){
+							if(error.status ===-1){
 								
 								$location.path('register');
 								$scope.hasError = false;
 
 							}
 
-							if(error.status == 422){
+							if(error.status === 422){
 
 								$scope.hasError = true;
 								$scope.message = "Diese E-Mail-Adresse existiert schon";
@@ -72,7 +72,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 					$scope.message = "Die Passwörter Stimmen nicht überein";
 				}
 			}
-		}
+		};
 
 		$scope.initUser = function(){
 
@@ -86,7 +86,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 
 						$scope.account  = user;
-					},function(error){
+					},function(){
 						$location.path('/');
 					});
 
@@ -96,7 +96,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 				$location.path('/');
 			}
 
-		}
+		};
 
 		$scope.updateUser = function(isValid){
 
@@ -112,15 +112,15 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 					'plz' :$scope.account.plz,
 					'ort' :$scope.account.ort,
 					'phone' :$scope.account.phone
-				}
+				};
 
 				api.service('user').id($scope.userid).data(data).update().then(
 
-					function(result){
+					function(){
 
 						$window.location.href = fac.getCookie('url');
 
-					},function(error){
+					},function(){
 
 					});
 
@@ -129,36 +129,37 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 			}
 
 			 //$window.location.href = APIConfig.mailston;
-			}
+			};
 			$scope.checkEmail = function(){
 
 				var result = false;
 
 				var email =  $scope.account.username;
 
-				for (var i=0; email != undefined &&  i< APIConfig.b2c_emails.length; i++) {
+				for (var i=0; email !== undefined &&  i< APIConfig.b2c_emails.length; i++) {
 
 					var em = APIConfig.b2c_emails[i];
 
-					if(email.includes("@"+em+"."))
+					if(email.includes("@"+em+".")){
 						result = true;
+					}
 				}
 
 				return result;
-			}
+			};
 
 			$scope.goBackTime = function(){
 
 				$timeout(function(){ 
 					$location.path('/');
 				}, 5000);
-			}
+			};
 
 			$scope.goBack = function(){
 
 				$window.history.back();
 
-			}
+			};
 
 			$scope.activate= function(){
 
@@ -171,30 +172,30 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 					$rootScope.title = $rootScope.settings.title;
 
 					APIConfig.userid = $location.search().userid;
-					APIConfig.code   = $location.search().hash
+					APIConfig.code   = $location.search().hash;
 
 					api.service('usersetting').id(APIConfig.userid).get().then(function(usersetting){
 
-						if(usersetting.code == APIConfig.code){
+						if(usersetting.code === APIConfig.code){
 
 							var data = {
 								'value':'activate',
 								'code' : APIConfig.code
-							}
+							};
 
-							api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(result){
+							api.service('usersetting').id(APIConfig.userid).data(data).update().then(function(){
 
 								$location.path('activateok');
 
-							},function(error){
+							},function(){
 
 								$location.path('activateerror');
-							})
+							});
 						}
-					},function(error){
+					},function(){
 
 						$scope.hasError = true; 
-					})
+					});
 				});
 			};
 		}]);
