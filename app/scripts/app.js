@@ -52,28 +52,7 @@
     })
     .when('/newpasslink', {
       templateUrl: 'views/newpass.html',
-      controller: 'PassCtrl',
-      resolveRedirectTo : function($location, $http,APIService,APIConfig){
-
-        var api = APIService;
-
-        return   $http.get('scripts/settings.json').then(function (response) {
-
-          APIConfig.url = response.data.url;
-
-          return api.service('usersetting').id(APIConfig.userid).get().then(function(result){
-
-            var end_result = result.code === $location.search().hash;
-
-             // console.log($location.search().hash,result,APIConfig.userid);
-             return  end_result ? undefined : true;
-
-           }, function(){
-
-             return true;
-           });
-        });
-      }
+      controller: 'PassCtrl'
     })
     .when('/newpassok', {
       templateUrl: 'views/newpassok.html',
@@ -86,10 +65,6 @@
     .when('/mailsend', {
       templateUrl: 'views/mailsend.html',
       controller: 'PassCtrl'
-      /*resolveRedirectTo : function(APIConfig){
-        var result = APIConfig.mailsendshowpage == true ? undefined: true ;
-        return result;
-      }*/
     })
     .when('/registration', {
       templateUrl: 'views/register.html',
@@ -101,12 +76,7 @@
     })
     .when('/activateok', {
       templateUrl: 'views/activateok.html',
-      controller: 'RegisterCtrl',
-     /* resolveRedirectTo : function($cookies,APIService){
-        var api = APIService;
-        var result = !$cookies.get('access_token')==false ? undefined : true;
-        return undefined;
-      }*/
+      controller: 'RegisterCtrl'
     }).when('/activateerror', {
       templateUrl: 'views/activateerror.html',
       controller: 'RegisterCtrl'
@@ -155,7 +125,7 @@
 
     $http.get('scripts/settings.json').then(function (response) {
 
-      APIConfig.url = response.data.url;
+      APIConfig.url = response.data.login_api_url;
       APIConfig.clientID = response.data.clientID;
       APIConfig.b2c_emails = response.data.b2c_emails;
       APIConfig.mailstone = response.data.mailstone;

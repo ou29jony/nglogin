@@ -22,7 +22,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: '../../workspace/MC4CS-CustomerFrontend/public/login'
+    dist: '../../workspace/MC4CS-CustomerFrontend/public/account'
   };
 
   // Define the configuration for all the tasks

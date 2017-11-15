@@ -70,7 +70,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
                     if (rslt._embedded.user[0]) {
 
-                      var url = fac.getCookie('url');
+                      var url = $cookies.get('url');
 
                       APIConfig.user = rslt._embedded.user[0];
                       APIConfig.userid = rslt._embedded.user[0].id;

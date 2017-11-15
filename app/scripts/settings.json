@@ -1,9 +1,11 @@
 {
-  "url" : "https://login-api.hptf.de",
+  "login_api_url" : "https://login-api.hptf.de",
   "title" : "ngloginApp",
   "pageurl" : "http://localhost:8000",
   "clientID" : "auth_client",
   "mailstone":"http://localhost:8000",
+  "LOGIN_FRONTEND_URL" : "",
+  "LOGIN_FRONTEND_URL_PATH" : "account",
   "b2c_emails" :
 
    ["mailc","yahoo","gmx","icloud","1email","1vbb",

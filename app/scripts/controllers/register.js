@@ -80,7 +80,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 				$http.get('scripts/settings.json').then(function (response) {
 
-					APIConfig.url = response.data.url;
+					APIConfig.url = response.data.login_api_url;
 
 					api.service('user').id($scope.userid).get().then(function(user){
 
@@ -165,7 +165,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 				$http.get('scripts/settings.json').then(function (response) {
 
-					APIConfig.url = response.data.url;
+					APIConfig.url = response.data.login_api_url;
 					APIConfig.clientID = response.data.clientID;
 					APIConfig.b2c_emails = response.data.b2c_emails;
 					$rootScope.settings = response.data;

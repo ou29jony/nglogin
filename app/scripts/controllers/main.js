@@ -16,6 +16,7 @@
    $scope.prev_url = $cookies.get('url');
 
    if($location.search().url !== undefined){
+   	$cookies.remove('url');
     $cookies.put('url',$location.search().url);
   }
 
