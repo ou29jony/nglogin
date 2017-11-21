@@ -140,7 +140,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 					var em = APIConfig.b2c_emails[i];
 
-					if(email.includes("@"+em+".")){
+					if(email.indexOf("@"+em+".")!==-1){
 						result = true;
 					}
 				}

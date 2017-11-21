@@ -134,7 +134,7 @@
 
     });
 
-    if($location.path().includes('newpasslink')){
+    if($location.path().indexOf('newpasslink') !== -1){
 
       $location.path($location.path());
       APIConfig.userid = $location.search().userid;
@@ -142,7 +142,7 @@
 
     }
 
-    if($location.path().includes('activate')){
+    if($location.path().indexOf('activate')!==-1){
 
       $location.path($location.path());
       APIConfig.userid = $location.search().userid;
