@@ -6,8 +6,6 @@
 
           <div class="row">
             <div class="col-lg-2"><h4>{{'User' |translate}}</h4></div>
-            <div class="col-lg-2 pull-right">  <button type="button" class="btn highpots_red" ng-click="goto('changeaccount')"> {{'edit'|translate}}</button></div>
-
           </div>
         </div>
 
@@ -43,6 +41,11 @@
 
               <div class="col-sm-5 col-xs-6 tital ">{{'company name' |translate}}</div>
               <div class="col-sm-7">{{user.company_name}}</div>
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " ></div>
+              <button type="button" class="btn highpots_red pull-right" ng-click="goto('changeaccount');"  >{{'edit' | translate}}</button>
               <div class="clearfix"></div>
               <div class="bot-border"></div>
 

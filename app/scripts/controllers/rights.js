@@ -12,10 +12,10 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 		$scope.roles = [];
 
 		$scope.getResources = function(){
-
       if(!APIConfig.resources) {
         api.service('resources').get().then(function (result) {
           $scope.resources = result._embedded.resources;
+          resourceTitleIndex();
           APIConfig.resources = $scope.resources;
         });
       }else{
@@ -28,6 +28,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
           $scope.roles = result._embedded.roles;
           APIConfig.roles = $scope.roles;
           $cookies.putObject('roles', $scope.roles)
+
         });
       }else{
         if(APIConfig.roles) {
@@ -38,10 +39,26 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       }
 		};
 
+  var resourceTitleIndex = function () {
+    $scope.resources.splice(0,0,{'titlename':'Main Konto'});
+    $scope.resources.splice(4,0,{'titlename':'Meine Bestellungen'});
+    $scope.resources.splice(10,0,{'titlename':'Ihre Adressen'});
+    $scope.resources.splice(12,0,{'titlename':'Andere Konten'});
+    $scope.resources.splice(19,0,{'titlename':'Gamification Verwaltung'});
+    $scope.resources.splice(27,0,{'titlename':'Gamification Akquisition'});
+    $scope.resources.splice(34,0,{'titlename':'Gamification Verhalten'});
+    $scope.resources.splice(40,0,{'titlename':'Gamification Conversion'});
+    $scope.resources.splice(47,0,{'titlename':'Zahlungsarten'});
+    $scope.resources.splice(51,0,{'titlename':'Accountstatistiken'});
+    $scope.resources.splice(54,0,{'titlename':'Gamification'});
+
+  };
 		$scope.getAllData = function(){
 		 $scope.getRoles();
 		 $scope.getResources();
 		};
+
+
 
     $scope.$watch(function(){
       return  $('.selectpicker').length;

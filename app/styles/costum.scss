@@ -23,7 +23,7 @@
 
    background: lightgrey  !important;
 }
-   
+
 .message_text{
    font-size:16px;
 }
@@ -73,6 +73,14 @@
   /* border-radius: 3px; */
   /* -webkit-user-select: none;
     user-select: none; */
+}
+
+.right_title{
+  background-color: #94999c !important;
+  font-size: 18px;
+}
+.right_not_title{
+  padding-left: 30px !important;
 }
 
 /* line 64, ../../app/styles/costum.scss */
