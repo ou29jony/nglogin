@@ -12,25 +12,35 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 		$scope.roles = [];
 
 		$scope.getResources = function(){
-      var deferred = $q.defer();
-			api.service('resources').get().then(function(result){
-				$scope.resources = result._embedded.resources;
-        deferred.resolve($scope.resources);
-			});
-      return deferred.promise;
+
+      if(!APIConfig.resources) {
+        api.service('resources').get().then(function (result) {
+          $scope.resources = result._embedded.resources;
+          APIConfig.resources = $scope.resources;
+        });
+      }else{
+        $scope.resources = APIConfig.resources;
+      }
 		};
 		$scope.getRoles = function(){
-		  var deferred = $q.defer();
-			api.service('roles').get().then(function(result){
-				$scope.roles = result._embedded.roles;
-        deferred.resolve($scope.roles);
-			});
-      return deferred.promise;
+      if(!$cookies.getObject('resources') && !APIConfig.roles ) {
+        api.service('roles').get().then(function (result) {
+          $scope.roles = result._embedded.roles;
+          APIConfig.roles = $scope.roles;
+          $cookies.putObject('roles', $scope.roles)
+        });
+      }else{
+        if(APIConfig.roles) {
+          $scope.roles = APIConfig.roles;
+        }else {
+          $scope.roles = $cookies.getObject('roles');
+        }
+      }
 		};
 
 		$scope.getAllData = function(){
-			var rolepromise = $scope.getRoles();
-			var resourcepromise = $scope.getResources();
+		 $scope.getRoles();
+		 $scope.getResources();
 		};
 
     $scope.$watch(function(){

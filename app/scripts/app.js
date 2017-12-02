@@ -74,7 +74,11 @@
       templateUrl: 'views/register.html',
       controller: 'RegisterCtrl'
 
-    }) .when('/activate', {
+    }).when('/userrights', {
+      templateUrl: 'views/rights/userrights.html',
+      controller: 'UserrightsCtrl'
+
+    })  .when('/activate', {
       templateUrl: 'views/activate.html',
       controller: 'RegisterCtrl'
     })
@@ -120,7 +124,7 @@
 
     var fac = APIFactory;
     var api = APIService;
-    
+
     if((!$rootScope.oauth || !$rootScope.oauth.access_token) && fac.getCookie('access_token') ){
 
       var data = {'access_token' : fac.getCookie('access_token')};

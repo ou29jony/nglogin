@@ -12,14 +12,18 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
     $scope.userrole = {};
 
     $scope.getUser = function () {
-      api.service('user').id($cookies.get('userid')).get().then(function (user) {
-        $scope.user = user;
-      });
+      if(!$cookies.getObject('useraccount')) {
+        api.service('user').id($cookies.get('userid')).get().then(function (user) {
+          $scope.user = user;
+          $cookies.putObject('useraccount', user);
+        });
+      }else{
+        $scope.user = $cookies.getObject('useraccount');
+      }
     };
 
     $scope.getRole = function () {
       api.service('user_role').id($cookies.get('userid')).get().then(function (userrole) {
-
         api.service('roles').id(userrole.role_id).get().then(function (role) {
           $scope.user.rolename = role;
           console.log('role',role);

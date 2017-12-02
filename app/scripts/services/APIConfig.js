@@ -13,6 +13,8 @@ app.factory('APIConfig', [ function () {
  	'access_token': '',
     'refresh_token': '',
     'userid':null,
+    'resources':null,
+    'roles':null,
     'user':null,
     'code':null,
     'mailsendshowpage':undefined,
