@@ -45,8 +45,6 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
         postData.grant_type = 'password';
         postData.client_id 	= APIConfig.clientID;
 
-         postData.redirect_url   = "http://localhost:7100/#!/rights";
-
 
                   //get Authorisi from api
                   $http({
@@ -62,7 +60,7 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
 
                   //set Bearer access token
                   api.setAuth(result.data);
-                  
+
                   APIConfig.access_token = result.data.access_token;
                   APIConfig.refresh_token = result.data.refresh_token;
 

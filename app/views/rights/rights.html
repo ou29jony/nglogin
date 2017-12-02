@@ -10,7 +10,7 @@
   </thead>
   <tbody>
   <tr ng-repeat="resource in resources">
-    <td>{{resource.resource_desc}}</td>
+    <td>{{resource.resource_desc | translate}}</td>
     <td>
         <select class="selectpicker" multiple title="search">
           <option>{{'read'| translate}}</option>
