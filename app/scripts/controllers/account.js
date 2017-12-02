@@ -33,4 +33,17 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
 
       });
     };
+
+    $scope.updateUser = function () {
+      var data = $scope.user;
+      var id = $scope.user.id;
+      data.id = undefined;
+      data._links = undefined;
+      data.username = undefined;
+      data.password = undefined;
+      api.service('user').id(id).data(data).update().then(function (user) {
+        $cookies.putObject('useraccount', user);
+        $location.path('account');
+      });
+    };
   }]);

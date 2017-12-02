@@ -114,5 +114,7 @@
 
   "firstname":"Vorname",
   "lastname":"Nachname",
-  "company name":"Unternehmen"
+  "company name":"Unternehmen",
+
+  "save":"Speichern"
 }

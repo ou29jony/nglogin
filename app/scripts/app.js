@@ -50,6 +50,10 @@
       templateUrl: 'views/account/accountupdate.html',
       controller: 'RegisterCtrl'
     })
+      .when('/changeaccount', {
+        templateUrl: 'views/account/changeaccount.html',
+        controller: 'AccountCtrl'
+      })
     .when('/rights', {
       templateUrl: 'views/rights/rights.html',
       controller: 'RightsCtrl'
