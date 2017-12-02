@@ -3,8 +3,8 @@
 
 var app = angular.module('ngloginApp');
 
-app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
-	function APIServiceProvider($rootScope, $resource, $q, $http,APIConfig) {
+app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig','$location',
+	function APIServiceProvider($rootScope, $resource, $q, $http,APIConfig,$location) {
 
 		var self = this;
 		var service = '';
@@ -23,7 +23,6 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 				var login = $rootScope.oauth;
 				$http.defaults.headers.common.Authorization = 'Bearer ' + $rootScope.oauth.access_token;
 				self.refresh_token = login.refresh_token;
-
 			}
 		};
 
@@ -31,9 +30,10 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 
 			!tableid ? tableid = ':id' : null;
 
+			var loginApiUrl = APIConfig.url;
+			
 			return  $resource(
-
-				APIConfig.url + '/' + service + '/' + tableid,
+				loginApiUrl + '/' + service + '/' + tableid,
 
 				filter,
 				{

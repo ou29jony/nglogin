@@ -9,6 +9,7 @@ app.factory('APIConfig', [ function () {
 
 	'clientID':'auth_client',
 	'url':'',
+    'url_local':'',
  	'access_token': '',
     'refresh_token': '',
     'userid':null,

@@ -45,6 +45,9 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
         postData.grant_type = 'password';
         postData.client_id 	= APIConfig.clientID;
 
+         postData.redirect_url   = "http://localhost:7100/#!/rights";
+
+
                   //get Authorisi from api
                   $http({
                    url: APIConfig.url + '/oauth',
@@ -75,9 +78,10 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                       APIConfig.user = rslt._embedded.user[0];
                       APIConfig.userid = rslt._embedded.user[0].id;
                       fac.setCookie('userid', APIConfig.userid,12);
-
+                      console.log(url);
                       if(url === undefined){
-                       $window.history.back();
+                       //$window.history.back();
+                       $location.path('rights');
                      }
                      else{
                       $window.location.href  = url+"?access_token="+result.data.access_token+"&userid="+APIConfig.userid;

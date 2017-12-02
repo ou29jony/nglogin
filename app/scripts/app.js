@@ -50,6 +50,10 @@
       templateUrl: 'views/account/accountupdate.html',
       controller: 'RegisterCtrl'
     })
+    .when('/rights', {
+      templateUrl: 'views/rights/rights.html',
+      controller: 'RightsCtrl'
+    })
     .when('/newpasslink', {
       templateUrl: 'views/newpass.html',
       controller: 'PassCtrl'
@@ -126,6 +130,11 @@
     $http.get('scripts/settings.json').then(function (response) {
 
       APIConfig.url = response.data.login_api_url;
+      APIConfig.url_local = response.data.login_api_url_local;
+
+      window.location.origin.indexOf('localhost')!==-1 ? APIConfig.url = APIConfig.url_local : APIConfig.url =APIConfig.url;
+
+
       APIConfig.clientID = response.data.clientID;
       APIConfig.b2c_emails = response.data.b2c_emails;
       APIConfig.mailstone = response.data.mailstone;

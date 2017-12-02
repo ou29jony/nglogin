@@ -8,8 +8,10 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
   <!-- endbower -->
   <!-- endbuild -->
+
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/costum.css">
@@ -43,24 +45,24 @@
 
 
           <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/impressum/">
-            {{'Impressum' | translate}} 
+            {{'Impressum' | translate}}
           </a>
           <span class="auth-footer-seperator"></span>
 
 
           <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/datenschutz/">
-           {{'AGB' | translate}}  
+           {{'AGB' | translate}}
          </a>
          <span class="auth-footer-seperator"></span>
 
 
          <a class="a-link-normal" target="_blank" href="https://highpots-next.hptf.de/agb/">
-           {{'Datenschutz' | translate}}  
+           {{'Datenschutz' | translate}}
          </a>
        </div>
        <div class="a-section a-spacing-none a-text-center">
         <span class="a-size-mini a-color-secondary">
-          {{'highpots footer' | translate}} 
+          {{'highpots footer' | translate}}
         </span>
       </div>
 
@@ -82,11 +84,16 @@
   <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
   <script src="bower_components/angular-messages/angular-messages.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="scripts/app.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+
+    <script src="scripts/app.js"></script>
   <script src="scripts/services/APIConfig.js"></script>
   <script src="scripts/controllers/main.js"></script>
   <script src="scripts/controllers/login.js"></script>
@@ -96,6 +103,8 @@
   <script src="scripts/controllers/register.js"></script>
   <script src="scripts/controllers/account.js"></script>
   <script src="scripts/controllers/payment.js"></script>
+  <script src="scripts/controllers/rights.js"></script>
   <!-- endbuild -->
+
 </body>
 </html>
