@@ -12,7 +12,7 @@
  app.controller('MainCtrl',['$scope','APIService','APIConfig','$window','$cookies','$location', function ($scope,APIService,APIConfig,$window,$cookies,$location) {
 
    $scope.user;
-
+  $scope.path = $location.path();
    $scope.prev_url = $cookies.get('url');
 
    if($location.search().url !== undefined){
@@ -24,4 +24,9 @@
     $window.location.href = $cookies.get('url');
   };
 
+   $scope.$watch(function(){
+     return  $location.path();
+   }, function (newVal, oldVal) {
+     $scope.path = newVal;
+   });
 }]);

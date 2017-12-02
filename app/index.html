@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/costum.css">
   <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/account.css">
   <!-- endbuild -->
 </head>
 <body ng-app="ngloginApp" ng-controller="MainCtrl">
@@ -35,6 +36,12 @@
     </div>
 
     <div class="container-fluid">
+      <ul class="nav nav-pills"  ng-show="path=='/account' || path=='/rights' || path=='/userrights'">
+        <li role="presentation" ng-class="{'active':path=='/account'}"><a href="#!/account">{{'Profile' |translate}}</a></li>
+        <li role="presentation" ng-class="{'active':path=='/rights'}" ><a href="#!/rights">{{'Rights' | translate}}</a></li>
+        <li role="presentation" ng-class="{'active':path=='/userrights'}"><a href="#!/userrighs">{{'Userrights' | translate}}</a></li>
+      </ul>
+      <br>
       <div ng-view=""></div>
     </div>
 

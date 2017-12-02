@@ -1,57 +1,58 @@
+<div class="container-fluid" ng-init="getAllData()">
 
 
-<table class="table table-bordered" ng-init="getAllData()">
-  <thead>
-  <tr>
-    <th>{{'resources' | translate}}</th>
-    <th ng-repeat="role in roles">{{role.role_name | translate }}</th>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>{{'resources' | translate}}</th>
+      <th ng-repeat="role in roles">{{role.role_name | translate }}</th>
 
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="resource in resources">
-    <td>{{resource.resource_desc | translate}}</td>
-    <td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="resource in resources">
+      <td>{{resource.resource_desc | translate}}</td>
+      <td>
         <select class="selectpicker" multiple title="search">
           <option>{{'read'| translate}}</option>
           <option>{{'edit' |translate}}</option>
           <option>{{'write' |translate}}</option>
           <option>{{'delete' |translate}}</option>
         </select>
-    </td>
-    <td>
-      <select class="selectpicker" multiple title="search">
-        <option value="1"  >{{'read' |translate}}</option>
-        <option value="2" >{{'edit'| translate}}</option>
-        <option value="3" >{{'write' |translate}}</option>
-        <option value="4" >{{'delete'| translate}}</option>
-      </select>
-    </td>
-    <td>
-      <select class="selectpicker" multiple title="search">
-        <option value="1" >{{'read' |translate}}</option>
-        <option value="1" >{{'edit' |translate}}</option>
-        <option>{{'write'| translate}}</option>
-        <option>{{'delete' |translate}}</option>
-      </select>
-    </td>
-    <td>
-      <select class="selectpicker" multiple title="search">
-        <option>{{'read'| translate}}</option>
-        <option>{{'edit' |translate}}</option>
-        <option>{{'write'| translate}}</option>
-        <option>{{'delete'| translate}}</option>
-      </select>
-    </td>
-    <td>
-      <select class="selectpicker" multiple title="search">
-        <option>{{'read' |translate}}</option>
-        <option>{{'edit'| translate}}</option>
-        <option>{{'write'| translate}}</option>
-        <option>{{'delete' |translate}}</option>
-      </select>
-    </td>
-  </tr>
-  </tbody>
-</table>
-
+      </td>
+      <td>
+        <select class="selectpicker" multiple title="search">
+          <option value="1">{{'read' |translate}}</option>
+          <option value="2">{{'edit'| translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
+          <option value="4">{{'delete'| translate}}</option>
+        </select>
+      </td>
+      <td>
+        <select class="selectpicker" multiple title="search">
+          <option value="1">{{'read' |translate}}</option>
+          <option value="1">{{'edit' |translate}}</option>
+          <option>{{'write'| translate}}</option>
+          <option>{{'delete' |translate}}</option>
+        </select>
+      </td>
+      <td>
+        <select class="selectpicker" multiple title="search">
+          <option>{{'read'| translate}}</option>
+          <option>{{'edit' |translate}}</option>
+          <option>{{'write'| translate}}</option>
+          <option>{{'delete'| translate}}</option>
+        </select>
+      </td>
+      <td>
+        <select class="selectpicker" multiple title="search">
+          <option>{{'read' |translate}}</option>
+          <option>{{'edit'| translate}}</option>
+          <option>{{'write'| translate}}</option>
+          <option>{{'delete' |translate}}</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -76,10 +76,9 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                       APIConfig.user = rslt._embedded.user[0];
                       APIConfig.userid = rslt._embedded.user[0].id;
                       fac.setCookie('userid', APIConfig.userid,12);
-                      console.log(url);
                       if(url === undefined){
                        //$window.history.back();
-                       $location.path('rights');
+                       $location.path('account');
                      }
                      else{
                       $window.location.href  = url+"?access_token="+result.data.access_token+"&userid="+APIConfig.userid;

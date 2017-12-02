@@ -105,6 +105,14 @@
   "read":"Lesen",
   "edit":"Bearbeiten",
   "write":"Editieren",
-  "delete":"Löschen"
+  "delete":"Löschen",
 
+  "Profile":"Benutzer Daten",
+  "Rights":"Berechtigungen",
+  "Userrights":"Benutzer Berechtigungen",
+  "User":"Benutzer",
+
+  "firstname":"Vorname",
+  "lastname":"Nachname",
+  "company name":"Unternehmen"
 }

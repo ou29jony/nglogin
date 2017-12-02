@@ -1,1 +1,40 @@
-Account
+<div class="container-fluid" ng-init="getUser();getRole();">
+    <div class="row">
+      <div class="col-md-7 ">
+        <div class="panel panel-default">
+          <div class="panel-heading">  <h4 >{{'User' |translate}}</h4></div>
+          <div class="panel-body">
+            <div class="box box-info">
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <h4 style="color:#00b1b1;">{{user.firstname}} {{user.lastname}}</h4></span>
+                </div>
+                <div class="clearfix"></div>
+                <hr style="margin:5px 0 5px 0;">
+
+                <div class="col-sm-5 col-xs-6 tital " >{{'Genre' |translate}} </div><div class="col-sm-7 col-xs-6 ">{{user.gender}}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+
+                <div class="col-sm-5 col-xs-6 tital " >{{'firstname' |translate}}</div><div class="col-sm-7 col-xs-6 ">{{user.firstname}}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+
+                <div class="col-sm-5 col-xs-6 tital " >{{'lastname' |translate}}</div><div class="col-sm-7"> {{user.lastname}}</div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+
+                <div class="col-sm-5 col-xs-6 tital " >{{'company name' |translate}}</div><div class="col-sm-7">{{user.company_name}}  </div>
+                <div class="clearfix"></div>
+                <div class="bot-border"></div>
+
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
