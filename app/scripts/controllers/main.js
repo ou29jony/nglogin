@@ -31,7 +31,6 @@ app.controller('MainCtrl', ['$scope', 'APIService', 'APIConfig', '$window', '$co
     return $location.path();
   }, function (newVal, oldVal) {
     $scope.path = newVal;
-
    $scope.isNaviPath =  newVal=='/account' || newVal=='/rights' || newVal==='/userrights' || newVal=== '/changeaccount';
   });
 }]);

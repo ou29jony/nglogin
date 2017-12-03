@@ -22,7 +22,7 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
       }
     };
 
-    $scope.getRole = function () {
+    $scope.getUserRole = function () {
       api.service('user_role').id($cookies.get('userid')).get().then(function (userrole) {
         api.service('roles').id(userrole.role_id).get().then(function (role) {
           $scope.user.rolename = role;

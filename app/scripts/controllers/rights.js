@@ -23,7 +23,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       }
 		};
 		$scope.getRoles = function(){
-      if(!$cookies.getObject('resources') && !APIConfig.roles ) {
+      if(!$cookies.getObject('roles') && !APIConfig.roles ) {
         api.service('roles').get().then(function (result) {
           $scope.roles = result._embedded.roles;
           APIConfig.roles = $scope.roles;
