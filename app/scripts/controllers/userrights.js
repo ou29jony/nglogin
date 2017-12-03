@@ -53,7 +53,6 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
     };
     $scope.getUserRoles = function () {
       api.service('user_role').get().then(function (result) {
-        $('.selectpicker').selectpicker();
         var userroles = result._embedded.user_role;
         for (var i = 0; i < userroles.length; i++) {
           if ($scope.indexedUser[userroles[i].user_id]) {
@@ -79,10 +78,9 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
     };
 
     $scope.$watch(function () {
-      return $scope.indexedUser;
+      return $('.selectpicker').length;
     }, function (newVal, oldVal) {
-
-
+      $('.selectpicker').selectpicker('val',0);
     });
 
     $scope.saveOrUpdateUserRole = function (users) {
@@ -103,9 +101,7 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
           } else {
             if (userRoleId) {
               api.service('user_role').data(data).save().then(function (result) {
-                $scope.roles.push(result);
                 $scope.indexedUser[userID].role = result;
-                APIConfig.roles = $scope.roles;
                 $location.path('account');
               });
             }

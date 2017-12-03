@@ -12,7 +12,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 		$scope.roles = [];
 
 		$scope.getResources = function(){
-      if(!APIConfig.resources) {
+      if(APIConfig.resources.length === 0) {
         api.service('resources').get().then(function (result) {
           $scope.resources = result._embedded.resources;
           resourceTitleIndex();
@@ -23,7 +23,9 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       }
 		};
 		$scope.getRoles = function(){
-      if(!$cookies.getObject('roles') && !APIConfig.roles ) {
+
+
+      if(!$cookies.getObject('roles') && APIConfig.roles.length===0 ) {
         api.service('roles').get().then(function (result) {
           $scope.roles = result._embedded.roles;
           APIConfig.roles = $scope.roles;
@@ -31,7 +33,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
         });
       }else{
-        if(APIConfig.roles) {
+        if(APIConfig.roles.length!==0) {
           $scope.roles = APIConfig.roles;
         }else {
           $scope.roles = $cookies.getObject('roles');
@@ -56,6 +58,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 		$scope.getAllData = function(){
 		 $scope.getRoles();
 		 $scope.getResources();
+
 		};
 
 
