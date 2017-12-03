@@ -8,8 +8,10 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
             APIConfig, $http, APIService, $window, $cookies, APIFactory, $q) {
 
     var api = APIService;
+    var fac= APIFactory;
     $scope.user = {};
     $scope.userrole = {};
+    $scope.alluserrights = APIConfig.alluserrights;
 
     $scope.getUser = function () {
       if(!$cookies.getObject('useraccount')) {
@@ -46,4 +48,11 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
         $location.path('account');
       });
     };
+
+    $scope.getAllRigheData = function () {
+      fac.getAllRigheData();
+      fac.getAllResourceRight();
+    };
+
+
   }]);

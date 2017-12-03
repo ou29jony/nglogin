@@ -10,17 +10,17 @@
     </thead>
     <tbody>
     <tr ng-repeat="resource in resources">
-      <td ng-show="resource.titlename"  colspan="6" class="right_title">{{resource.titlename | translate}}</td>
-      <td ng-show="!resource.titlename"  class="right_not_title" >{{resource.resource_desc | translate}}</td>
+      <td ng-show="resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_title" colspan="6" class="right_title">{{resource.titlename | translate}}</td>
+      <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_resource"  class="right_not_title" >{{resource.resource_desc | translate}}</td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" multiple title="Das Recht">
-          <option>{{'read'| translate}}</option>
-          <option>{{'edit' |translate}}</option>
-          <option>{{'write' |translate}}</option>
-          <option>{{'delete' |translate}}</option>
+        <select class="selectpicker" id="resourceid_{{resource.resource_id}}_roleid_1" multiple title="Das Recht">
+          <option value="1">{{'read'| translate}}</option>
+          <option value="2">{{'edit' |translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
+          <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
-      <td ng-show="!resource.titlename" >
+      <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_2">
         <select class="selectpicker" multiple title="Das Recht">
           <option value="1">{{'read' |translate}}</option>
           <option value="2">{{'edit'| translate}}</option>
@@ -28,28 +28,28 @@
           <option value="4">{{'delete'| translate}}</option>
         </select>
       </td  >
-      <td ng-show="!resource.titlename" >
+      <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_3" >
         <select class="selectpicker" multiple title="Das Recht">
           <option value="1">{{'read' |translate}}</option>
-          <option value="1">{{'edit' |translate}}</option>
-          <option>{{'write'| translate}}</option>
-          <option>{{'delete' |translate}}</option>
+          <option value="2">{{'edit' |translate}}</option>
+          <option value="3">{{'write'| translate}}</option>
+          <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
-      <td  ng-show="!resource.titlename" >
+      <td  ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_4" >
         <select class="selectpicker" multiple title="Das Recht">
-          <option>{{'read'| translate}}</option>
-          <option>{{'edit' |translate}}</option>
-          <option>{{'write'| translate}}</option>
-          <option>{{'delete'| translate}}</option>
-        </select>
+          <option value="1">{{'read'| translate}}</option>
+          <option value="2">{{'edit' |translate}}</option>
+          <option value="3">{{'write'| translate}}</option>
+          <option value="4">{{'delete'| translate}}</option>
+        </select  >
       </td >
-      <td ng-show="!resource.titlename"  >
+      <td ng-show="!resource.titlename"  id="resourceid_{{resource.resource_id}}_roleid_5">
         <select class="selectpicker" multiple title="Das Recht">
-          <option>{{'read' |translate}}</option>
-          <option>{{'edit'| translate}}</option>
-          <option>{{'write'| translate}}</option>
-          <option>{{'delete' |translate}}</option>
+          <option value="1">{{'read' |translate}}</option>
+          <option value="2">{{'edit'| translate}}</option>
+          <option value="3">{{'write'| translate}}</option>
+          <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
     </tr>

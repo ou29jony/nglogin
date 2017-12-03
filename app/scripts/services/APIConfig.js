@@ -18,6 +18,8 @@ app.factory('APIConfig', [ function () {
     'resources':[],
     'users':[],
     'roles':[],
+    'alluserrights':null,
+    'resource_right':null,
     'user':null,
     'code':null,
     'mailsendshowpage':undefined,

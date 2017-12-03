@@ -1,10 +1,11 @@
 "use strict" ;
 var app = angular.module('ngloginApp');
 
-app.service('APIFactory', [
-	function APIFactoryProvider() {
+app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
+	function APIFactoryProvider(APIService,APIConfig,$q,$filter) {
 
 		var self = {};
+		var api = APIService;
 
 		self.setCookie =  function (cname, cvalue, exdays) {
 			var d = new Date();
@@ -29,5 +30,23 @@ app.service('APIFactory', [
 			return "";
 		};
 
+    self.getAllRigheData = function () {
+      var deferred = $q.defer();
+      api.service('role_resourceright').get().then(function (result) {
+        APIConfig.alluserrights = result._embedded.role_resourceright;
+        deferred.resolve(APIConfig.alluserrights);
+      });
+      return deferred.promise;
+    };
+    self.getAllResourceRight = function () {
+      var deferred = $q.defer();
+      api.service('resource_right').get().then(function (result) {
+
+
+        APIConfig.resource_right = $filter('orderBy')(result._embedded.resource_right, 'resource_id', false);
+        deferred.resolve(APIConfig.resource_right);
+      });
+      return deferred.promise;
+    };
 		return self;
 	}]);

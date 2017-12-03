@@ -140,7 +140,7 @@
       APIConfig.url = response.data.login_api_url;
       APIConfig.url_local = response.data.login_api_url_local;
 
-     // window.location.origin.indexOf('localhost')!==-1 ? APIConfig.url = APIConfig.url_local : APIConfig.url =APIConfig.url;
+      window.location.origin.indexOf('localhost')!==-1 ? APIConfig.url = APIConfig.url_local : APIConfig.url =APIConfig.url;
 
 
       APIConfig.clientID = response.data.clientID;

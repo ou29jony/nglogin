@@ -3,13 +3,51 @@ var app = angular
 .module('ngloginApp');
 
 app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$location',
-	'APIConfig', '$http', 'APIService','$window','$cookies','APIFactory','$q',
+	'APIConfig', '$http', 'APIService','$window','$cookies','APIFactory','$q','$filter',
 	function ($rootScope, $scope, $log, $route, $location,
-		APIConfig, $http, APIService,$window,$cookies,APIFactory,$q) {
+		APIConfig, $http, APIService,$window,$cookies,APIFactory,$q,$filter) {
 
 		var api = APIService;
+		var fac = APIFactory;
 		$scope.resources = [];
 		$scope.roles = [];
+    $scope.alluserrights = APIConfig.alluserrights;
+    $scope.resource_right = APIConfig.resource_right;
+
+    if(!$scope.alluserrights){
+     fac.getAllRigheData().then(function (result) {
+       $scope.alluserrights = result ;
+     });
+    }
+    if(!$scope.resource_right){
+      fac.getAllResourceRight().then(function (result) {
+        $scope.resource_right =result;
+        var resourcerights = [];
+      });
+    }
+
+    $scope.getAllRightsForResourceAndRoleID = function (resourceid,roleid) {
+       var rights = [];
+       var  deferred = $q.defer();
+          for(var i=0; i < $scope.alluserrights.length; i++){
+            var onevalue = $scope.alluserrights[i];
+            if(onevalue.role_id===roleid && onevalue.resource_id === resourceid){
+              if(!rights[onevalue.right_id]){
+                rights[onevalue.right_id] = [];
+                rights[onevalue.right_id].push(
+                  {
+                    'id': onevalue.right_id,
+                    'rightname': onevalue.right
+                  }
+                  );
+              }
+            }
+            if(i=== $scope.alluserrights.length-1) {
+              deferred.resolve(rights);
+            }
+          }
+          return  deferred.promise;
+    };
 
 		$scope.getResources = function(){
       if(APIConfig.resources.length === 0) {
@@ -64,8 +102,40 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
 
     $scope.$watch(function(){
-      return  $('.selectpicker').length;
+      return  $('.table tr').length;
     }, function (newVal, oldVal) {
+
+
       $('.selectpicker').selectpicker();
+
+      angular.forEach($scope.resources, function (resourcevalue) {
+        angular.forEach($scope.roles, function (rolevalue) {
+
+          if(resourcevalue.resource_id && rolevalue.role_id) {
+
+            var rightspromise = $scope.getAllRightsForResourceAndRoleID(resourcevalue.resource_id, rolevalue.role_id);
+            rightspromise.then(function (rights) {
+              if(rights.length>0) {
+                var localrights = [];
+                if(rights[1]){
+                  localrights.push('1')
+                }
+                if(rights[2]){
+                  localrights.push('2')
+                }
+                if(rights[3]){
+                  localrights.push('3')
+                }
+                if(rights[4]){
+                  localrights.push('4')
+                }
+                $('#resourceid_' + resourcevalue.resource_id + '_roleid_' + rolevalue.role_id).selectpicker('val',localrights);
+              }
+            });
+          }
+
+        });
+      });
     });
+
   }]);
