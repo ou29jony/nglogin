@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-init="getUser();getUserRole();getAllRigheData();">
+<div class="container-fluid" ng-init="getUser();getUserRole();getAllRightsData();">
   <div class="row">
     <div class="col-md-12 ">
       <div class="panel panel-default">
@@ -41,6 +41,11 @@
 
               <div class="col-sm-5 col-xs-6 tital ">{{'company name' |translate}}</div>
               <div class="col-sm-7">{{user.company_name}}</div>
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital ">{{'role' |translate}}</div>
+              <div class="col-sm-7">{{user.role.role_name}}</div>
               <div class="clearfix"></div>
               <div class="bot-border"></div>
 

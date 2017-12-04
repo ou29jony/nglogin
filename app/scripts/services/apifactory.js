@@ -30,7 +30,7 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
 			return "";
 		};
 
-    self.getAllRigheData = function () {
+    self.getAllRightsData = function () {
       var deferred = $q.defer();
       api.service('role_resourceright').get().then(function (result) {
         APIConfig.alluserrights = result._embedded.role_resourceright;
@@ -41,7 +41,6 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
     self.getAllResourceRight = function () {
       var deferred = $q.defer();
       api.service('resource_right').get().then(function (result) {
-
 
         APIConfig.resource_right = $filter('orderBy')(result._embedded.resource_right, 'resource_id', false);
         deferred.resolve(APIConfig.resource_right);

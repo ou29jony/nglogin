@@ -25,15 +25,20 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
     };
 
     $scope.getUserRole = function () {
-      var filter = {'userid':$cookies.get('userid')};
+      var deferred = $q.defer();
+      var filter = {'user_id':$cookies.get('userid')};
       api.service('user_role').filter(filter).get().then(function (userrole) {
-        api.service('roles').id(userrole.id).get().then(function (role) {
-          $scope.user.rolename = role;
-        },function (reject) {
-        });
+
+        if(userrole && userrole.total_items===1) {
+
+          var role = userrole._embedded.user_role[0];
+          $scope.user.role = {'role_id':role.role_id ,'role_name':role.role_name};
+          deferred.resolve($scope.user);
+        }
       },function (reject) {
 
       });
+        return deferred.promise;
     };
 
     $scope.updateUser = function () {
@@ -43,16 +48,17 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
       data._links = undefined;
       data.username = undefined;
       data.password = undefined;
+
       api.service('user').id(id).data(data).update().then(function (user) {
         $cookies.putObject('useraccount', user);
         $location.path('account');
       });
     };
 
-    $scope.getAllRigheData = function () {
-      fac.getAllRigheData();
-      fac.getAllResourceRight();
+    $scope.getAllRightsData = function () {
+
+        fac.getAllRightsData();
+        fac.getAllResourceRight();
+
     };
-
-
   }]);

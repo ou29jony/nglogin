@@ -13,46 +13,49 @@
       <td ng-show="resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_title" colspan="6" class="right_title">{{resource.titlename | translate}}</td>
       <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_resource"  class="right_not_title" >{{resource.resource_desc | translate}}</td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" id="resourceid_{{resource.resource_id}}_roleid_1" multiple title="Das Recht">
+        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_1" multiple title="Das Recht">
           <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
           <option value="3">{{'write' |translate}}</option>
           <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
-      <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_2">
-        <select class="selectpicker" multiple title="Das Recht">
-          <option value="1">{{'read' |translate}}</option>
-          <option value="2">{{'edit'| translate}}</option>
-          <option value="3">{{'write' |translate}}</option>
-          <option value="4">{{'delete'| translate}}</option>
-        </select>
-      </td  >
-      <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_3" >
-        <select class="selectpicker" multiple title="Das Recht">
-          <option value="1">{{'read' |translate}}</option>
+      <td ng-show="!resource.titlename" >
+        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_2" multiple title="Das Recht">
+          <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
-          <option value="3">{{'write'| translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
           <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
-      <td  ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_4" >
-        <select class="selectpicker" multiple title="Das Recht">
+      <td ng-show="!resource.titlename" >
+        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_3" multiple title="Das Recht">
           <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
-          <option value="3">{{'write'| translate}}</option>
-          <option value="4">{{'delete'| translate}}</option>
-        </select  >
-      </td >
-      <td ng-show="!resource.titlename"  id="resourceid_{{resource.resource_id}}_roleid_5">
-        <select class="selectpicker" multiple title="Das Recht">
-          <option value="1">{{'read' |translate}}</option>
-          <option value="2">{{'edit'| translate}}</option>
-          <option value="3">{{'write'| translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
+          <option value="4">{{'delete' |translate}}</option>
+        </select>
+      </td>
+      <td ng-show="!resource.titlename" >
+        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_4" multiple title="Das Recht">
+          <option value="1">{{'read'| translate}}</option>
+          <option value="2">{{'edit' |translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
+          <option value="4">{{'delete' |translate}}</option>
+        </select>
+      </td>
+      <td ng-show="!resource.titlename" >
+        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_5" multiple title="Das Recht">
+          <option value="1">{{'read'| translate}}</option>
+          <option value="2">{{'edit' |translate}}</option>
+          <option value="3">{{'write' |translate}}</option>
           <option value="4">{{'delete' |translate}}</option>
         </select>
       </td>
     </tr>
     </tbody>
   </table>
+  <div class="continer">
+    <button type="button"class="btn pull-right col-lg-2" ng-click="saveOrUpdateResourceRights()" >{{'save' | translate}}</button>
+  </div>
 </div>
