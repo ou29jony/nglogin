@@ -28,11 +28,10 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
       var deferred = $q.defer();
       var filter = {'user_id':$cookies.get('userid')};
       api.service('user_role').filter(filter).get().then(function (userrole) {
-
         if(userrole && userrole.total_items===1) {
-
           var role = userrole._embedded.user_role[0];
           $scope.user.role = {'role_id':role.role_id ,'role_name':role.role_name};
+          $cookies.putObject('useraccount',  $scope.user);
           deferred.resolve($scope.user);
         }
       },function (reject) {

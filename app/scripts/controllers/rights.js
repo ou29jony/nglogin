@@ -15,9 +15,10 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
     $scope.data = {'rights': []};
 
     $scope.alluserrights = APIConfig.alluserrights;
+    $scope.alluserrightsIndexed = APIConfig.alluserrightsIndexed;
     $scope.resource_right = APIConfig.resource_right;
 
-    if (!$scope.alluserrights) {
+    if ($scope.alluserrights.length===0) {
       fac.getAllRightsData().then(function (result) {
         $scope.alluserrights = result;
       });
@@ -28,6 +29,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       });
     }
 
+
     $scope.getAllRightsForResourceAndRoleID = function (resourceid, roleid) {
       var rights = [];
       var deferred = $q.defer();
@@ -35,11 +37,13 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
         var onevalue = $scope.alluserrights[i];
         if (onevalue.role_id === roleid && onevalue.resource_id === resourceid) {
           if (!rights[onevalue.right_id]) {
+
             rights[onevalue.right_id] = [];
             rights[onevalue.right_id].push(
               {
                 'id': onevalue.right_id,
-                'rightname': onevalue.right
+                'rightname': onevalue.right,
+                'resourceright_id':onevalue.resourceright_id
               }
             );
           }
@@ -63,7 +67,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       }
     };
     $scope.getRoles = function () {
-
 
       if (!$cookies.getObject('roles') && APIConfig.roles.length === 0) {
         api.service('roles').get().then(function (result) {
@@ -95,17 +98,16 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       $scope.resources.splice(54, 0, {'titlename': 'Gamification'});
 
     };
+
     $scope.getAllData = function () {
       $scope.getRoles();
       $scope.getResources();
 
     };
 
-
     $scope.$watch(function () {
       return $('.table tr').length;
     }, function (newVal, oldVal) {
-
 
       $('.selectpicker').selectpicker();
 
@@ -136,7 +138,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
               }
             });
           }
-
         });
       });
     });
@@ -145,30 +146,48 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       angular.forEach($scope.resources, function (resourcevalue) {
         angular.forEach($scope.roles, function (rolevalue) {
           var path = '#resourceid_' + resourcevalue.resource_id + '_roleid_' + rolevalue.role_id;
-          if ($scope.rosourcerights[path]) {
-            if ($scope.rosourcerights[path].length !== $(path).val()) {
-              angular.forEach($(path).val(), function (rightid, key) {
-                  var oldrightid = $scope.rosourcerights[path][key];
-                  var newrightid = rightid;
-                  if(oldrightid && newrightid){
-                    if(oldrightid !== newrightid){
-                      var roleresourcerightdata = {
-                        'role_id': parseInt(rolevalue.role_id),
-                        'resourceright_id': parseInt(newrightid)
-                      };
-                      api.service('role_resourceright').data(roleresourcerightdata).update().then(function (result) {
-                        console.log(result, 'result');
-                      });
-                    }
-                  }
 
-                console.log(rightid, $scope.rosourcerights[path], $(path).val(), key);
-              });
-            }
+          if ($scope.rosourcerights[path]) {
+              var resourceid = resourcevalue.resource_id;
+              var roleid = rolevalue.role_id;
+            angular.forEach($(path).val(), function (rightid) {
+              if($scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]){
+               //exist
+              }else{
+
+                if(!$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]){
+                  console.log('is not',$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]);
+
+                  //this right has to be added
+                  var resourcerightdata = {
+                    'resource_id': parseInt(resourceid),
+                    'right_id': parseInt(rightid)
+                  };
+                  api.service('resource_right').data(resourcerightdata).save().then(function (result) {
+                    console.log(result, 'result');
+                    var roleresourcerightdata = {
+                      'role_id': parseInt(rolevalue.role_id),
+                      'resourceright_id': parseInt(result.id)
+                    };
+                    api.service('role_resourceright').data(roleresourcerightdata).save().then(function (result) {
+                    });
+                  });
+                }
+              }
+            });
+            angular.forEach($scope.rosourcerights[path], function (rightid) {
+              if(rightid!== $(path).val()[0] && rightid!== $(path).val()[1]
+                && rightid!== $(path).val()[2] && rightid!== $(path).val()[3]){
+                console.log('has tobe removed',rightid,$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]);
+                var resourceright_id =$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid].resourceright_id;
+                api.service('resource_right').id(resourceright_id).delete().then(function (result) {
+
+                });
+              }
+            });
           } else {
 
             if ($(path).val() && $(path).val().length > 0) {
-              console.log(resourcevalue.resource_id, rolevalue.role_id, $(path).val());
               angular.forEach($(path).val(), function (rightid) {
                 var resourcerightdata = {
                   'resource_id': parseInt(resourcevalue.resource_id),
@@ -181,7 +200,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
                     'resourceright_id': parseInt(result.id)
                   };
                   api.service('role_resourceright').data(roleresourcerightdata).save().then(function (result) {
-                    console.log(result, 'result');
                   });
                 });
               });

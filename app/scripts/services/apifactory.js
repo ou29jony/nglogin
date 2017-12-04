@@ -34,6 +34,10 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
       var deferred = $q.defer();
       api.service('role_resourceright').get().then(function (result) {
         APIConfig.alluserrights = result._embedded.role_resourceright;
+        angular.forEach(result._embedded.role_resourceright,function (value) {
+          APIConfig.alluserrightsIndexed['role_id_'+value.role_id+'_resource_id_'+value.resource_id+'_right_id_'+value.right_id] = value;
+        });
+        console.log(APIConfig.alluserrightsIndexed);
         deferred.resolve(APIConfig.alluserrights);
       });
       return deferred.promise;
@@ -43,6 +47,7 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
       api.service('resource_right').get().then(function (result) {
 
         APIConfig.resource_right = $filter('orderBy')(result._embedded.resource_right, 'resource_id', false);
+
         deferred.resolve(APIConfig.resource_right);
       });
       return deferred.promise;
