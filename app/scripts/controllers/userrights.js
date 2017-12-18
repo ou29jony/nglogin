@@ -19,11 +19,10 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
       var deferred = $q.defer();
 
       if (APIConfig.users.length===0) {
-        api.service('user').get().then(function (result) {
+        api.service('user').filter({'mandatid':$cookies.get('mandatid')}).get().then(function (result) {
           $scope.users = result._embedded.user;
           angular.forEach(result._embedded.user, function (value) {
             $scope.indexedUser[value.id] = value;
-
           });
           $scope.users = result._embedded.user;
           deferred.resolve($scope.users);
@@ -71,10 +70,7 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
       userpromise.then(function (users) {
         $scope.getUserRoles();
         $scope.getRoles();
-
       });
-
-
     };
 
     $scope.$watch(function () {

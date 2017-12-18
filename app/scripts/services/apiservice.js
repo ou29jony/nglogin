@@ -28,17 +28,22 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 
 		self.getResource = function () {
 
+		  if(APIConfig.url!=APIConfig.loginApiUrl ){
+
+       //APIConfig.url = APIConfig.loginApiUrl;
+      }
+
 			!tableid ? tableid = ':id' : null;
 
 			var loginApiUrl = APIConfig.url;
-			
+
 			return  $resource(
 				loginApiUrl + '/' + service + '/' + tableid,
 
 				filter,
 				{
 					'get':    {method: 'GET', isArray: false},
-					'save':   {method: 'POST', headers: {'Content-Type': 'application/json'}},
+					'save':   {method: 'POST', headers: {'Content-Type': 'application/json'},withCredentials : true},
 					'put': 	  {method: 'PUT', headers: {'Content-Type': 'application/json'}},
 					'update': {method: 'PATCH', headers: {'Content-Type': 'application/json'}},
 					'delete': {method: 'DELETE', isArray: false}
@@ -144,6 +149,4 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 			self.clearAll();
 			return deferred.promise;
 		};
-
-
 	}]);

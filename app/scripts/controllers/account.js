@@ -45,6 +45,7 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
       var id = $scope.user.id;
       data.id = undefined;
       data._links = undefined;
+      data.role = undefined;
       data.username = undefined;
       data.password = undefined;
 

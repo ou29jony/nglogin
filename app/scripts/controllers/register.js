@@ -2,9 +2,9 @@
 var app = angular
 .module('ngloginApp');
 
-app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route', 
+app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 	'$location', 'APIConfig', '$http', 'APIService','$timeout','$window','APIFactory',
-	function ($rootScope, $scope, $log, $route, 
+	function ($rootScope, $scope, $log, $route,
 		$location, APIConfig, $http, APIService,$timeout,$window,APIFactory) {
 
 		var api = APIService;
@@ -36,20 +36,38 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 						APIConfig.account = $scope.account;
 
-						api.service('user').data($scope.account).save().then(function(){
+						api.service('user').data($scope.account).save().then(function(savedUser){
 
-							$location.path('register');
+               var data =	{};
+              data.sendmail = true;
+              data.userid = savedUser.id;
+
+              api.service('mandat').data({'userid': data.userid}).save().then(function(result){
+
+              });
+
+              api.service('user_role').data({'user_id': data.userid,'role_id': 6}).save().then(function(result){
+
+              });
+              api.service('usersetting').filter(data).get().then(function() {
+                data = {};
+
+                $location.path('register');
+
+              },function (error) {
+                clickedcount = 0;
+                if(error.status ===-1){
+
+                  $location.path('register');
+                  $scope.hasError = false;
+
+                }
+              });
+
 							clickedcount = 0;
 
 						},function(error){
 
-							clickedcount = 0;
-							if(error.status ===-1){
-								
-								$location.path('register');
-								$scope.hasError = false;
-
-							}
 
 							if(error.status === 422){
 
@@ -66,7 +84,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 					}
 
 				}else{
-					
+
 					clickedcount = 0;
 					$scope.hasError = true;
 					$scope.message = "Die Passwörter Stimmen nicht überein";
@@ -78,20 +96,13 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 			if($scope.userid){
 
-				$http.get('scripts/settings.json').then(function (response) {
-
-					APIConfig.url = response.data.login_api_url;
-
 					api.service('user').id($scope.userid).get().then(function(user){
-
 
 						$scope.account  = user;
 					},function(){
 						$location.path('/');
 					});
 
-				});
-				
 			}else{
 				$location.path('/');
 			}
@@ -105,7 +116,7 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 			if(isValid){
 
 
-				var data = { 
+				var data = {
 					'department': $scope.account.department,
 					'ust_id' :$scope.account.ust_id,
 					'street' :$scope.account.street,
@@ -127,7 +138,6 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 			}else{
 
 			}
-
 			 //$window.location.href = APIConfig.mailston;
 			};
 			$scope.checkEmail = function(){
@@ -150,9 +160,9 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 			$scope.goBackTime = function(){
 
-				$timeout(function(){ 
+				$timeout(function(){
 					$location.path('/');
-				}, 5000);
+				}, 7000);
 			};
 
 			$scope.goBack = function(){
@@ -162,14 +172,6 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 			};
 
 			$scope.activate= function(){
-
-				$http.get('scripts/settings.json').then(function (response) {
-
-					APIConfig.url = response.data.login_api_url;
-					APIConfig.clientID = response.data.clientID;
-					APIConfig.b2c_emails = response.data.b2c_emails;
-					$rootScope.settings = response.data;
-					$rootScope.title = $rootScope.settings.title;
 
 					APIConfig.userid = $location.search().userid;
 					APIConfig.code   = $location.search().hash;
@@ -194,8 +196,8 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 						}
 					},function(){
 
-						$scope.hasError = true; 
+						$scope.hasError = true;
 					});
-				});
+
 			};
 		}]);

@@ -37,7 +37,6 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
         angular.forEach(result._embedded.role_resourceright,function (value) {
           APIConfig.alluserrightsIndexed['role_id_'+value.role_id+'_resource_id_'+value.resource_id+'_right_id_'+value.right_id] = value;
         });
-        console.log(APIConfig.alluserrightsIndexed);
         deferred.resolve(APIConfig.alluserrights);
       });
       return deferred.promise;

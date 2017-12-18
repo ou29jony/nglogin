@@ -156,7 +156,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
               }else{
 
                 if(!$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]){
-                  console.log('is not',$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]);
 
                   //this right has to be added
                   var resourcerightdata = {
@@ -164,7 +163,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
                     'right_id': parseInt(rightid)
                   };
                   api.service('resource_right').data(resourcerightdata).save().then(function (result) {
-                    console.log(result, 'result');
                     var roleresourcerightdata = {
                       'role_id': parseInt(rolevalue.role_id),
                       'resourceright_id': parseInt(result.id)
@@ -178,7 +176,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
             angular.forEach($scope.rosourcerights[path], function (rightid) {
               if(rightid!== $(path).val()[0] && rightid!== $(path).val()[1]
                 && rightid!== $(path).val()[2] && rightid!== $(path).val()[3]){
-                console.log('has tobe removed',rightid,$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid]);
                 var resourceright_id =$scope.alluserrightsIndexed['role_id_'+roleid+'_resource_id_'+resourceid+'_right_id_'+rightid].resourceright_id;
                 api.service('resource_right').id(resourceright_id).delete().then(function (result) {
 
@@ -194,7 +191,6 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
                   'right_id': parseInt(rightid)
                 };
                 api.service('resource_right').data(resourcerightdata).save().then(function (result) {
-                  console.log(result, 'result');
                   var roleresourcerightdata = {
                     'role_id': parseInt(rolevalue.role_id),
                     'resourceright_id': parseInt(result.id)

@@ -13,6 +13,7 @@ app.factory('APIConfig', [ function () {
  	'access_token': '',
     'refresh_token': '',
     'userid':null,
+    'mandatid':null,
     'indexedUser':[],
     'user_roles':[],
     'resources':[],
@@ -26,7 +27,9 @@ app.factory('APIConfig', [ function () {
     'mailsendshowpage':undefined,
     'history':[],
     'account':{'gender':'Herr'},
-    'b2c_emails':[]
+    'b2c_emails':[],
+
+      'loginApiUrl':'https://login-api.hptf.de'
 
 	};
 
