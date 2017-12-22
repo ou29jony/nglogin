@@ -120,5 +120,7 @@
   "save":"Speichern",
   "role":"Rolle",
   "user invite":"Benutzer einladen",
-  "invite user":"Benutzer einladen"
+  "invite user":"Benutzer einladen",
+
+  "logout":"Auslogen"
 }

@@ -31,7 +31,7 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
         var path = window.location.pathname.substring(0,window.location.pathname.indexOf('invite'));
       data.url =""+ window.location.origin
-        +path+'registration?company_name='+account.company_name;
+        +'/account/#!/registration?company_name='+account.company_name;
       if(account.street!=undefined){
         data.url = data.url+ '&street='+account.street;
       }
@@ -51,6 +51,11 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
          api.service('usersetting').filter(data).get().then(function (result) {
 
-      })
+      },function (error) {
+
+           if(error.status==-1){
+             $location.path('/account');
+           }
+         })
     };
   }]);

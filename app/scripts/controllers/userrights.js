@@ -80,6 +80,7 @@ app.controller('UserrightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$lo
     });
 
     $scope.saveOrUpdateUserRole = function (users) {
+
       for (var i = 0; i < $scope.users.length; i++) {
         if ($('#' + i + '_user_role') && $scope.users[i]) {
           var userID = $scope.users[i].id;

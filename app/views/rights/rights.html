@@ -13,7 +13,12 @@
       <td ng-show="resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_title" colspan="7" class="right_title">{{resource.titlename | translate}}</td>
       <td ng-show="!resource.titlename" id="resourceid_{{resource.resource_id}}_roleid_resource"  class="right_not_title" >{{resource.resource_desc | translate}}</td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_1" multiple title="Das Recht">
+        <select class="selectpicker"
+                name="role_1"
+                id="resourceid_{{resource.resource_id}}_roleid_1"
+                multiple title="Das Recht"
+                ng-disabled="user.role_id>1"
+                 >
           <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
           <option value="3">{{'write' |translate}}</option>
@@ -21,7 +26,11 @@
         </select>
       </td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_2" multiple title="Das Recht">
+        <select class="selectpicker"
+                name="role_2"
+                id="resourceid_{{resource.resource_id}}_roleid_2"
+                ng-disabled="user.role_id>1"
+                multiple title="Das Recht">
           <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
           <option value="3">{{'write' |translate}}</option>
@@ -29,31 +38,10 @@
         </select>
       </td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_3" multiple title="Das Recht">
-          <option value="1">{{'read'| translate}}</option>
-          <option value="2">{{'edit' |translate}}</option>
-          <option value="3">{{'write' |translate}}</option>
-          <option value="4">{{'delete' |translate}}</option>
-        </select>
-      </td>
-      <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_4" multiple title="Das Recht">
-          <option value="1">{{'read'| translate}}</option>
-          <option value="2">{{'edit' |translate}}</option>
-          <option value="3">{{'write' |translate}}</option>
-          <option value="4">{{'delete' |translate}}</option>
-        </select>
-      </td>
-      <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_5" multiple title="Das Recht">
-          <option value="1">{{'read'| translate}}</option>
-          <option value="2">{{'edit' |translate}}</option>
-          <option value="3">{{'write' |translate}}</option>
-          <option value="4">{{'delete' |translate}}</option>
-        </select>
-      </td>
-      <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_1" id="resourceid_{{resource.resource_id}}_roleid_6" multiple title="Das Recht">
+        <select class="selectpicker" name="role_3"
+                id="resourceid_{{resource.resource_id}}_roleid_3"
+                multiple title="Das Recht"
+                ng-disabled="user.role_id>1">
           <option value="1">{{'read'| translate}}</option>
           <option value="2">{{'edit' |translate}}</option>
           <option value="3">{{'write' |translate}}</option>

@@ -76,8 +76,10 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$log', '$route', '$locatio
                       APIConfig.user = rslt._embedded.user[0];
                       APIConfig.userid = rslt._embedded.user[0].id;
                       APIConfig.mandatid = rslt._embedded.user[0].mandatid;
+                      rslt._embedded.user[0].password = undefined;
+                      $cookies.putObject('useraccount', rslt._embedded.user[0]);
                       $cookies.put('mandatid', APIConfig.mandatid);
-                      fac.setCookie('userid', APIConfig.userid,12);
+                      $cookies.put('userid', APIConfig.userid,12);
                       if(url === undefined){
                        //$window.history.back();
                        $location.path('account');

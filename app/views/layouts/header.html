@@ -1,0 +1,36 @@
+<div class="">
+  <div id="DIV_2" >
+    <div id="DIV_4">
+      <div id="DIV_5">
+        <div id="DIV_6">
+          <a href="https://highpots-next.hptf.de/" id="A_7" >
+            <img src="//highpots-next.hptf.de/wp-content/uploads/2017/03/Logo_HighPots_weissrot_hq-e1489580926641.png"  height="44" alt="Highpots" id="IMG_8" />
+          </a>
+          <!-- mobile logo -->
+          <!-- sticky header logo -->
+        </div>
+        <nav id="NAV_10"  >
+          <ul id="UL_11" class="nav">
+            <div
+              class="pull-right" style="color:white;padding-top: 14px;">
+              {{user.firstname}} {{user.lastname}}
+            </div>
+            <div class="pull-right btn-group show" ng-class="{'open show':showdropdown}" ng-mouseenter="showdropdown=true" >
+              <a ng-href="#!/account" data-toggle="dropdown" id="A_52"   class="a_active "
+                 ng-mouseover="showdropdown=true"  >
+                <i class="fa fa-user-circle " aria-hidden="true"></i>
+              </a>
+              <div ng-show="showdropdown" class="dropdown-menu" ng-mouseleave="showdropdown=false">
+                <a class="dropdown-item"     ng-click="logout()" >   {{'logout' |translate }}</a>
+              </div>
+            </div>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div id="DIV_106" ng-init="menuclick=false"  >
+  </div>
+
+</div>

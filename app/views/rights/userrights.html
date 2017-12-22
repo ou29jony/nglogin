@@ -21,8 +21,8 @@
       </td >
       <td >
 
-        <select class="selectpicker"   id="{{user.id}}_user_role" selected="4" >
-          <option  ng-repeat="role in roles"    value="{{role.role_id}}">{{role.role_name |translate}}</option>
+        <select class="selectpicker"   id="{{user.id}}_user_role" selected="4" ng-disabled="user.role_id>2" >
+          <option  ng-repeat="role in roles "  ng-if="user.role_id<=role.role_id"   value="{{role.role_id}}">{{role.role_name |translate}}</option>
         </select>
       </td>
     </tr>
