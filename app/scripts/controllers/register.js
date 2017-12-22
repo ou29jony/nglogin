@@ -19,6 +19,28 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 		var clickedcount = 0;
 
+
+		$scope.initRegister = function () {
+
+      $scope.inviteduser = {
+        mandatid      : $location.search().mandatid,
+        company_name  : $location.search().company_name,
+        roleid        : $location.search().roleid,
+        rolename      : $location.search().rolename,
+        street : $location.search().street==null ? undefined:$location.search().street,
+        ust_id : $location.search().ust_id,
+        ort : $location.search().ort,
+        plz : $location.search().plz,
+        product : $location.search().product
+      };
+
+      $scope.account.company_name= $scope.inviteduser.company_name;
+      $scope.account.street= $scope.inviteduser.street;
+      $scope.account.ust_id= $scope.inviteduser.ust_id;
+      $scope.account.ort= $scope.inviteduser.ort;
+      $scope.account.plz= $scope.inviteduser.plz;
+    };
+
 		$scope.saveUser = function(isValid){
 
 			$scope.clicked  = true;
@@ -40,10 +62,21 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
                var data =	{};
               data.sendmail = true;
+
               data.userid = savedUser.id;
 
-              api.service('mandat').data({'userid': data.userid}).save().then(function(result){
+              var mandatdata = {'userid': data.userid};
 
+              if($location.search().mandatid){
+                mandatdata.mandatid = $location.search().mandatid;
+              }
+              api.service('mandat').data(mandatdata).save().then(function(result){
+
+                if(!$location.search().mandatid){
+                  api.service('mandat').id(result.id).data({'mandatid': result.id}).update().then(function(result){
+
+                  });
+                }
               });
 
               api.service('user_role').data({'user_id': data.userid,'role_id': 6}).save().then(function(result){

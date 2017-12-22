@@ -42,6 +42,8 @@
         <li role="presentation" ng-class="{'active':path=='/account' || path =='/changeaccount'}"><a href="#!/account" class="local_navi">{{'Profile' |translate}}</a></li>
         <li role="presentation" ng-class="{'active':path=='/rights'}" ><a href="#!/rights" class="local_navi">{{'Rights' | translate}}</a></li>
         <li role="presentation" ng-class="{'active':path=='/userrights'}"><a href="#!/userrights" class="local_navi">{{'Userrights' | translate}}</a></li>
+        <li role="presentation" ng-class="{'active':path=='/invite'}"><a href="#!/invite" class="local_navi">{{'user invite' | translate}}</a></li>
+
       </ul>
       <br>
       <div ng-view=""></div>
@@ -115,6 +117,7 @@
   <script src="scripts/controllers/payment.js"></script>
   <script src="scripts/controllers/rights.js"></script>
     <script src="scripts/controllers/userrights.js"></script>
+    <script src="scripts/controllers/invite.js"></script>
 
 
 

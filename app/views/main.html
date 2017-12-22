@@ -32,14 +32,17 @@
               <label for="ap_email">
                 {{'email' | translate}}
               </label>
-              <input ng-model="login.email" type="email" ng-maxlength="128" id="ap_email" name="email" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <input ng-model="login.email" type="email"
+                     ng-maxlength="128" id="ap_email"
+                     name="email" tabindex="1"
+                     class="a-input-text a-span12 auth-autofocus auth-required-field" required>
               <div ng-show="loginform.email.$touched && loginform.email.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
 
                   </i>
                   <div class="a-alert-content">
-                   {{'write your email' | translate}} 
+                   {{'write your email' | translate}}
                  </div>
                </div>
              </div>
@@ -49,12 +52,12 @@
             <div class="a-row">
               <div class="a-column a-span5">
                 <label for="ap_password">
-                 {{'password' | translate}} 
+                 {{'password' | translate}}
                </label>
              </div>
              <div class="a-column a-span7 a-text-right a-span-last">
               <a id="auth-fpp-link-bottom" class="a-spacing-null a-link-normal" ng-href="#!/lostpass">
-                {{'lost password' | translate}} 
+                {{'lost password' | translate}}
               </a>
             </div>
           </div>

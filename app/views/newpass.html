@@ -24,7 +24,7 @@
 						</h1>
 						<!-- optional subheading element -->
 						<div class="a-row a-spacing-base">
-							<label for="ap_password">
+							<label for="ap_password1">
 								{{'new password'|translate}}
 							</label>
 							<input ng-model="user.password1" type="password" ng-minlength="8" ng-maxlength="128" id="ap_password" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field highpots_input" required>
@@ -50,7 +50,7 @@
 									<div class="a-alert-content" ng-hide="newpassform.password2.$valid">
 									{{newpassform.password2.$valid}}
 										{{'password must be at least 8 characters' |translate}}
-								 
+
 									</div>
 									<div class="a-alert-content" ng-show="user.password2 != user.password1 && newpassform.password2.$valid ">
 										{{'The passwords do not match' |translate}}

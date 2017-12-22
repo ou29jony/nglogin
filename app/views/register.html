@@ -1,4 +1,4 @@
-             <form name="accountform" role="form"   class=""   ng-submit=""  novalidate>
+             <form name="accountform" role="form"   class=""   ng-submit="" ng-init="initRegister()" novalidate>
               <div class="col-lg-12">
                 <div class="">
                   <div class="a-section auth-pagelet-container big_box_length">
@@ -28,7 +28,7 @@
                           {{'create Account' | translate}}
                         </h1>
                         <span class="star_size"> {{'*' | translate}} </span>
-                        <span >{{'Pflichtfelder' | translate}}</span> 
+                        <span >{{'Pflichtfelder' | translate}}</span>
                         <!-- optional subheading element -->
                         <div class="a-row a-spacing-base ">
                           <div class="radio" name="gender">
@@ -59,7 +59,6 @@
                                </div>
                              </div>
                            </div>
-
                            <div class="col-lg-6">
                              <div class="a-row a-spacing-base">
                                <span class="star_size"> {{'*' | translate}} </span>
@@ -72,7 +71,7 @@
                                   <i class="a-icon a-icon-alert">
                                   </i>
                                   <div class="a-alert-content">
-                                   {{'Please enter your last name' | translate}} 
+                                   {{'Please enter your last name' | translate}}
                                  </div>
                                </div>
                              </div>
@@ -86,7 +85,7 @@
                          <div class="a-row a-spacing-base">
                            <span class="star_size"> {{'*' | translate}} </span>
                            <label for="ap_password1">
-                            {{'password' | translate}} 
+                            {{'password' | translate}}
                           </label>
                           <input ng-model="account.password1" type="password" ng-minlength="8"  ng-maxlength="128" id="ap_password1" name="password1" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
                           <div ng-show="(accountform.password1.$dirty  || clicked) && accountform.password1.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
@@ -105,7 +104,7 @@
                        <div class="a-row a-spacing-base">
                          <span class="star_size"> {{'*' | translate}} </span>
                          <label for="ap_password2">
-                          {{'again password' | translate}} 
+                          {{'again password' | translate}}
                         </label>
                         <input ng-model="account.password2" type="password" ng-minlength="8"  ng-maxlength="128" id="ap_password2" name="password2" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
                         <div ng-show="((accountform.password2.$dirty )
@@ -130,16 +129,21 @@
                 <label for="ap_email">
                  {{'Your business e-mail address' | translate}}
                </label>
-               <input ng-model="account.username" type="email" ng-keydown="mailcheck = checkEmail();" ng-maxlength="128" id="ap_email" name="username" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+               <input ng-model="account.username" type="email"
+                      ng-keydown="mailcheck = checkEmail();" ng-maxlength="128"
+                      id="ap_email" name="username"
+                      tabindex="1"
+                      ng-pattern="/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/"
+                      class="a-input-text a-span12 auth-autofocus auth-required-field" required>
                <div ng-show="(accountform.username.$dirty || clicked) && (accountform.username.$invalid || mailcheck)"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
                   </i>
                   <div  ng-show="!mailcheck" class="a-alert-content">
-                    {{'Please enter your business e-mail address' | translate}} 
+                    {{'Please enter your business e-mail address' | translate}}
                   </div>
                   <div ng-show="mailcheck" class="a-alert-content">
-                    {{'mailcheck' | translate}} 
+                    {{'mailcheck' | translate}}
                   </div>
                 </div>
               </div>
@@ -149,13 +153,19 @@
                 <span class="star_size"> {{'*' | translate}} </span>
                 {{'Which company do you work for?' | translate}}
               </label>
-              <input ng-model="account.company_name" type="text" ng-maxlength="128" id="ap_company_name" name="company_name" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+              <input ng-model="account.company_name" type="text"
+                     ng-maxlength="128"
+                     id="ap_company_name"
+                     name="company_name"
+                     tabindex="1"
+                     class="a-input-text a-span12 auth-autofocus auth-required-field"
+                      required>
               <div ng-show="(accountform.company_name.$dirty  || clicked) && accountform.company_name.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
                   </i>
                   <div class="a-alert-content">
-                   {{'Please enter your company name' | translate}} 
+                   {{'Please enter your company name' | translate}}
                  </div>
                </div>
              </div>
@@ -167,7 +177,10 @@
                 <label for="ap_department">
                   {{'In which department are you employed?' | translate}}
                 </label>
-                <input ng-model="account.department" type="text" ng-maxlength="128" id="ap_department" name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+                <input ng-model="account.department" type="text"
+                       ng-maxlength="128"
+                       id="ap_department"
+                       name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
               </div>
             </div>
             <div class="col-lg-6">
@@ -176,14 +189,14 @@
                 {{'USt.ID' | translate}}
               </label>
 
-              <input ng-model="account.ust_id" type="text" ng-maxlength="128" id="ap_ustdid" 
+              <input ng-model="account.ust_id" type="text" ng-maxlength="128" id="ap_ustdid"
               ng-pattern="/^[a-z,A-Z]{1}[a-z,A-Z]{1}..[0-9]*$/" name="ust_id" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
               <div ng-show="(accountform.ust_id.$dirty || clicked) && accountform.ust_id.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
                   </i>
                   <div  class="a-alert-content">
-                   {{'Please enter your USt.ID' | translate}} 
+                   {{'Please enter your USt.ID' | translate}}
                  </div>
                </div>
              </div>
@@ -251,12 +264,12 @@
       <span class="a-button-inner">
         <input  ng-click="saveUser(accountform.$valid);" id="signInSubmit" tabindex="5" class="a-button-input" type="submit" aria-labelledby="a-autoid-0-announce">
         <span class="a-button-text" aria-hidden="true" id="a-autoid-0-announce">
-          {{'new account' | translate}} 
+          {{'new account' | translate}}
         </span>
       </span>
     </span>
   </div>
-  
+
   <span id="auth-create-account-link" class="a-button a-button-span12">
     <span class="a-button-inner">
       <a id="createAccountSubmit" tabindex="6" href="#!/" class="a-button-text" role="button">

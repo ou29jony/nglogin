@@ -1,0 +1,40 @@
+
+<div class="container-fluid" ng-init="getUser();">
+  <div class="row">
+    <div class="col-md-12 ">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+
+          <div class="row">
+            <div class="col-lg-2"><h4>{{'user invite ' |translate}}</h4></div>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="box box-info">
+            <div class="box-body">
+
+              <div class="clearfix"></div>
+              <hr style="margin:5px 0 5px 0;">
+
+              <div class="col-sm-5 col-xs-6 tital ">{{'email' |translate}}</div>
+              <input type="text" ng-model="inviteduser.email" value="{{inviteduser.email}}" class="col-sm-7 col-xs-6 ">
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " ></div>
+              <button type="button" class="btn highpots_red pull-right" ng-click="inviteUser(inviteduser);"  >{{'invite user' | translate}}</button>
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -118,5 +118,7 @@
   "Genre":"Geschlecht",
 
   "save":"Speichern",
-  "role":"Rolle"
+  "role":"Rolle",
+  "user invite":"Benutzer einladen",
+  "invite user":"Benutzer einladen"
 }
