@@ -19,7 +19,6 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
 
 		var clickedcount = 0;
 
-
 		$scope.initRegister = function () {
 
       $scope.inviteduser = {

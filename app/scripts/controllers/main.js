@@ -66,4 +66,6 @@ $scope.logout = function () {
 
     });
   });
+
+
 }]);

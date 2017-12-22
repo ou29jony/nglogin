@@ -9,31 +9,35 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
     var api = APIService;
     var fac= APIFactory;
-    $scope.roles = $cookies.getObject('roles');
+    $scope.roles = APIConfig.roles;
     $scope.userrole = {};
     $scope.userinvite = {};
     $scope.userinvite.body ="Sie sind im Marketing Dashboard Plattform eingeladen";
 
-    $scope.getUser = function () {
+    $scope.getAllInviteData = function () {
 
       if(!$cookies.get('userid')){
         $location.path('/');
-
       }
 
+      if($scope.roles.length===0){
+        APIConfig.roles  = $cookies.getObject('roles');
+        $scope.roles =   APIConfig.roles;
+      }
     };
+
     $scope.inviteUser = function (inviteduser) {
           var data = inviteduser;
 
           data.inviteuser = true;
           data.username = data.email;
 
-          var account =  $cookies.getObject('useraccount');
+         var account =  $cookies.getObject('useraccount');
          data.firstname = account.firstname;
          data.lastname = account.lastname;
 
-        var path = window.location.pathname.substring(0,window.location.pathname.indexOf('invite'));
-      data.url =""+ window.location.origin
+         var path = window.location.pathname.substring(0,window.location.pathname.indexOf('invite'));
+         data.url =""+ window.location.origin
         +'/account/#!/registration?company_name='+account.company_name;
       if(account.street!=undefined){
         data.url = data.url+ '&street='+account.street;
@@ -49,20 +53,23 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       }
 
        data.role_id = $('#'+$scope.user.id+'_user_role').val();
-        var mandatid = $cookies.get('mandatid');
+       var mandatid = $cookies.get('mandatid');
        data.url = data.url+ '&mandatid='+mandatid;
-      data.url = data.url+ '&product=Marketing Dashboard';
-      data.url = data.url+ '&role_id='+data.role_id;
-
-      console.log(data);
-
-         api.service('usersetting').filter(data).get().then(function (result) {
-
+       data.url = data.url+ '&product=Marketing Dashboard';
+       data.url = data.url+ '&role_id='+data.role_id;
+       api.service('usersetting').filter(data).get().then(function (result) {
       },function (error) {
-
            if(error.status==-1){
              $location.path('/account');
            }
          })
     };
+
+    $scope.$watch(function () {
+      return $('.selectpicker').length;
+    }, function (newVal,oldVal) {
+      if(newVal===2){
+       $window.location.reload();
+      }
+    });
   }]);

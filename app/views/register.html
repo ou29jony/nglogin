@@ -59,6 +59,7 @@
                                </div>
                              </div>
                            </div>
+
                            <div class="col-lg-6">
                              <div class="a-row a-spacing-base">
                                <span class="star_size"> {{'*' | translate}} </span>
@@ -129,12 +130,7 @@
                 <label for="ap_email">
                  {{'Your business e-mail address' | translate}}
                </label>
-               <input ng-model="account.username" type="email"
-                      ng-keydown="mailcheck = checkEmail();" ng-maxlength="128"
-                      id="ap_email" name="username"
-                      tabindex="1"
-                      ng-pattern="/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/"
-                      class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+               <input ng-model="account.username" type="email" ng-keydown="mailcheck = checkEmail();" ng-maxlength="128" id="ap_email" name="username" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
                <div ng-show="(accountform.username.$dirty || clicked) && (accountform.username.$invalid || mailcheck)"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
@@ -159,7 +155,9 @@
                      name="company_name"
                      tabindex="1"
                      class="a-input-text a-span12 auth-autofocus auth-required-field"
-                      required>
+                     ng-disabled="inviteduser.company_name!=undefined"
+                     ng-class="{'disabled_input':inviteduser.company_name!=undefined}"
+                     required>
               <div ng-show="(accountform.company_name.$dirty  || clicked) && accountform.company_name.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
@@ -177,10 +175,7 @@
                 <label for="ap_department">
                   {{'In which department are you employed?' | translate}}
                 </label>
-                <input ng-model="account.department" type="text"
-                       ng-maxlength="128"
-                       id="ap_department"
-                       name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+                <input ng-model="account.department" type="text" ng-maxlength="128" id="ap_department" name="department" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
               </div>
             </div>
             <div class="col-lg-6">
@@ -189,8 +184,15 @@
                 {{'USt.ID' | translate}}
               </label>
 
-              <input ng-model="account.ust_id" type="text" ng-maxlength="128" id="ap_ustdid"
-              ng-pattern="/^[a-z,A-Z]{1}[a-z,A-Z]{1}..[0-9]*$/" name="ust_id" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+              <input ng-model="account.ust_id"
+                     type="text"
+                     ng-maxlength="128"
+                     id="ap_ustdid"
+                     ng-pattern="/^[a-z,A-Z]{1}[a-z,A-Z]{1}..[0-9]*$/" name="ust_id"
+                     tabindex="1"
+                     ng-disabled="inviteduser.ust_id!=undefined"
+                     ng-class="{'disabled_input':inviteduser.ust_id!=undefined}"
+                     class="a-input-text a-span12 auth-autofocus auth-required-field" >
               <div ng-show="(accountform.ust_id.$dirty || clicked) && accountform.ust_id.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">
@@ -209,7 +211,12 @@
             <label for="ap_street">
               {{'street' | translate}}
             </label>
-            <input ng-model="account.street" type="text" ng-maxlength="128" id="ap_street" name="street" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+            <input ng-model="account.street" type="text"
+                   ng-maxlength="128"
+                   id="ap_street" name="street"
+                   ng-disabled="inviteduser.street!=undefined"
+                   ng-class="{'disabled_input':inviteduser.street!=undefined}"
+                   tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
           </div>
         </div>
         <div class="col-lg-6">
@@ -217,7 +224,12 @@
             <label for="ap_ort">
               {{'ort' | translate}}
             </label>
-            <input ng-model="account.ort" type="text" ng-maxlength="128" id="ap_ort" name="ort" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+            <input ng-model="account.ort" type="text"
+                   ng-maxlength="128" id="ap_ort"
+                   name="ort" tabindex="1"
+                   class="a-input-text a-span12 auth-autofocus auth-required-field"
+                   ng-disabled="inviteduser.ort!=undefined"
+                   ng-class="{'disabled_input':inviteduser.ort!=undefined}" >
           </div>
         </div>
       </div>
@@ -227,7 +239,12 @@
             <label for="ap_plz">
               {{'plz' | translate}}
             </label>
-            <input ng-model="account.plz" type="text" ng-maxlength="128" id="ap_plz" name="plz" ng-pattern="/^[0-9]+$/" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" >
+            <input ng-model="account.plz" type="text"
+                   ng-maxlength="128" id="ap_plz"
+                   name="plz" ng-pattern="/^[0-9]+$/"
+                   tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field"
+                   ng-disabled="inviteduser.plz!=undefined"
+                   ng-class="{'disabled_input':inviteduser.plz!=undefined}">
             <div ng-show="(accountform.plz.$dirty) && accountform.plz.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
               <div class="a-box-inner a-alert-container">
                 <i class="a-icon a-icon-alert">
@@ -244,7 +261,12 @@
           <label for="ap_phone">
             {{'phone' | translate}}
           </label>
-          <input ng-model="account.phone" type="text" ng-maxlength="128" id="ap_phone" ng-pattern="/^[+]{0,1}[0-9]+([-, ,\\,/][0-9]*)*$/"  name="phone" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
+          <input ng-model="account.phone"
+                 type="text"
+                 ng-maxlength="128"
+
+                 id="ap_phone"
+                 ng-pattern="/^[+]{0,1}[0-9]+([-, ,\\,/][0-9]*)*$/"  name="phone" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field">
           <div ng-show="(accountform.phone.$dirty) && accountform.phone.$invalid"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
             <div class="a-box-inner a-alert-container">
               <i class="a-icon a-icon-alert">
