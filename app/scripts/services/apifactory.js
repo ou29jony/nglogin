@@ -1,8 +1,8 @@
 "use strict" ;
 var app = angular.module('ngloginApp');
 
-app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
-	function APIFactoryProvider(APIService,APIConfig,$q,$filter) {
+app.service('APIFactory', ['APIService','APIConfig','$q','$filter','$cookies',
+	function APIFactoryProvider(APIService,APIConfig,$q,$filter,$cookies) {
 
 		var self = {};
 		var api = APIService;
@@ -32,7 +32,9 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
 
     self.getAllRightsData = function () {
       var deferred = $q.defer();
-      api.service('role_resourceright').get().then(function (result) {
+      var user = $cookies.getObject('useraccount');
+
+      api.service('role_resourceright').filter({'mid':user.mandatid}).get().then(function (result) {
         APIConfig.alluserrights = result._embedded.role_resourceright;
         angular.forEach(result._embedded.role_resourceright,function (value) {
           APIConfig.alluserrightsIndexed['role_id_'+value.role_id+'_resource_id_'+value.resource_id+'_right_id_'+value.right_id] = value;
@@ -43,7 +45,9 @@ app.service('APIFactory', ['APIService','APIConfig','$q','$filter',
     };
     self.getAllResourceRight = function () {
       var deferred = $q.defer();
-      api.service('resource_right').get().then(function (result) {
+      var user = $cookies.getObject('useraccount');
+
+      api.service('resource_right').filter({'mid':user.mandatid}).get().then(function (result) {
 
         APIConfig.resource_right = $filter('orderBy')(result._embedded.resource_right, 'resource_id', false);
 

@@ -18,23 +18,12 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
     $scope.alluserrightsIndexed = APIConfig.alluserrightsIndexed;
     $scope.resource_right = APIConfig.resource_right;
 
-    if ($scope.alluserrights.length===0) {
-      fac.getAllRightsData().then(function (result) {
-        $scope.alluserrights = result;
-      });
-    }
-    if (!$scope.resource_right) {
-      fac.getAllResourceRight().then(function (result) {
-        $scope.resource_right = result;
-      });
-    }
-
-
     $scope.getAllRightsForResourceAndRoleID = function (resourceid, roleid) {
       var rights = [];
       var deferred = $q.defer();
-      for (var i = 0; i < $scope.alluserrights.length; i++) {
-        var onevalue = $scope.alluserrights[i];
+
+      for (var i = 0; APIConfig.alluserrights && i <  APIConfig.alluserrights.length; i++) {
+        var onevalue = APIConfig.alluserrights[i];
         if (onevalue.role_id === roleid && onevalue.resource_id === resourceid) {
           if (!rights[onevalue.right_id]) {
 
@@ -48,7 +37,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
             );
           }
         }
-        if (i === $scope.alluserrights.length - 1) {
+        if (i === APIConfig.alluserrights.length - 1) {
           deferred.resolve(rights);
         }
       }
@@ -56,32 +45,40 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
     };
 
     $scope.getResources = function () {
+      var defered = $q.defer();
       if (APIConfig.resources.length === 0) {
         api.service('resources').get().then(function (result) {
           $scope.resources = result._embedded.resources;
           resourceTitleIndex();
           APIConfig.resources = $scope.resources;
+          defered.resolve(APIConfig.resources);
         });
       } else {
         $scope.resources = APIConfig.resources;
+        defered.resolve(APIConfig.resources);
       }
+      return  defered.promise;
     };
     $scope.getRoles = function () {
+      var defered = $q.defer();
 
       if (!$cookies.getObject('roles') && APIConfig.roles.length === 0) {
         api.service('roles').get().then(function (result) {
           $scope.roles = result._embedded.roles;
           APIConfig.roles = $scope.roles;
-          $cookies.putObject('roles', $scope.roles)
-
+          $cookies.putObject('roles', $scope.roles);
+          defered.resolve($scope.roles);
         });
       } else {
         if (APIConfig.roles.length !== 0) {
           $scope.roles = APIConfig.roles;
+          defered.resolve($scope.roles);
         } else {
           $scope.roles = $cookies.getObject('roles');
+          defered.resolve($scope.roles);
         }
       }
+      return defered.promise;
     };
 
     var resourceTitleIndex = function () {
@@ -99,17 +96,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
     };
 
-    $scope.getAllData = function () {
-      $scope.getRoles();
-      $scope.getResources();
-
-    };
-
-    $scope.$watch(function () {
-      return $('.table tr').length;
-    }, function (newVal, oldVal) {
-
-      $('.selectpicker').selectpicker();
+    $scope.setResourceRights = function (resourcevalue,rolevalue) {
 
       angular.forEach($scope.resources, function (resourcevalue) {
         angular.forEach($scope.roles, function (rolevalue) {
@@ -118,6 +105,7 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
             var rightspromise = $scope.getAllRightsForResourceAndRoleID(resourcevalue.resource_id, rolevalue.role_id);
             rightspromise.then(function (rights) {
+
               if (rights.length > 0) {
                 var localrights = [];
                 if (rights[1]) {
@@ -134,15 +122,47 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
                 }
                 var path = '#resourceid_' + resourcevalue.resource_id + '_roleid_' + rolevalue.role_id;
                 $scope.rosourcerights[path] = localrights;
+
                 $(path).selectpicker('val', localrights);
               }
             });
           }
         });
       });
-    });
+    };
+    $scope.getAllData = function () {
+      var  rolpromise = $scope.getRoles();
+      var respromise = $scope.getResources();
 
+      $q.all([rolpromise,respromise]).then(function (resprmises) {
+        if (APIConfig.alluserrights.length === 0) {
+          var userrightpromise = fac.getAllRightsData();
+        }
+        if (!$scope.resource_right) {
+          var resrightpromiuse = fac.getAllResourceRight();
+        }
+
+        $q.all([userrightpromise, resrightpromiuse]).then(function (resprmises) {
+
+          $scope.alluserrights = resprmises[0];
+          $scope.resource_right = resprmises[1];
+
+          $scope.setResourceRights($scope.resources, $scope.roles);
+        });
+      });
+    };
+
+    $scope.$watch(function () {
+      return $('.table tr').length;
+    }, function (newVal,oldVal) {
+
+      $('.selectpicker').selectpicker();
+      if(newVal>1){
+        $scope.getAllData();
+      }
+    });
     $scope.saveOrUpdateResourceRights = function () {
+      if($scope.user.role_id==1)
       angular.forEach($scope.resources, function (resourcevalue) {
         angular.forEach($scope.roles, function (rolevalue) {
           var path = '#resourceid_' + resourcevalue.resource_id + '_roleid_' + rolevalue.role_id;
@@ -160,12 +180,14 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
                   //this right has to be added
                   var resourcerightdata = {
                     'resource_id': parseInt(resourceid),
-                    'right_id': parseInt(rightid)
+                    'right_id': parseInt(rightid),
+                    'mid': parseInt($scope.user.mandatid)
                   };
                   api.service('resource_right').data(resourcerightdata).save().then(function (result) {
                     var roleresourcerightdata = {
                       'role_id': parseInt(rolevalue.role_id),
-                      'resourceright_id': parseInt(result.id)
+                      'resourceright_id': parseInt(result.id),
+                      'mid': parseInt($scope.user.mandatid)
                     };
                     api.service('role_resourceright').data(roleresourcerightdata).save().then(function (result) {
                     });
@@ -188,12 +210,14 @@ app.controller('RightsCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
               angular.forEach($(path).val(), function (rightid) {
                 var resourcerightdata = {
                   'resource_id': parseInt(resourcevalue.resource_id),
-                  'right_id': parseInt(rightid)
+                  'right_id': parseInt(rightid),
+                  'mid': parseInt($scope.user.mandatid)
                 };
                 api.service('resource_right').data(resourcerightdata).save().then(function (result) {
                   var roleresourcerightdata = {
                     'role_id': parseInt(rolevalue.role_id),
-                    'resourceright_id': parseInt(result.id)
+                    'resourceright_id': parseInt(result.id),
+                    'mid': parseInt($scope.user.mandatid)
                   };
                   api.service('role_resourceright').data(roleresourcerightdata).save().then(function (result) {
                   });

@@ -9,19 +9,22 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
     var api = APIService;
     var fac= APIFactory;
-    $scope.user = {};
+    $scope.roles = $cookies.getObject('roles');
     $scope.userrole = {};
     $scope.userinvite = {};
     $scope.userinvite.body ="Sie sind im Marketing Dashboard Plattform eingeladen";
 
     $scope.getUser = function () {
 
-      if(!$cookies.get('userid'))
+      if(!$cookies.get('userid')){
         $location.path('/');
+
+      }
 
     };
     $scope.inviteUser = function (inviteduser) {
           var data = inviteduser;
+
           data.inviteuser = true;
           data.username = data.email;
 
@@ -45,9 +48,13 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
         data.url = data.url+ '&plz='+account.plz;
       }
 
+       data.role_id = $('#'+$scope.user.id+'_user_role').val();
         var mandatid = $cookies.get('mandatid');
        data.url = data.url+ '&mandatid='+mandatid;
       data.url = data.url+ '&product=Marketing Dashboard';
+      data.url = data.url+ '&role_id='+data.role_id;
+
+      console.log(data);
 
          api.service('usersetting').filter(data).get().then(function (result) {
 

@@ -38,8 +38,8 @@
         </select>
       </td>
       <td ng-show="!resource.titlename" >
-        <select class="selectpicker" name="role_3"
-                id="resourceid_{{resource.resource_id}}_roleid_3"
+        <select class="selectpicker" name="role_6"
+                id="resourceid_{{resource.resource_id}}_roleid_6"
                 multiple title="Das Recht"
                 ng-disabled="user.role_id>1">
           <option value="1">{{'read'| translate}}</option>
@@ -51,7 +51,7 @@
     </tr>
     </tbody>
   </table>
-  <div class="continer">
+  <div class="continer" ng-show="user.role_id==1">
     <button type="button"class="btn pull-right col-lg-2" ng-click="saveOrUpdateResourceRights()" >{{'save' | translate}}</button>
   </div>
 </div>

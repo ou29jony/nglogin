@@ -15,6 +15,7 @@ app.factory('APIConfig', [ function () {
     'userid':null,
     'mandatid':null,
     'indexedUser':[],
+    'rosourcerights':[],
     'user_roles':[],
     'resources':[],
     'users':[],
