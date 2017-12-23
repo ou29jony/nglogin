@@ -11,6 +11,7 @@ app.factory('APIConfig', [ function () {
 	'url':'',
     'url_local':'',
  	'access_token': '',
+    'invitepage':false,
     'refresh_token': '',
     'userid':null,
     'mandatid':null,

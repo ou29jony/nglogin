@@ -20,7 +20,7 @@
               <div class="clearfix"></div>
               <div class="bot-border"></div>
               <div class="col-sm-5 col-xs-6 tital ">{{'role' |translate}}</div>
-              <select class="selectpicker"    id="{{user.id}}_user_role" selected="4" ng-disabled="user.role_id>2" >
+              <select class="selectpicker"   id="invite_user_role" selected="4" ng-disabled="user.role_id>2" >
                 <option  ng-repeat="role in roles "  ng-if="user.role_id<=role.role_id"   value="{{role.role_id}}">{{role.role_name |translate}}</option>
               </select>
               <div class="clearfix"></div>

@@ -9,13 +9,13 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
 
     var api = APIService;
     var fac= APIFactory;
+
     $scope.user = {};
     $scope.userrole = {};
     $scope.alluserrights = APIConfig.alluserrights;
     $scope.isUserLogged = $cookies.get('userid');
 
     $scope.getUser = function () {
-
       if(!$cookies.getObject('useraccount')) {
         api.service('user').id($cookies.get('userid')).get().then(function (user) {
           $scope.user = user;
@@ -58,9 +58,7 @@ app.controller('AccountCtrl', ['$rootScope', '$scope', '$log', '$route', '$locat
     };
 
     $scope.getAllRightsData = function () {
-
         fac.getAllRightsData();
         fac.getAllResourceRight();
-
     };
   }]);

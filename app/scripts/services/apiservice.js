@@ -29,7 +29,7 @@ app.service('APIService', ['$rootScope', '$resource', '$q', '$http','APIConfig',
 		self.getResource = function () {
 
 		  if(APIConfig.url!=APIConfig.loginApiUrl ){
-        APIConfig.url = APIConfig.loginApiUrl;
+        //APIConfig.url = APIConfig.loginApiUrl;
       }
 
 			!tableid ? tableid = ':id' : null;

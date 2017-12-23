@@ -9,6 +9,7 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
 
     var api = APIService;
     var fac= APIFactory;
+
     $scope.roles = APIConfig.roles;
     $scope.userrole = {};
     $scope.userinvite = {};
@@ -20,6 +21,13 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
         $location.path('/');
       }
 
+      if(!$cookies.get('invitecount')){
+        $cookies.put('invitecount',true);
+        $window.location.reload();
+      }else{
+        $cookies.remove('invitecount');
+
+      }
       if($scope.roles.length===0){
         APIConfig.roles  = $cookies.getObject('roles');
         $scope.roles =   APIConfig.roles;
@@ -56,7 +64,7 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
        var mandatid = $cookies.get('mandatid');
        data.url = data.url+ '&mandatid='+mandatid;
        data.url = data.url+ '&product=Marketing Dashboard';
-       data.url = data.url+ '&role_id='+data.role_id;
+       data.url = data.url+ '&roleid='+data.role_id;
        api.service('usersetting').filter(data).get().then(function (result) {
       },function (error) {
            if(error.status==-1){
@@ -66,10 +74,12 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
     };
 
     $scope.$watch(function () {
+
       return $('.selectpicker').length;
-    }, function (newVal,oldVal) {
-      if(newVal===2){
-       $window.location.reload();
-      }
+
+    }, function (newVal, oldVal) {
+
+
     });
+
   }]);
