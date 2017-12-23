@@ -130,7 +130,13 @@
                 <label for="ap_email">
                  {{'Your business e-mail address' | translate}}
                </label>
-               <input ng-model="account.username" type="email" ng-keydown="mailcheck = checkEmail();" ng-maxlength="128" id="ap_email" name="username" tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field" required>
+               <input
+                 ng-model="account.username"
+                 type="email" ng-keydown="mailcheck = checkEmail();"
+                 ng-maxlength="128" id="ap_email" name="username"
+                 tabindex="1" class="a-input-text a-span12 auth-autofocus auth-required-field"
+                 ng-pattern="/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/"
+                 required>
                <div ng-show="(accountform.username.$dirty || clicked) && (accountform.username.$invalid || mailcheck)"  id="auth-email-missing-alert" class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-none a-spacing-top-mini">
                 <div class="a-box-inner a-alert-container">
                   <i class="a-icon a-icon-alert">

@@ -78,7 +78,11 @@ app.controller('RegisterCtrl', ['$rootScope', '$scope', '$log', '$route',
                 }
               });
 
-              api.service('user_role').data({'user_id': data.userid,'role_id': 6}).save().then(function(result){
+              var roleid = 6;
+              if($scope.inviteduser.roleid){
+                roleid=$scope.inviteduser.roleid;
+              }
+              api.service('user_role').data({'user_id': data.userid,'role_id': roleid}).save().then(function(result){
 
               });
               api.service('usersetting').filter(data).get().then(function() {

@@ -63,8 +63,8 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
        data.role_id = $('#'+$scope.user.id+'_user_role').val();
        var mandatid = $cookies.get('mandatid');
        data.url = data.url+ '&mandatid='+mandatid;
-       data.url = data.url+ '&product=Marketing Dashboard';
-       data.url = data.url+ '&roleid='+data.role_id;
+       data.url = data.url+ '&product=Marketing_Dashboard';
+       data.url = data.url+ '&roleid='+$('#invite_user_role').val();
        api.service('usersetting').filter(data).get().then(function (result) {
       },function (error) {
            if(error.status==-1){
@@ -78,7 +78,6 @@ app.controller('InviteCtrl', ['$rootScope', '$scope', '$log', '$route', '$locati
       return $('.selectpicker').length;
 
     }, function (newVal, oldVal) {
-
 
     });
 
